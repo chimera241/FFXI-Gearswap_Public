@@ -1,4 +1,4 @@
-Engaged_Modes = {"TP", "Hybrid" ,"PDT", "MEVA"}
+Engaged_Modes = {"TP", "Hybrid" ,"PDT",  "MEVA"}
 Engaged_Modes_Index = 1
 
 send_command('bind f9 gs c set meleeTP')
@@ -33,136 +33,135 @@ function get_sets()
 	idle_ind = 1  
    
     sets.idle['Standard'] = { --49 DT, 25 PDT2, 599
-				main="Epeolatry", --25 PDT2
-				sub="Utu Grip",
-				ammo="Staunch Tathlum +1", --3 DT
-				head="Nyame Helm", --7 DT, 123 MEva
-				neck="Loricate Torque +1", --6 "Futhark Torque +2", --7DT, 30MEva
-				ear1="Hearty Earring",
-				ear2="Odnowa Earring +1", --3 DT 
-				body="Nyame Mail", --9 DT, 139 MEva
-				hands="Nyame Gauntlets", --3 DT, 37 MEva
-				ring1="Shneddick Ring", 
-				ring2="Defending Ring", --10 DT
-				back=Ogma.Tanking, 
-				waist="Flume Belt", --4 PDT
-				legs="Nyame Flanchard", --8 DT, 150 MEva
-				feet="Nyame Sollerets" --7 DT, 150 MEva 
-				}
+		sub="Utu Grip",
+		ammo="Staunch Tathlum +1", --3 DT
+		head="Nyame Helm", --7 DT, 123 MEva
+		neck="Futhark Torque +2", --6 
+		ear1="Hearty Earring",
+		ear2="Odnowa Earring +1", --3 DT 
+		body="Nyame Mail", --9 DT, 139 MEva
+		hands="Nyame Gauntlets", --3 DT, 37 MEva
+		ring1="Shneddick Ring", 
+		ring2="Defending Ring", --10 DT
+		back=Ogma.Tanking, 
+		waist="Flume Belt", --4 PDT
+		legs="Nyame Flanchard", --8 DT, 150 MEva
+		feet="Nyame Sollerets" --7 DT, 150 MEva 
+		}
 
     sets.idle['Phalanx'] = {
-				ammo="Staunch Tathlum +1", --10%--
-				neck="Moonlight Necklace", --15%-- 
-				head="Fu. Bandeau +3", --Phalanx +7--
-				body="Taeon Tabard", --Phalanx +3--
-				hands="Taeon Gloves", --Phalanx +3--
-				ring1="Moonlight Ring", 
-				ring2="Defending Ring",
-				back=Ogma.SIRD, 
-				waist="Audumbla Sash", --10%--
-				legs="Herculean Trousers", --Phalanx +5--
-				feet="Taeon Boots" --Phalanx +3--
-				}
+		ammo="Staunch Tathlum +1", --10%--
+		neck="Moonlight Necklace", --15%-- 
+		head="Fu. Bandeau +3", --Phalanx +7--
+		body="Taeon Tabard", --Phalanx +3--
+		hands="Taeon Gloves", --Phalanx +3--
+		ring1="Moonlight Ring", 
+		ring2="Defending Ring",
+		back=Ogma.SIRD, 
+		waist="Audumbla Sash", --10%--
+		legs="Herculean Trousers", --Phalanx +5--
+		feet="Taeon Boots" --Phalanx +3--
+		}
    
    
     -- TP/Engaged sets --
     sets.melee = {}
    
     sets.melee["TP"] = {
-				sub="Utu Grip", 
-				ammo="Ginsen",
-				head="Adhemar Bonnet +1",
-				neck="Anu Torque",
-				ear1="Telos Earring",
-				ear2="Sherida Earring",
-				body="Adhemar Jacket +1",
-				hands="Adhemar Wristbands +1",
-				ring1="Epona's Ring",
-				ring2="Niqmaddu Ring",
-				back=Ogma.TP, 
-				waist="Sailfi Belt +1",
-				legs="Samnuha Tights",
-				feet=HFeet_TP
-				}
+		sub="Utu Grip", 
+		ammo="Ginsen",
+		head="Adhemar Bonnet +1",
+		neck="Anu Torque",
+		ear1="Telos Earring",
+		ear2="Sherida Earring",
+		body="Adhemar Jacket +1",
+		hands="Adhemar Wristbands +1",
+		ring1="Epona's Ring",
+		ring2="Niqmaddu Ring",
+		back=Ogma.TP, 
+		waist="Sailfi Belt +1",
+		legs="Samnuha Tights",
+		feet=HFeet_TP
+		}
    
     sets.melee["Hybrid"] = { --29% DT, 46 PDT, 71% PDT inc Epeo--
-				sub="Utu Grip", 
-				ammo="Ginsen",
-				head="Aya. Zucchetto +2", --3--
-				neck="Futhark Torque +2", --7--
-				ear1="Telos Earring",
-				ear2="Sherida Earring",
-				body="Ayanmo Corazza +2", --6--
-				hands="Turms Mittens +1", 
-				ring1="Epona's Ring",
-				ring2="Defending Ring", --10--
-				back=Ogma.TP, --10 PDT--
-				waist="Sailfi Belt +1",
-				legs="Eri. Leg Guards +1", --7 PDT--
-				feet="Aya. Gambieras +2" --3--
-				}
+		sub="Utu Grip", 
+		ammo="Ginsen",
+		head="Aya. Zucchetto +2", --3--
+		neck="Futhark Torque +2", --7--
+		ear1="Telos Earring",
+		ear2="Sherida Earring",
+		body="Ayanmo Corazza +2", --6--
+		hands="Turms Mittens +1", 
+		ring1="Epona's Ring",
+		ring2="Defending Ring", --10--
+		back=Ogma.TP, --10 PDT--
+		waist="Sailfi Belt +1",
+		legs="Eri. Leg Guards +1", --7 PDT--
+		feet="Aya. Gambieras +2" --3--
+		}
    
     sets.melee["PDT"] = { --37 DT, 84 PDT inc Epeo--
-				sub="Refined Grip +1", 
-				ammo="Staunch Tathlum +1",
-				head="Nyame Helm",
-				neck="Futhark Torque +2",
-				ear1="Hearty Earring",
-				ear2="Ethereal Earring",
-				body="Nyame Mail",
-				hands="Turms Mittens +1",
-				ring1="Ayanmo Ring",
-				ring2="Defending Ring",
-				back=Ogma.Tanking, 
-				waist="Flume Belt",
-				legs="Eri. Leg Guards +1",
-				feet="Nyame Sollerets"
-				}
+		sub="Refined Grip +1", 
+		ammo="Staunch Tathlum +1",
+		head="Nyame Helm",
+		neck="Futhark Torque +2",
+		ear1="Hearty Earring",
+		ear2="Ethereal Earring",
+		body="Nyame Mail",
+		hands="Turms Mittens +1",
+		ring1="Moonlight Ring",
+		ring2="Defending Ring",
+		back=Ogma.Tanking, 
+		waist="Flume Belt",
+		legs="Eri. Leg Guards +1",
+		feet="Nyame Sollerets"
+		}
    
-    sets.melee["MEVA"] = {
-				sub="Refined Grip +1", 
-				ammo="Staunch Tathlum",          
-				head="Rune. Bandeau +2",
-				neck="Futhark Torque +2",
-				ear1="Hearty Earring",
-				ear2="Ethereal Earring",
-				body="Runeist's Coat +2",
-				hands="Turms Mittens +1",
-				ring1="Moonlight Ring",
-				ring2="Defending Ring",
-				back=Ogma.Tanking, 
-				waist="Flume Belt",
-				legs="Rune. Trousers +1",
-				feet="Turms Leggings +1"
-				}
+    sets.melee["MEVA"] = set_combine(sets.melee['PDT'], {
+		sub="Refined Grip +1", 
+		ammo="Staunch Tathlum",          
+		head="Rune. Bandeau +2",
+		neck="Futhark Torque +2",
+		ear1="Hearty Earring",
+		ear2="Ethereal Earring",
+		body="Runeist's Coat +2",
+		hands="Turms Mittens +1",
+		ring1="Moonlight Ring",
+		ring2="Defending Ring",
+		back=Ogma.Tanking, 
+		waist="Flume Belt",
+		legs="Rune. Trousers +1",
+		feet="Turms Leggings +1"
+		})
  
     -- JA Sets for Precast Function -- 
     sets.JA = {}
 	
 		
 	sets.JA.enmity = { --109 inc Epeo, 35% SIRD--
-				head="Fu. Bandeau +3",
-				neck="Futhark Torque +2", --15, 15%--
-				ear1="Cryptic Earring", --4--
-				ear2="Friomisi Earring", --2--
-				body="Emet Harness +1", --10--
-				hands="Kurys Gloves", --9--
-				ring1="Supershear Ring", --5--
-				ring2="Petrov Ring", --4--
-				back=Ogma.SIRD, --10%--
-				waist="Audumbla Sash", --10% 
-				legs="Eri. Leg Guards +1", --11--
-				feet="Eri. Greaves +1" --6--
-				}   
+		head="Fu. Bandeau +3",
+		neck="Futhark Torque +2", --10
+		ear1="Cryptic Earring", --4--
+		ear2="Friomisi Earring", --2--
+		body="Emet Harness +1", --10--
+		hands="Kurys Gloves", --9--
+		ring1="Supershear Ring", --5--
+		ring2="Petrov Ring", --4--
+		back=Ogma.SIRD, --10%--
+		waist="Audumbla Sash", --10% 
+		legs="Eri. Leg Guards +1", --11--	
+		feet="Eri. Greaves +1" --6--
+		}   
 					
     sets.JA['Elemental Sforzo'] = {body="Futhark Coat +3"}
     sets.JA['Vallation'] = set_combine(sets.JA.enmity, {					
-				body="Runeist's Coat +2", --10--
-				})
+		body="Runeist's Coat +2", --10--
+		})
 
     sets.JA['Valiance'] = set_combine(sets.JA.enmity, {					
-				body="Runeist's Coat +2", --10--
-				})	
+		body="Runeist's Coat +2", --10--
+		})	
 				
     sets.JA['Pflug'] = set_combine(sets.JA.enmity, {feet="Runeist Bottes +1"})
     sets.JA['Swordplay'] = {hands="Futhark Mitons +1"}
@@ -208,50 +207,50 @@ function get_sets()
     sets.ws = {}
 	
 	sets.ws["Dimidiation"] = {
-				ammo="Knobkierrie",
-				head="Herculean Helm",
-				neck="Caro Necklace", 
-				ear1="Moonshade Earring",
-				ear2="Sherida Earring",
-				body="Adhemar Jacket +1",
-				hands="Meg. Gloves +2",
-				ring1="Epona's Ring",
-				ring2="Niqmaddu Ring",
-				back=Ogma.TP, 
-				waist="Sailfi Belt +1",
-				legs="Lustratio Subligar +1",
-				feet="Lustratio leggings +1"
-				}
+		ammo="Knobkierrie",
+		head="Herculean Helm",
+		neck="Caro Necklace", 
+		ear1="Moonshade Earring",
+		ear2="Sherida Earring",
+		body="Adhemar Jacket +1",
+		hands="Meg. Gloves +2",
+		ring1="Epona's Ring",
+		ring2="Niqmaddu Ring",
+		back=Ogma.TP, 
+		waist="Sailfi Belt +1",
+		legs="Lustratio Subligar +1",
+		feet="Lustratio leggings +1"
+		}
 
 	sets.ws["Resolution"] = {
-				head="Adhemar Bonnet +1",
-				neck="Fotia Gorget",
-				ear1="Moonshade Earring",
-				ear2="Sherida Earring",
-				body="Adhemar Jacket +1",
-				hands="Meg. Gloves +2",
-				ring1="Epona's Ring",
-				ring2="Niqmaddu Ring",
-				back=Ogma.TP, 
-				waist="Fotia Belt",
-				legs="Samnuha Tights",
-				feet=HFeet_TP	
-				}
+		head="Adhemar Bonnet +1",
+		neck="Fotia Gorget",
+		ear1="Moonshade Earring",
+		ear2="Sherida Earring",
+		body="Adhemar Jacket +1",
+		hands="Meg. Gloves +2",
+		ring1="Epona's Ring",
+		ring2="Niqmaddu Ring",
+		back=Ogma.TP, 
+		waist="Fotia Belt",
+		legs="Samnuha Tights",
+		feet=HFeet_TP	
+		}
 
 	sets.ws["Shockwave"] = {
-				Heaad="Ayanmo Zucchetto +2",
-				neck="Sanctity Necklace",
-				ear1="Moonshade Earring",
-				ear2="Sherida Earring",
-				body="Ayanmo Corazza +2",
-				hands="Ayanmo Manopolas +2",
-				ring1="Stikini Ring +1",
-				ring2="Stikini Ring +1",
-				back=Ogma.TP,
-				waist="Sailfi Belt +1",
-				legs="Ayanmo Cosciales +2",
-				feet="Ayanmo Gambieras +2"
-				}
+		Heaad="Ayanmo Zucchetto +2",
+		neck="Sanctity Necklace",
+		ear1="Moonshade Earring",
+		ear2="Sherida Earring",
+		body="Ayanmo Corazza +2",
+		hands="Ayanmo Manopolas +2",
+		ring1="Stikini Ring +1",
+		ring2="Stikini Ring +1",
+		back=Ogma.TP,
+		waist="Sailfi Belt +1",
+		legs="Ayanmo Cosciales +2",
+		feet="Ayanmo Gambieras +2"
+		}
 				
 	sets.ws["Full Break"] = sets.ws["Shockwave"]
 	sets.ws["Armour Break"] = sets.ws["Shockwave"]
@@ -268,18 +267,22 @@ function get_sets()
 		neck="Voltsurge Torque", --4%-- 
 		ear1="Loquac. Earring", --2%--
 		ear2="Etoliation Earring", --1%--
-		body="Taeon Tabard", --8%--
-		hands="Runeist Mitons +1", --5%--
+		body="Agwu's Robe", --8%--
+		hands="Agwu's Gages", --6%--
 		ring1="Prolix Ring", --2%--
 		ring2="Kishar Ring", --4%--
 		back=Ogma_SIRD, --10%--
-		waist="Sailfi Belt +1", 
+		waist="Kasiri Belt", 
 		legs="Aya. Cosciales +2", --6%--
 		feet="Carmine Greaves +1" --8%--
 		}
+		
+	sets.precast.fcval = set_combine(sets.precast.fc, { ---populate---
+		})
 					
 	sets.precast.fc.enhancing = set_combine(sets.precast.fc, {
-		legs="Futhark Trousers +2"
+		waist="Siegel Sash",
+		legs="Futhark Trousers +3"
 		})
 
     --Midcast--
@@ -303,7 +306,7 @@ function get_sets()
 					
 	sets.midcast.duration = set_combine(sets.midcast.base,{
 		head="Erilaz Galea +1", 
-		legs="Fu. Trousers +2",
+		legs="Fu. Trousers +3",
 		waist="Gishdubar Sash"
 		})
 			
@@ -312,42 +315,45 @@ function get_sets()
 		legs="Fu. Trousers +1"
 		})			
 
-	sets.midcast.SIRD = set_combine(sets.midcast.base,{ --91%--
+	sets.midcast.SIRD = set_combine(sets.midcast.base,{ --106% inc Merits, Note: Magnetic Earring (Apoc Nigh) 8%
 		ammo="Staunch Tathlum +1", --11%--
 		head="Agwu's Cap", --10%
-		neck="Moonlight Necklace", --15%-- 
+		neck="Loricate Torque +1", --5%-- 
+		body="Nyame Mail",
 		hands="Rawhide Gloves", --15%--
 		back=Ogma.SIRD, --10%--
-		ring2="Evanescence Ring", --5%--
+		ring1="Evanescence Ring", --5%--
+		ring2="Defending Ring",
 		waist="Audumbla Sash", --10%--
-		legs="Carmine Cuisses +1" --20%--
+		legs="Carmine Cuisses +1", --20%--
+		feet="Taeon Boots" --10%
 		})
 					
-	sets.midcast.phalanx = { --Phalanx +21, 25% SIRD--
-		ammo="Staunch Tathlum +1", --10%--
-		neck="Moonlight Necklace", --15%-- 
+	sets.midcast.phalanx = { --Enhancing Skill 436, Phalanx +21, (Blocks 55 dmg) 63% SIRD--
+		ammo="Staunch Tathlum +1", --11% SIRD--
+		neck="Loricate Torque +1", --5% SIRD-- 
 		head="Fu. Bandeau +3", --Phalanx +7--
-		body="Taeon Tabard", --Phalanx +3--
-		hands="Taeon Gloves", --Phalanx +3--
+		body="Taeon Tabard", --Phalanx +3, 8% SIRD--
+		hands="Taeon Gloves", --Phalanx +3, 9% SIRD--
 		ring1="Moonlight Ring", 
 		ring2="Defending Ring",
-		back=Ogma.SIRD, 
-		waist="Audumbla Sash", --10%--
+		back=Ogma.SIRD, --10% SIRD
+		waist="Audumbla Sash", --10% SIRD--
 		legs="Herculean Trousers", --Phalanx +5--
-		feet="Taeon Boots" --Phalanx +3--
+		feet="Taeon Boots" --Phalanx +3, 10% SIRD--
 		}
 	
-	sets.midcast.enmity = { --109 inc Epeo, 35% SIRD--
-		head="Fu. Bandeau +3",
-		neck="Moonlight Necklace", --15, 15%--
+	sets.midcast.enmity = { --88 inc Epeo--
+		head="Runeist Bandeau +2",
+		neck="Futhark Torque +2", --10--
 		ear1="Cryptic Earring", --4--
 		ear2="Friomisi Earring", --2--
 		body="Emet Harness +1", --10--
 		hands="Kurys Gloves", --9--
-		ring1="Moonlight Ring",
-		ring2="Defending Ring",
-		back=Ogma.SIRD, --10%--
-		waist="Audumbla Sash", --10% 
+		ring1="Moonlight Ring", --5% DT
+		ring2="Defending Ring", --10% DT
+		back=Ogma.Tanking, --10--
+		waist="Kasiri Belt", --3 
 		legs="Eri. Leg Guards +1", --11--
 		feet="Eri. Greaves +1" --6--
 		}					
@@ -357,11 +363,13 @@ function get_sets()
  -----enmity------
 sets.midcast["Flash"] = sets.midcast.enmity
 sets.midcast["Foil"] = sets.midcast.enmity
-sets.midcast["Poisonga"] = sets.midcast.enmity
 sets.midcast["Stun"] = sets.midcast.enmity
 -----SIRD-----
 sets.midcast["Ice Spikes"] = sets.midcast.SIRD
 sets.midcast["Shock Spikes"] = sets.midcast.SIRD
+sets.midcast["Poisonga"] = sets.midcast.SIRD
+sets.midcast["Geist Wall"] = sets.midcast.SIRD
+sets.midcast["Healing Breeze"] = sets.midcast.SIRD
 sets.midcast["Jettatura"] = sets.midcast.SIRD
 sets.midcast["Blank Gaze"] = sets.midcast.SIRD
 sets.midcast["Sheep Song"] = sets.midcast.SIRD
@@ -397,11 +405,11 @@ function precast(spell)
         else
             equip(sets.ws)
         end
-    elseif spell.skill == 'Enhancing Magic' then
+    elseif spell.action_type == 'Magic' then ---add rule for precast if Valliance/Vallation active
+        equip(sets.precast.fc)    
+	elseif spell.skill == 'Enhancing Magic' then
         equip(sets.precast.fc.enhancing)
-    elseif spell.action_type == 'Magic' then
-        --Just use a magic fast cast set
-        equip(sets.precast.fc)
+
     elseif spell.action_type == 'Ability' then
         --If we have a set for jobability defined, use it
         if sets.JA[spell.name] then

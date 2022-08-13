@@ -267,6 +267,28 @@ Cape= {}
         ring2="Stikini Ring +1",
         feet="Geomancy sandals +3"
     }
+	
+	sets.engaged = {}
+	
+	sets.engaged["tp"] = {
+	}
+
+	sets.ws = {}
+	sets.ws["Black Halo"] = {
+		ammo="Amar Cluster",
+		head="Nyame Helm",
+		neck="Rep. Plat. Medal",
+		ear1="Moonshade Earring",
+		ear2="Ishvara Earring",
+		body="Nyame Mail",
+		hands="Nyame Gauntlets",
+		ring1="Metamorph Ring +1",
+		ring2="Petrov Ring",
+		back=Cape_WSD,
+		waist="Sailfi Belt +1",
+		legs="Nyame Flanchard",
+		feet="Nyame Sollerets"
+	}
 
     coroutine.schedule(lockstyle,2)
 

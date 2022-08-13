@@ -457,7 +457,7 @@ function get_sets()
     left_ear="Eabani Earring",
     right_ear="Dedition Earring",
     left_ring="Regal Ring",
-    right_ring="Chirich Ring",
+    right_ring="Chirich Ring +1",
     back = gear.AmbuCape.TP
   }
   sets.Melee.NoAccuracy.Haste15 = {
@@ -474,7 +474,7 @@ function get_sets()
     waist="Sailfi Belt +1",
     left_ear="Dedition Earring",
     right_ear="Telos Earring",
-    left_ring="Regal Ring",
+    left_ring="Gere Ring",
     right_ring="Epona's Ring",
     back = gear.AmbuCape.TP
   }
@@ -491,7 +491,7 @@ function get_sets()
     waist="Sailfi Belt +1",
     left_ear="Cessance Earring",
     right_ear="Telos Earring",
-    left_ring="Regal Ring",
+    left_ring="Gere Ring",
     right_ring="Epona's Ring",
     back = gear.AmbuCape.TP,
   }
@@ -508,7 +508,7 @@ function get_sets()
     waist={ name="Sailfi Belt +1", augments={'Path: A',}},
     left_ear="Cessance Earring",
     right_ear="Telos Earring",
-    left_ring="Regal Ring",
+    left_ring="Gere Ring",
     right_ring="Epona's Ring",
     back = gear.AmbuCape.TP,
   }
@@ -527,8 +527,8 @@ function get_sets()
     waist={ name="Sailfi Belt +1", augments={'Path: A',}},
     left_ear="Suppanomimi",
     right_ear="Telos Earring",
-    left_ring="Regal Ring",
-    right_ring="Chirich Ring",
+    left_ring="Gere Ring",
+    right_ring="Chirich Ring +1",
     back = gear.AmbuCape.DW,
   }
   sets.Melee.LowAccuracy.Haste15 = {
@@ -545,7 +545,7 @@ function get_sets()
     waist={ name="Sailfi Belt +1", augments={'Path: A',}},
     left_ear="Cessance Earring",
     right_ear="Telos Earring",
-    left_ring="Regal Ring",
+    left_ring="Gere Ring",
     right_ring="Epona's Ring",
     back = gear.AmbuCape.DW
   }
@@ -562,7 +562,7 @@ function get_sets()
     waist={ name="Sailfi Belt +1", augments={'Path: A',}},
     left_ear="Eabani Earring",
     right_ear="Dedition Earring",
-    left_ring="Regal Ring",
+    left_ring="Gere Ring",
     right_ring="Epona's Ring",
     back = gear.AmbuCape.STP
   }
@@ -579,7 +579,7 @@ function get_sets()
     waist={ name="Sailfi Belt +1", augments={'Path: A',}},
     left_ear="Cessance Earring",
     right_ear="Telos Earring",
-    left_ring="Regal Ring",
+    left_ring="Gere Ring",
     right_ring="Epona's Ring",
     back = gear.AmbuCape.STP,
   }
@@ -598,8 +598,8 @@ function get_sets()
     waist="Reiki Yotai",
     left_ear="Suppanomimi",
     right_ear="Telos Earring",
-    left_ring="Regal Ring",
-    right_ring="Chirich Ring",
+    left_ring="Gere Ring",
+    right_ring="Chirich Ring +1",
     back = gear.AmbuCape.DW,
   }
   sets.Melee.MidAccuracy.Haste15 = {
@@ -616,8 +616,8 @@ function get_sets()
     waist={ name="Sailfi Belt +1", augments={'Path: A',}},
     left_ear="Suppanomimi",
     right_ear="Telos Earring",
-    left_ring="Regal Ring",
-    right_ring="Chirich Ring",
+    left_ring="Gere Ring",
+    right_ring="Chirich Ring +1",
     back = gear.AmbuCape.DW,
   }
   sets.Melee.MidAccuracy.Haste30 = {
@@ -633,8 +633,8 @@ function get_sets()
     waist={ name="Sailfi Belt +1", augments={'Path: A',}},
     left_ear="Eabani Earring", -- Suppanomimi is negligibly worse in terms of TP time despite capping delay (-80% vs -79.75%) but this gives EVA+ and AGI+ too so Eabani is better
     right_ear="Telos Earring",
-    left_ring="Regal Ring",
-    right_ring="Chirich Ring",
+    left_ring="Gere Ring",
+    right_ring="Chirich Ring +1",
     back = gear.AmbuCape.TP,
   }
   sets.Melee.MidAccuracy.HasteCap = {
@@ -650,7 +650,7 @@ function get_sets()
     waist={ name="Sailfi Belt +1", augments={'Path: A',}},
     left_ear="Brutal Earring",
     right_ear="Telos Earring",
-    left_ring="Regal Ring",
+    left_ring="Gere Ring",
     right_ring="Epona's Ring",
     back = gear.AmbuCape.TP,
   }
@@ -929,7 +929,7 @@ function get_sets()
     waist="Orpheus's Sash",
     left_ear = gear.Moonshade,
     right_ear={ name="Lugra Earring +1", augments={'Path: A',}},
-    left_ring="Regal Ring",
+    left_ring="Gere Ring",
     right_ring="Epona's Ring",
     back = gear.AmbuCape.WSDstr,
   }
@@ -944,7 +944,7 @@ function get_sets()
     waist="Orpheus's Sash",
     left_ear = gear.Moonshade,
     right_ear={ name="Lugra Earring +1", augments={'Path: A',}},
-    left_ring="Regal Ring",
+    left_ring="Gere Ring",
     right_ring="Epona's Ring",
     back = gear.AmbuCape.WSDstr,
   }
@@ -959,7 +959,7 @@ function get_sets()
     waist="Orpheus's Sash",
     left_ear = gear.Moonshade,
     right_ear={ name="Lugra Earring +1", augments={'Path: A',}},
-    left_ring="Regal Ring",
+    left_ring="Gere Ring",
     right_ring="Epona's Ring",
     back = gear.AmbuCape.WSDstr,
   }

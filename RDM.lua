@@ -1,6 +1,6 @@
 res = require('resources')
 
-Weapon_Sets = {"Empty", "Sword", "Crocea/Thibron", "Crocea/Daybreak", "Crocea/Gleti's", "Savage Blade", "Aeolian Edge", "Low TP"}
+Weapon_Sets = {"Empty", "Sword","Crocea/Thibron", "Crocea/Daybreak", "Savage Blade"} -- "Maxentius""Aeolian Edge", "Crocea/Thibron", "Crocea/Daybreak", "Crocea/Gleti's", --"Maxentius","Low TP"}
 WeaponSetsIndex = 1
 
 NukeSet = {"Low Acc", "High Acc", "Magic Burst"}
@@ -94,7 +94,7 @@ MFeet= {}
 		neck="Loricate torque +1",
 		ear1="Etiolation earring",
 		ear2="Sanare earring",
-		body="Malignance Tabard",
+		body="Bunzi's Robe",
 		hands="Malignance Gloves",
 		ring1="Shneddick Ring",
 		ring2="Defending ring",
@@ -129,6 +129,7 @@ MFeet= {}
 	sets.weapons = {}
 	sets.weapons["Empty"] = {}
 	sets.weapons["Sword"] = {main = "Crocea Mors", sub="Ammurapi shield"}
+	sets.weapons["Maxentius"] = {main = "Maxentius", sub="Genmei shield"}
 	sets.weapons["Crocea/Thibron"] = {main = "Crocea Mors", sub="Thibron"}
 	sets.weapons["Crocea/Gleti's"] = {main = "Crocea Mors", sub="Gleti's Knife"}
 	sets.weapons["Crocea/Daybreak"] = {main = "Crocea Mors", sub="Daybreak"}
@@ -137,12 +138,12 @@ MFeet= {}
 	sets.weapons["Low TP"] = {main= "Qutrub Knife", sub="Wind Knife", range="Kaja Bow"}
     
 	sets.engaged = {
-		ammo="Ginsen",
-		head="Malignance Chapeau",
+		ammo="Staunch Tathlum",
+		head="Bunzi's Hat",
 		neck="Anu Torque",
 		ear1="Telos Earring",
-		ear2="Cessance Earring",
-		ring1="Chirich Ring",
+		ear2="Odnowa Earring +1",
+		ring1="Defending Ring",
 		ring2="Chirich Ring +1",
 		body="Malignance Tabard",
 		hands="Malignance Gloves",
@@ -207,6 +208,7 @@ MFeet= {}
 		head="Vanya Hood",
 		body="Kaykaus Bliaut +1",
 		ear1="Mendi. Earring",
+		ear2="Magnetic Earring",
 		hands="Kaykaus cuffs +1",
 		ring1="Stikini ring +1",
 		ring2="Lebeche ring",
@@ -229,17 +231,17 @@ MFeet= {}
 		sub="Ammurapi Shield",	
 		ammo="Pemphredo Tathlum",
 		head="Befouled Crown",
-		body="Viti. Tabard +3",
-		hands="Vitiation Gloves +2",
-		legs="Carmine Cuisses +1",
-		feet="Leth. Houseaux +1",
 		neck="Duelist's Torque +2",
-		waist="Embla Sash",
 		ear1="Mendi. Earring",
 		ear2="Andoaa Earring",
-		back="Ghostfyre Cape",
+		body="Viti. Tabard +3",
+		hands="Vitiation Gloves +2",
 		ring1="Stikini ring +1",
-		ring2="Stikini ring +1"
+		ring2="Stikini ring +1",
+		back="Ghostfyre Cape",
+		waist="Embla Sash",
+		legs="Carmine Cuisses +1",
+		feet="Leth. Houseaux +1"
         }
 
     sets.midcast.enhancing["Skill"] = {
@@ -333,7 +335,7 @@ MFeet= {}
 		hands="Regal Cuffs",
 		ring1="Stikini ring +1",
 		ring2="Stikini ring +1",
-		waist="Luminary Sash",
+		waist="Obstinate Sash",
 		back=Cape_Int,
 		legs="Chironic Hose",
 		feet="Vitiation Boots +3"
@@ -351,7 +353,7 @@ MFeet= {}
 		hands="Regal Cuffs", --45 MACC, 20% Duration---
 		ring1="Stikini ring +1", --8 MACC--
 		ring2="Stikini ring +1", --8 MACC--
-		waist="Luminary Sash", --10 MACC--
+		waist="Obstinate Sash", --10 MACC--
 		back=Cape_Int, --20 MACC--
 		legs="Chironic Hose", --54 MACC, Immuno +1, 13 Skill--
 		feet="Vitiation Boots +3" --43 MACC, 10 Pot, 16 Skill--
@@ -369,7 +371,7 @@ MFeet= {}
 		hands="Regal Cuffs", --45 MACC, 20% Duration---
 		ring1="Stikini ring +1", --8 MACC--
 		ring2="Stikini ring +1", --8 MACC--
-		waist="Luminary Sash", --10 MACC--
+		waist="Obstinate Sash", --10 MACC--
 		back=Cape_Int, --20 MACC--
 		legs="Chironic Hose", --54 MACC, Immuno +1, 13 Skill--
 		feet="Vitiation Boots +3" --43 MACC, 10 Pot, 16 Skill--
@@ -387,7 +389,7 @@ MFeet= {}
 		hands="Regal Cuffs", --45 MACC, 20% Duration---
 		ring1="Stikini ring +1", --8 MACC--
 		ring2="Kishar ring", --5 MACC, 10% Duration--
-		waist="Luminary Sash", --10 MACC--
+		waist="Obstinate Sash", --10 MACC--
 		back=Cape_Int, --20 MACC--
 		legs="Lethargy Fuseau +1", --22 MACC, 10% Duration set bonus--
 		feet="Lethargy Houseaux +1" --10% Duration set bonus--
@@ -504,7 +506,7 @@ MFeet= {}
         }
 
     sets.ws.physical = {
-		ammo="Amar Cluster",
+		ammo="Oshasha's Treatise",
 		head="Nyame Helm",
 		neck="Rep. Plat. Medal",
 		ear1="Moonshade Earring",

@@ -41,41 +41,41 @@ function get_sets()
 		waist="Flume Belt",
 		left_ear="Sherida Earring",
 		right_ear="Brutal Earring",
-		left_ring="Defending Ring",
-		right_ring="Niqmaddu Ring",
+		right_ring="Defending Ring",
+		left_ring="Shneddick Ring",
 		back=Cape_TP	
 	}
 	
 	-----TP-----
 	
 	sets.melee["TP"] = {
-		ammo="Ginsen",
+		ammo="Coiste Bodhar",
 		head="Adhemar Bonnet +1",
-		body="Kendatsuba Samue +1",
-		hands="Malignance Gloves",
-		legs="Hesychast's Hose +3",
-		feet="Anchorite's Gaiters +3",
 		neck="Monk's Nodowa +1",
-		waist="Sailfi Belt +1",
 		left_ear="Sherida Earring",
 		right_ear="Telos Earring",
-		left_ring="Epona's Ring",
+		body="Kendatsuba Samue +1",
+		hands="Malignance Gloves",
+		left_ring="Gere Ring",
 		right_ring="Niqmaddu Ring",
-		back=Cape_TP
+		waist="Moonbow Belt",
+		back=Cape_TP,
+		legs="Hesychast's Hose +3",
+		feet="Anchorite's Gaiters +3"
 	}
 
 	sets.melee["Hybrid"] = set_combine(sets.melee["TP"], {
-		head="Malignance Chapeau",
-		left_ring="Defending Ring",
-		legs="Kendatsuba Hakama +1",
+		head="Kendatsuba Jinpachi +1",
+		hands="Mpaca's Gloves",
+		legs="Mpaca's Hose",
 		feet="Malignance Boots"
 	})	
 	
 	sets.melee["DT"] = set_combine(sets.melee["TP"], {
 		head="Malignance Chapeau",
-		left_ring="Defending Ring",
-		legs="Kendatsuba Hakama +1",
-		feet="Kendatsuba Sune-Ate +1"
+		hands="Malignance Gloves",
+		legs="Mpaca's Hose",
+		feet="Malignance Boots"
 	})
 
 	sets.ja = {}
@@ -124,11 +124,14 @@ function get_sets()
 		hands="Malignance Gloves",
 		legs="Kendatsuba Hakama +1",
 		ring1="Ilabrat Ring",
-		back=Cape_TP
+		back=Cape_TP,
+		feet="Malignance Boots"
 	})
 		
     sets.ws["Howling Fist"] = set_combine(sets.ws.base, {
 		head="Mpaca's Cap",
+		neck="Fotia Gorget",
+		feet="Herculean Boots",
 	})		
 		
 	sets.ws["Raging Fists"] = {
@@ -136,13 +139,13 @@ function get_sets()
 		head="Mpaca's Cap",
 		body="Adhemar Jacket +1",
 		hands="Adhemar Wristbands +1",
-		legs="Kendatsuba Hakama +1",
-		feet="Kendatsuba Sune-Ate +1",
-		neck="Monk's Nodawa +1",
-		waist="Moonbow Belt +1",
+		legs="Mpaca's Hose",
+		feet="Herculean Boots",
+		neck="Fotia Gorget",
+		waist="Moonbow Belt",
 		left_ear="Sherida Earring",
 		right_ear="Moonshade Earring",
-		left_ring="Regal Ring",
+		left_ring="Gere Ring",
 		right_ring="Niqmaddu Ring",
 		back=Cape_WSDA
         }

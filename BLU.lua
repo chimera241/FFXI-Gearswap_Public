@@ -31,7 +31,8 @@ function get_sets()
 		cape_wsd =  { name="Rosmerta's Cape", augments={'STR+20','Accuracy+20 Attack+20','Weapon skill damage +10%','Phys. dmg. taken-10%',}}
 		cape_eva = { name="Rosmerta's Cape", augments={'AGI+20','Eva.+20 /Mag. Eva.+20','Evasion+10','"Fast Cast"+10','Evasion+15',}}
 
-
+	HHead = {}
+		HHead_th = {name="Herculean Helm", augments={'Mag. Acc.+20','Rng.Atk.+29','"Treasure Hunter"+1','Accuracy+8 Attack+8','Mag. Acc.+7 "Mag.Atk.Bns."+7',}}
     HHands = {}
 		HHands = { name="Herculean Gloves", augments={'Accuracy+15 Attack+15','Weapon skill damage +3%','Accuracy+13','Attack+4',}}
 	HFeet = {}    
@@ -144,7 +145,7 @@ function get_sets()
         sets.ws = {}
 
         sets.ws['Savage Blade'] = {
-			ammo="Crepuscular Pebble",
+			ammo="Oshasha's Treatise",
 			head="Nyame Helm",
 			neck="Rep. Plat. Medal",
 			ear1="Moonshade earring",
@@ -208,7 +209,7 @@ function get_sets()
 		}
 		
         sets.ws['Black Halo'] = {
-			ammo="Crepuscular Pebble",
+			ammo="Oshasha's Treatise",
 			head="Nyame Helm",
 			neck="Rep. Plat. Medal",
 			ear1="Moonshade earring",
@@ -350,6 +351,7 @@ function get_sets()
 		
 		sets.BlueMagic.THnuke = set_combine(sets.BlueMagic.Nukes, {
 			ammo="Perfect Lucky Egg",
+			head=HHead_th,
 			waist="Chaac Belt", 
 			feet="Volte Boots"
 		})
@@ -453,13 +455,13 @@ spell_maps = {
     ['Regen']='Regen',['Regen II']='Regen',['Regen III']='Regen',['Regen IV']='Regen',['Regen V']='Regen',
     ['Refresh']='Refresh',    
 	['Spectral Floe']='nuke', ['Tenebral Crush']='darknuke', ['Silent Storm']='nuke', ['Searing Tempest']='nuke', ['Anvil Lightning']='nuke', ['Subduction']='nuke',
-	['Sheep Song']='MACC', ['Magic Hammer']='MACC', ['Tourbillion']='MACC', ['Blank Gaze']='MACC', ['Feather Tickle']='MACC', ['Delta Thrust']='MACC', ['Actinic Burst']='MACC', ['Infrasonics']='MACC', 
+	['Sheep Song']='MACC', ['Magic Hammer']='MACC', ['Voracious Trunk']='MACC',['Tourbillion']='MACC', ['Blank Gaze']='MACC', ['Feather Tickle']='MACC', ['Delta Thrust']='MACC', ['Actinic Burst']='MACC', ['Infrasonics']='MACC', 
 	['Magic Fruit']='BluCure', ['White Wind']='BluCure', 
 	['Battery Charge']='Refresh', ['Mighty Guard']='Conserve', ['Winds of Promvyion']='Conserve', ['Erratic Flutter']='Conserve', ['Mighty Guard']='Conserve', ['Carcharian Verve']='Conserve', 
 	['Occultation']='Skill', ['Diamondhide']='Skill', 
 	['Sudden Lunge']='Added', 
 	['Dream Flower']='EvaSleep', ['Actinic Burst']='EvaSleep', 
-	['Cruel Joke']='MaxMACC',
+	['Cruel Joke']='MaxMACC', ['Absolute Terror']='MaxMACC',
 	['Entomb']='THnuke'
 }  
 

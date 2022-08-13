@@ -66,15 +66,15 @@ Cape = {}
 	sets.tp["Hybrid"] = set_combine(sets.tp["TP"], { --39% PDT, 27% MDT--
 		ammo="Staunch Tathlum +1",
 		head="Hjarrandi Helm", --10%--
-		ring1="Defending Ring" --10%--
+		ring1="Moonlight Ring" --10%--
 		})
 		
 	sets.tp["DT"] = set_combine(sets.tp["TP"], { --49% PDT, 37% MDT--
 		ammo="Staunch Tathlum +1",
 		head="Hjarrandi Helm", --10%--
-		hands="Nyame Gauntlets", --7%--
-		body="Hjarrandi Breast.", --12%--
-		ring1="Defending Ring", --10%--
+		hands="Gleti's Gauntlets", --7%--
+		body="Nyame Mail", --12%--
+		ring1="Moonlight Ring", --10%--
 		feet="Nyame Sollerets" --7%--
 		})
 			
@@ -104,9 +104,10 @@ Cape = {}
     sets.WS["Drakesbane"] = multihit
 
     wsd = set_combine(sets.WS, { 
-        head="Valorous Mask", 
+        head="Nyame Helm", 
 		ear1="Thrud Earring",
         back=Cape_WSD, 
+		ring1="Moonlight Ring",
 		legs="Vishap Brais +3"
 		})
 

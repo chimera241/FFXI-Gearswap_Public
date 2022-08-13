@@ -1,7 +1,7 @@
 -- Get Sets: Everything in this section is run as soon as you change jobs.
 Engaged_Modes = {"TP", "More ACC", "Hybrid", "MEva", "DT", "Subtle Blow"}
 Engaged_Modes_Index = 1
-Weapon_Sets = {"Masamune", "Shining One", "Soboro"}
+Weapon_Sets = {"Masamune", "Shining One"} --"Soboro"
 WeaponSetsIndex = 1	
 
 
@@ -55,9 +55,9 @@ Cape = {}
 			  
 	sets.tp["TP"] = {    
 		sub="Utu Grip",
-		ammo="Ginsen",
+		ammo="Coiste Bodhar",
 		head="Flam. Zucchetto +2", --
-		neck="Sam. Nodowa +1",		
+		neck="Sam. Nodowa +2",		
 		ear1="Telos Earring",
 		ear2="Brutal Earring",		
 		body="Ken. Samue +1",
@@ -72,7 +72,7 @@ Cape = {}
 	
 	sets.tp["More Acc"] = set_combine(sets.tp["TP"], { --% PDT, % MDT--	
 		head="Ken. Samue +1",
-		ring2="Chirich Ring+1",
+		ring2="Chirich Ring +1",
 		legs="Tatena Haidate +1",
 		feet="Tatena. Sune. +1"
 		})	
@@ -114,10 +114,10 @@ Cape = {}
 	sets.ws["wsd"] = {
 		ammo="Knobkierrie",
 		head="Mpaca's Cap",
-		neck="Samurai Nodowa +1", 
+		neck="Samurai Nodowa +2", 
 		ear1="Thrud Earring",
 		ear2={ name="Moonshade Earring", augments={'Accuracy+4','TP Bonus +250',}},   
-		body="Sakonji Domaru +3",
+		body="Nyame Mail",
 		hands="Nyame Gauntlets",
 		ring1="Epaminondas' Ring",
 		ring2="Regal Ring",
