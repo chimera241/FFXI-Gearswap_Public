@@ -59,7 +59,7 @@ Cape = {}
 		head="Flam. Zucchetto +2", --
 		neck="Sam. Nodowa +2",		
 		ear1="Telos Earring",
-		ear2="Brutal Earring",		
+		ear2="Schere Earring",		
 		body="Ken. Samue +1",
 		hands="Wakido Kote +3",
 		ring1="Niqmaddu Ring",
@@ -79,7 +79,7 @@ Cape = {}
 	
 	sets.tp["Hybrid"] = set_combine(sets.tp["TP"], { --19% PDT, % MDT, 25% DT, 10 SBII, 
 		ammo="Staunch Tathlum +1", --3% DT
-		ear2="Odnowa Earring +1", --3% DT
+		ear1="Odnowa Earring +1", --3% DT
 		body="Wakido Domaru +3", --9% DT
 		ring2="Defending Ring",	--10% DT
 		legs="Mpaca's Hose", --9% PDT, 98 MEVA, 5% SBII
@@ -119,7 +119,7 @@ Cape = {}
 		ear2={ name="Moonshade Earring", augments={'Accuracy+4','TP Bonus +250',}},   
 		body="Nyame Mail",
 		hands="Nyame Gauntlets",
-		ring1="Epaminondas' Ring",
+		ring1="Epaminondas's Ring",
 		ring2="Regal Ring",
 		back=Cape_ws,
 		waist="Sailfi Belt +1",

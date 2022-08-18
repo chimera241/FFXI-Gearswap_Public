@@ -1,6 +1,6 @@
 res = require('resources')
 
-Weapon_Sets = {"Empty", "Sword","Crocea/Thibron", "Crocea/Daybreak", "Savage Blade"} -- "Maxentius""Aeolian Edge", "Crocea/Thibron", "Crocea/Daybreak", "Crocea/Gleti's", --"Maxentius","Low TP"}
+Weapon_Sets = {"Empty", "Savage Blade"} --,"Sword""Maxentius""Crocea/Thibron", "Crocea/Daybreak", "Savage Blade""Aeolian Edge", "Crocea/Thibron", "Crocea/Daybreak", "Crocea/Gleti's", --"Maxentius","Low TP"}
 WeaponSetsIndex = 1
 
 NukeSet = {"Low Acc", "High Acc", "Magic Burst"}
@@ -88,7 +88,7 @@ MFeet= {}
 
     sets.idle["Damage Taken"] = {
 		main="",
-	---	sub="Genmei Shield",
+		sub="Genmei Shield",
 		ammo="Staunch Tathlum +1",
 		head="Malignance Chapeau",
 		neck="Loricate torque +1",
@@ -106,6 +106,7 @@ MFeet= {}
 
     sets.idle["Refresh"] = set_combine(sets.idle["Damage Taken"], {
 		main="Daybreak",
+		sub="Genmei Shield",
 		ammo="Homiliary",
 		neck="Sibyl Scarf",
 		head="Vitiation chapeau +3",
@@ -138,7 +139,7 @@ MFeet= {}
 	sets.weapons["Low TP"] = {main= "Qutrub Knife", sub="Wind Knife", range="Kaja Bow"}
     
 	sets.engaged = {
-		ammo="Staunch Tathlum",
+		ammo="Staunch Tathlum +1",
 		head="Bunzi's Hat",
 		neck="Anu Torque",
 		ear1="Telos Earring",
@@ -228,6 +229,7 @@ MFeet= {}
 	sets.midcast.enhancing = {}
 
     sets.midcast.enhancing = {
+		sub="Daybreak",	
 		sub="Ammurapi Shield",	
 		ammo="Pemphredo Tathlum",
 		head="Befouled Crown",
@@ -245,6 +247,7 @@ MFeet= {}
         }
 
     sets.midcast.enhancing["Skill"] = {
+		sub="Daybreak",	
 		sub="Ammurapi Shield",
 		ammo="Pemphredo Tathlum",
 		head="Befouled Crown",
@@ -324,8 +327,8 @@ MFeet= {}
 	--Enfeebling--
 	
     sets.midcast.enfeebling = {
-		main="Daybreak",
-		sub="Ammurapi Shield",
+		main="Contemplator +1", --50 MACC, 255 Enf Skill--
+		sub="Enki Strap", --38 MACC--
 		ammo="Regal Gem",	
 		head="Vitiation chapeau +3",
 		neck="Duelist's Torque +2",
@@ -342,10 +345,10 @@ MFeet= {}
     }
 	
 	sets.midcast.enfeebling.MACC = { ---481 MACC, 45% Duration, 50 Skill, 20 Potency---   
-		main="Crocea Mors", --50 MACC, 255 Enf Skill--
-		sub="Ammurapi Shield", --38 MACC--
+		main="Contemplator +1", --50 MACC, 255 Enf Skill--
+		sub="Enki Strap", --38 MACC--
 		range="Kaja Bow", --35 MACC--	
-		head="Atro. Chapeau +2", --45 MACC--
+		head="Vitiation Chapeau +3", --45 MACC--
 		neck="Duelist's Torque +2", --30 MACC, Potency 10, Duration 25--
 		ear1="Snotra Earring", --10 MACC--
 		ear2="Regal Earring", --15 MACC Set Bonus--
@@ -360,8 +363,8 @@ MFeet= {}
     }
 	
 	sets.midcast.enfeebling.Potency = { --410 MACC, 55% Duration, 55 Skill, 44 Potency
-		main="Crocea Mors", --50 MACC, 255 Enf Skill--
-		sub="Ammurapi Shield", --38 MACC--
+		main="Contemplator +1", --50 MACC, 255 Enf Skill--
+		sub="Enki Strap", --38 MACC--
 		ammo="Regal Gem", --15 MACC, 10 Potency--
 		head="Vitiation chapeau +3", --37 MACC, 26 Skill--
 		neck="Duelist's Torque +2", --30 MACC, Potency 10, 25% Duration--
@@ -378,8 +381,8 @@ MFeet= {}
     }
 
 	sets.midcast.enfeebling.duration = { --340 MACC, 20 Potency, 85% Duration--
-		main="Crocea Mors", --50 MACC, 255 Enf Skill--
-		sub="Ammurapi Shield", --38 MACC--
+		main="Contemplator +1", --50 MACC, 255 Enf Skill--
+		sub="Enki Strap", --38 MACC--
 		ammo="Regal Gem", --15 MACC, 10 Potency--
 		head="Atro. Chapeau +2", --45 MACC--
 		neck="Duelist's Torque +2", --30 MACC, Potency 10, 25% Duration--
@@ -514,7 +517,7 @@ MFeet= {}
 		body="Nyame Mail",
 		hands="Nyame Gauntlets",
 		ring1="Metamorph Ring +1",
-		ring2="Petrov Ring",
+		ring2="Epaminondas's Ring",
 		back=Cape_WSD,
 		waist="Sailfi Belt +1",
 		legs="Nyame Flanchard",
@@ -531,7 +534,7 @@ MFeet= {}
         back=Cape_Int
     })
 
-    sets.ws["Black Halo"] = set_combine(sets.ws.magic, {
+    sets.ws["Black Halo"] = set_combine(sets.ws.physical, {
         ammo="Regal Gem",
         back=Cape_Int
     })

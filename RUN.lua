@@ -208,18 +208,18 @@ function get_sets()
 	
 	sets.ws["Dimidiation"] = {
 		ammo="Knobkierrie",
-		head="Herculean Helm",
+		head="Nyame Helm",
 		neck="Caro Necklace", 
 		ear1="Moonshade Earring",
 		ear2="Sherida Earring",
-		body="Adhemar Jacket +1",
-		hands="Meg. Gloves +2",
-		ring1="Epona's Ring",
+		body="Nyame Mail",
+		hands="Nyame Gauntlets",
+		ring1="Epaminondas's Ring",
 		ring2="Niqmaddu Ring",
 		back=Ogma.TP, 
 		waist="Sailfi Belt +1",
 		legs="Lustratio Subligar +1",
-		feet="Lustratio leggings +1"
+		feet="Nyame Sollerets"
 		}
 
 	sets.ws["Resolution"] = {
@@ -315,10 +315,12 @@ function get_sets()
 		legs="Fu. Trousers +1"
 		})			
 
-	sets.midcast.SIRD = set_combine(sets.midcast.base,{ --106% inc Merits, Note: Magnetic Earring (Apoc Nigh) 8%
+	sets.midcast.SIRD = set_combine(sets.midcast.base,{ --114% inc Merits, Note: Magnetic Earring (Apoc Nigh) 8%
 		ammo="Staunch Tathlum +1", --11%--
 		head="Agwu's Cap", --10%
 		neck="Loricate Torque +1", --5%-- 
+		ear1="Odnowa Earring +1",
+		ear2="Magnetic Earring", --8%--
 		body="Nyame Mail",
 		hands="Rawhide Gloves", --15%--
 		back=Ogma.SIRD, --10%--
@@ -326,7 +328,7 @@ function get_sets()
 		ring2="Defending Ring",
 		waist="Audumbla Sash", --10%--
 		legs="Carmine Cuisses +1", --20%--
-		feet="Taeon Boots" --10%
+		feet="Nyame Sollerets" --10%
 		})
 					
 	sets.midcast.phalanx = { --Enhancing Skill 436, Phalanx +21, (Blocks 55 dmg) 63% SIRD--
