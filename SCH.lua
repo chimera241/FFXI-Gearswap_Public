@@ -109,18 +109,18 @@ function get_sets()
 		main="Malignance Pole",
 		sub="Kaja Grip",
 		ammo="Staunch Tathlum +1",
-        head="Nyame Helm",
-        neck="Loricate Torque +1",
-        ear1="Etiolation earring",
-        ear2="Odnowa earring +1",
-        body="Nyame Mail",
-        hands="Nyame Gauntlets",
-        ring1="Shneddick ring",
+		head="Nyame Helm",
+		neck="Loricate Torque +1",
+		ear1="Etiolation earring",
+		ear2="Odnowa earring +1",
+		body="Nyame Mail",
+		hands="Nyame Gauntlets",
+		ring1="Shneddick ring",
 		ring2="Defending Ring",
-        back=idle_cape,
-        waist="Flume Belt",
-        legs="Nyame Flanchard",
-        feet="Nyame Sollerets"
+		back=idle_cape,
+		waist="Flume Belt",
+		legs="Nyame Flanchard",
+		feet="Nyame Sollerets"
     }
 	
     sets.idle["Refresh"] = set_combine(sets.idle["DT"], {
@@ -129,10 +129,10 @@ function get_sets()
 		head="Befouled Crown",
 		neck="Sibyl Scarf",
 		body="Jhakri Robe +2",
-        ring1="Stikini Ring +1",
+		ring1="Stikini Ring +1",
 		ring2="Stikini Ring +1",
 		waist="Fucho-no-obi",
-        legs="Assiduity pants +1",
+		legs="Assiduity pants +1",
 		feet="Chironic Slippers"
 	})
 	
@@ -188,19 +188,19 @@ function get_sets()
     sets.precast = {}
     --37% fc
     sets.precast.fc = {
-        ammo="Incantor stone", --fast cast 2%
-        head="Pedagogy Mortarboard +3", --fast cast 13%
-        neck="Voltsurge Torque", --fast cast 4%
-        ear1="Loquacious Earring", --fast cast 2%
-        ear2="Malignance earring", --fast cast 4%
-        body="Merlinic Jubbah", --fast cast 6%
-        hands="Academic's bracers +3", --fast cast 9%
-        ring1="Kishar ring", --fast cast 4%
-        ring2="Prolix Ring", --fast cast 5%
-        back=idle_cape, --fast cast 10%
-        waist="Embla Sash", --fast cast 2%
-        legs="Artsieq Hose", --fast cast 5%
-        feet="Academic's Loafers +3" --fast cast 5%
+		ammo="Incantor stone", --fast cast 2%
+		head="Pedagogy Mortarboard +3", --fast cast 13%
+		neck="Voltsurge Torque", --fast cast 4%
+		ear1="Loquacious Earring", --fast cast 2%
+		ear2="Malignance earring", --fast cast 4%
+		body="Merlinic Jubbah", --fast cast 6%
+		hands="Academic's bracers +3", --fast cast 9%
+		ring1="Kishar ring", --fast cast 4%
+		ring2="Prolix Ring", --fast cast 5%
+		back=idle_cape, --fast cast 10%
+		waist="Embla Sash", --fast cast 2%
+		legs="Artsieq Hose", --fast cast 5%
+		feet="Academic's Loafers +3" --fast cast 5%
     }
 
     sets.precast["Stoneskin"] = set_combine(sets.precast.fc, {
@@ -208,8 +208,6 @@ function get_sets()
     })
 
     sets.precast.fc.elemental = set_combine(sets.precast.fc, {
-        legs="",
-        left_ring="",
         left_ear="Barkarole earring"
     })
 
@@ -229,40 +227,40 @@ function get_sets()
     sets.midcast = {}
 
     sets.midcast.conserve_mp = {
-        ammo="Pemphredo tathlum",
-        head="Vanya hood",
-        hands="Academic's bracers +3",
-        waist="Austerity belt",
-        feet="Medium's sabots"
+		ammo="Pemphredo tathlum",
+		head="Vanya hood",
+		hands="Academic's bracers +3",
+		waist="Austerity belt",
+		feet="Medium's sabots"
     }
 		
     sets.midcast.elemental = {}
     sets.midcast.elemental["Magic Attack Bonus"] = {
-        main="Tupsimati",
+		main="Tupsimati",
 		sub="Enki Strap",
 		ammo="Pemphredo tathlum",
-        head="Peda. M.board +3",
-        neck="Sanctity Necklace",
-        ear1="Barkarole earring",
-        ear2="Malignance earring",
-        body="Jhakri robe +2",
-        hands="Amalric gages +1",
-        left_ring="Freke Ring",
-        right_ring="Shiva Ring +1",
-        back=nuke_cape,
-        waist="Eschan stone",
-        legs="Amalric Slops +1",
-        feet="Amalric Nails +1",
+		head="Peda. M.board +3",
+		neck="Sanctity Necklace",
+		ear1="Barkarole earring",
+		ear2="Malignance earring",
+		body="Jhakri robe +2",
+		hands="Amalric gages +1",
+		left_ring="Freke Ring",
+		right_ring="Shiva Ring +1",
+		back=nuke_cape,
+		waist="Eschan stone",
+		legs="Amalric Slops +1",
+		feet="Amalric Nails +1",
     }
 	
     sets.midcast.elemental["Magic Burst"] = set_combine(sets.midcast.elemental["Magic Attack Bonus"], { --MBD 49, MBDII 11, MAB 287, MACC 190
-		main="Bunzi's Rod", --MBD 10, MAB35, MACC 40 + Augs
-		sub="Ammurapi Shield", --MAB 38, MACC 38
+		main="Mpaca's Staff", --MBD 10, MAB35, MACC 40 + Augs
+		sub="Enki Strap", --MAB 38, MACC 38
 		head="Merlinic Hood", --MDB 9, MAB 39, MACC 12
-        neck="Argute Stole +1", --MBD 7
+		neck="Agwu's Robe", --MBD 7
 		body="Merlinic Jubbah", --MBD 9, MAB 48, MACC 20
-		hands="Amalric Gages +1", --MBDII 6, MAB33
-		legs="Merlinic Shalwar", -- MBD 9, MAB 42, MACC 35
+		hands="Agwu's Gages", --MBDII 6, MAB33
+		legs="Agwu's Slops", -- MBD 9, MAB 42, MACC 35
         feet=MFeet_MB, --MBD, MAB 52, MACC 20
         waist="Luminary Sash", --MACC 10
         left_ring="Mujin band", --MBDII 5
@@ -272,13 +270,15 @@ function get_sets()
     -- Make sure you have a non weather obi in this set. Helix get bonus naturally no need Obi.	
     sets.midcast.helix = set_combine(sets.midcast.elemental["Magic Burst"], {
         -- Amalric Nails +1 are beating Arbatel Loafers +1 for Helix atm, YMMV
-        head="Agwu's Cap",	
+		main="Bunzi's Rod",
+		sub="Culminus",        
+		head="Agwu's Cap",	
         body="Agwu's Robe",	
 		ear1="Crematio Earring",
 		ear2="Malignance Earring",
 		ring2="Metamorph Ring +1",
-        waist="Acuity Belt +1",
-        legs="Agwu's Slops",
+		waist="Acuity Belt +1",
+		legs="Agwu's Slops",
 		feet="Amalric Nails +1"
     })	
 	
