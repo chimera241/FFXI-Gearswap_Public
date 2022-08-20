@@ -261,10 +261,10 @@ function get_sets()
 		body="Merlinic Jubbah", --MBD 9, MAB 48, MACC 20
 		hands="Agwu's Gages", --MBDII 6, MAB33
 		legs="Agwu's Slops", -- MBD 9, MAB 42, MACC 35
-        feet=MFeet_MB, --MBD, MAB 52, MACC 20
-        waist="Luminary Sash", --MACC 10
-        left_ring="Mujin band", --MBDII 5
-        right_ring="Locus ring", --MBD 5
+		feet=MFeet_MB, --MBD, MAB 52, MACC 20
+		waist="Acuity Belt +1", --MACC 10
+		left_ring="Mujin band", --MBDII 5
+		right_ring="Locus ring", --MBD 5
     })
 	
     -- Make sure you have a non weather obi in this set. Helix get bonus naturally no need Obi.	
@@ -272,8 +272,8 @@ function get_sets()
         -- Amalric Nails +1 are beating Arbatel Loafers +1 for Helix atm, YMMV
 		main="Bunzi's Rod",
 		sub="Culminus",        
-		head="Agwu's Cap",	
-        body="Agwu's Robe",	
+		head="Agwu's Cap",
+		body="Agwu's Robe",	
 		ear1="Crematio Earring",
 		ear2="Malignance Earring",
 		ring2="Metamorph Ring +1",
@@ -301,42 +301,42 @@ function get_sets()
 	
     sets.midcast.elemental["Vagary"] = {
 		main="Tupsimati",
-        sub="Enki Strap",
-        ammo="Incantor Stone",
-        head="Peda. M.board +3",
-        neck="Voltsurge Torque",
-        left_ear="Loquac. Earring",
-        right_ear="Etiolation Earring",
-        body="Pedagogy Gown +3",
-        hands="Amalric gages +1",		
-        left_ring="Kishar Ring",
-        right_ring="Prolix Ring",
-        back=idle_cape,
-        waist="Eschan stone",
+		sub="Enki Strap",
+		ammo="Incantor Stone",
+		head="Peda. M.board +3",
+		neck="Voltsurge Torque",
+		left_ear="Loquac. Earring",
+		right_ear="Etiolation Earring",
+		body="Pedagogy Gown +3",
+		hands="Amalric gages +1",		
+		left_ring="Kishar Ring",
+		right_ring="Prolix Ring",
+		back=idle_cape,
+		waist="Eschan stone",
 		legs="Telchine Braconi",
-        feet=MFeet_Drain
+		feet=MFeet_Drain
     }
 
     -- Make sure you have a non weather obi in this set. Helix get bonus naturally no need Obi.	
     sets.midcast.dark_helix = set_combine(sets.midcast.helix, {
 		head="Pixie Hairpin +1"
-    })
+	})
     
 
     sets.midcast.enfeebling = set_combine(sets.precast.fc, {
-        ammo="Hydrocera",
-        head="Academic's Mortar. +2",
-        neck="Argute Stole +1",
-        ear1="Gwati Earring",
-        ear2="Malignance earring",
+		ammo="Hydrocera",
+		head="Academic's Mortar. +2",
+		neck="Argute Stole +1",
+		ear1="Gwati Earring",
+		ear2="Malignance earring",
 		body="Acad. Gown +3",
-        hands="Regal Cuffs",
-        ring1="Kishar Ring",
-        ring2="Stikini Ring +1",
-        waist="Luminary sash",
-        legs="Chironic Hose",
-        feet="Academic's Loafers +3",
-        back=nuke_cape
+		hands="Regal Cuffs",
+		ring1="Kishar Ring",
+		ring2="Stikini Ring +1",
+		back=nuke_cape,
+		waist="Luminary sash",
+		legs="Chironic Hose",
+		feet="Academic's Loafers +3"
     })
 
     sets.midcast.int_enfeebling = set_combine(sets.midcast.enfeebling, {
@@ -348,20 +348,20 @@ function get_sets()
     })
 
     sets.midcast.cure = set_combine(sets.precast.fc, { --74 Cure Pot, 34 Con MP, 4% Cure Pot II
-        main="Chatoyant Staff", --10% Cure Pot
+		main="Chatoyant Staff", --10% Cure Pot
 		sub="Enki Strap",
 		ammo="Pemphredo Tathlum", -- 4 Con MP
-        head="Vanya Hood", --10 Cure Pot, 6 Con MP
+		head="Vanya Hood", --10 Cure Pot, 6 Con MP
 		neck="Nodens Gorget", --5% Cure Pot
-        body="Kaykaus Bliaut +1",
+		body="Kaykaus Bliaut +1",
 		ear1="Mendi. earring", 	--5% Cure Pot, 2 Con MP, 2% Cure Casting
-        hands="Kaykaus Cuffs +1", --11%, 7 Con MP
-        back="Fi Follet Cape +1", --5 Con MP
+		hands="Kaykaus Cuffs +1", --11%, 7 Con MP
+		back="Fi Follet Cape +1", --5 Con MP
 		waist="Luminary Sash", -- 4 Con MP
-        ring1="Stikini Ring +1", --8 Healing Magic
-		ring2="Mephitas's ring", --3% Cure Pot, -5 Emnity
-        legs="Kaykaus Tights +1", --17% Cure Pot, 7% Cure Casting, -7 Emnity
-        feet="Kaykaus Boots" --15% Cure Pot, 6 Con MP
+		ring1="Stikini Ring +1", --8 Healing Magic
+		ring2="Mephitas's ring", --9 Con MP, 110 HP to MP
+		legs="Kaykaus Tights +1", --17% Cure Pot, 7% Cure Casting, -7 Emnity
+		feet="Kaykaus Boots" --15% Cure Pot, 6 Con MP
     })
 	
 	sets.midcast.cursna = set_combine(sets.midcast.cure, {
@@ -377,15 +377,15 @@ function get_sets()
     ------------
 
     sets.midcast.enhancement_duration = {
-        main="Musa",
-        head="Telchine cap",
-        body="Pedagogy Gown +3",
-        hands="Telchine Gloves",
+		main="Musa",
+		head="Telchine cap",
+		body="Pedagogy Gown +3",
+		hands="Telchine Gloves",
 		ring1="Stikini Ring +1",
 		ring2="Stikini Ring +1",
 		waist="Embla Sash",
-        legs="Telchine Braconi",
-        feet="Telchine Pigaches"
+		legs="Telchine Braconi",
+		feet="Telchine Pigaches"
     }
 
     sets.midcast["Sneak"] = sets.midcast.enhancement_duration
@@ -395,21 +395,21 @@ function get_sets()
     sets.midcast.regen["Potency"] = set_combine(sets.midcast.enhancement_duration, {
 		head="Arbatel Bonnet +1",
 		body="Telchine Chas.",
-        back=idle_cape
+		back=idle_cape
     })
 
     sets.midcast.regen["Duration"] = sets.midcast.enhancement_duration
 
     sets.midcast.drain_aspir = set_combine(sets.precast.fc, {
-        head="Pixie Hairpin +1",
-        neck="Erra pendant",
+		head="Pixie Hairpin +1",
+		neck="Erra pendant",
 		legs="Chironic Hose",
-        feet=MFeet_Drain,
-        ring1="Stikini Ring +1",
+		feet=MFeet_Drain,
+		ring1="Stikini Ring +1",
 		ring2="Evanescence Ring",
 		ear1="Hirudinea Earring",
 		ear2="Malignance earring",
-        waist="Fucho-no-obi"
+		waist="Fucho-no-obi"
     })
 
     sets.midcast.healing = set_combine(sets.precast.fc, {

@@ -1,6 +1,6 @@
 res = require('resources')
 
-Weapon_Sets = {"Empty", "Savage Blade"} --,"Sword""Maxentius""Crocea/Thibron", "Crocea/Daybreak", "Savage Blade""Aeolian Edge", "Crocea/Thibron", "Crocea/Daybreak", "Crocea/Gleti's", --"Maxentius","Low TP"}
+Weapon_Sets = {"Empty", "Crocea/Daybreak", "Savage Blade"} --,"Sword""Maxentius""Crocea/Thibron", , "Savage Blade""Aeolian Edge", "Crocea/Thibron", "Crocea/Daybreak", "Crocea/Gleti's", --"Maxentius","Low TP"}
 WeaponSetsIndex = 1
 
 NukeSet = {"Low Acc", "High Acc", "Magic Burst"}
@@ -212,7 +212,7 @@ MFeet= {}
 		ear2="Magnetic Earring",
 		hands="Kaykaus cuffs +1",
 		ring1="Stikini ring +1",
-		ring2="Lebeche ring",
+		ring2="Mephitas's ring +1",
 		waist="Luminary Sash",
 		legs="Kaykaus Tights +1",		
 		back="Fi Follet Cape +1",		
@@ -251,17 +251,17 @@ MFeet= {}
 		sub="Ammurapi Shield",
 		ammo="Pemphredo Tathlum",
 		head="Befouled Crown",
-		body="Viti. Tabard +3",
-		hands="Vitiation Gloves +2",
-		legs="Carmine Cuisses +1",
-		feet="Leth. Houseaux +1",
-		neck="Duelist's Torque +2",
-		waist="Embla Sash",
+		neck="Duelist's Torque +2"
 		ear1="Mendi. Earring",
 		ear2="Andoaa Earring",
-		back="Ghostfyre Cape",
+		body="Viti. Tabard +3",
+		hands="Vitiation Gloves +2",
 		ring1="Stikini ring +1",
-		ring2="Stikini ring +1"
+		ring2="Stikini ring +1",
+		back="Ghostfyre Cape",
+		waist="Embla Sash",
+		legs="Carmine Cuisses +1",
+		feet="Leth. Houseaux +1",
         }
     
     sets.midcast.enhancing["Duration"] = set_combine(sets.midcast.enhancing["Skill"], {
@@ -275,11 +275,11 @@ MFeet= {}
     })
 
     sets.midcast.enhancing.spikes = set_combine(sets.midcast.enhancing["Skill"], {
-        legs="Vitiation tights +1"
+		legs="Vitiation tights +1"
     })
 
     sets.midcast.enhancing.gain = set_combine(sets.midcast.enhancing["Skill"], {
-        hands="Vitiation Gloves +2"
+		hands="Vitiation Gloves +2"
     })	
 
     sets.midcast.enhancing.refresh = set_combine(sets.midcast.enhancing["Duration"], {
@@ -293,15 +293,15 @@ MFeet= {}
 		body="Vitiation Tabard +3",
 		hands="Atrophy Gloves +3",
 		left_ring="Defending Ring",
+		back="Ghostfyre Cape",
 		waist="Embla Sash",
 		legs="Lethargy Fuseau +1",
-		feet="Lethargy Houseaux +1",
-		back="Ghostfyre Cape"
+		feet="Lethargy Houseaux +1"
 	})
 
     sets.midcast.enhancing.stoneskin = set_combine(sets.midcast.enhancing, {
-        neck="Nodens Gorget",
-        waist="Siegel Sash"
+		neck="Nodens Gorget",
+		waist="Siegel Sash"
 		})
 
     sets.midcast.enhancing.aquaveil = set_combine(sets.midcast.enhancing, {
@@ -318,10 +318,10 @@ MFeet= {}
 		})		
 
     sets.midcast.enhancing.regen = set_combine(sets.midcast.enhancing["Duration"], {
-        head="Telchine Cap",
-        body="Atrophy Tabard +3",
-        legs="Telchine Braconi",
-        back=Cape_Mnd
+		head="Telchine Cap",
+		body="Atrophy Tabard +3",
+		legs="Telchine Braconi",
+		back=Cape_Mnd
     })
 	
 	--Enfeebling--
@@ -420,58 +420,58 @@ MFeet= {}
     })
 
     sets.midcast.enfeebling.mnd["High Acc"] = set_combine(sets.midcast.enfeebling.mnd, {
-        body="Atrophy Tabard +3",
-        right_ring="Sangoma Ring",
+		body="Atrophy Tabard +3",
+		right_ring="Sangoma Ring",
     })
             
     sets.midcast.enfeebling.mnd["Low Acc"] = set_combine(sets.midcast.enfeebling.mnd, {
-        right_ring="Kishar Ring"
+		right_ring="Kishar Ring"
     })
 
     sets.midcast.enfeebling.int = set_combine(sets.midcast.enfeebling.MACC, {
-        back=Cape_Int
+		back=Cape_Int
     })
         
     sets.midcast.enfeebling.int["High Acc"] = set_combine(sets.midcast.enfeebling.int, {
-        body="Atrophy Tabard +3",
-        right_ring="Sangoma Ring"
+		body="Atrophy Tabard +3",
+		right_ring="Sangoma Ring"
     })
             
     sets.midcast.enfeebling.int["Low Acc"]= set_combine(sets.midcast.enfeebling.int, {
-        body="Lethargy Sayon +1",
-        right_ring="Kishar Ring"
+		body="Lethargy Sayon +1",
+		right_ring="Kishar Ring"
     })
 
     sets.midcast.elemental = {
 		main="Daybreak",
 		sub="Ammurapi Shield",
 		ammo="Pemphredo tathlum",
-        head="Vitiation chapeau +3",
-        neck="Sanctity Necklace",
-        ear1="Barkarole earring",
-        ear2="Friomisi earring",
-        body="Amalric Doublet +1",
-        hands="Amalric gages +1",
-        left_ring="Freke Ring",
-        right_ring="Shiva Ring +1",
-        back=Cape_Int,
-        waist="Eschan stone",
-        legs="Amalric Slops +1",
-        feet="Amalric Nails +1"
+		head="Vitiation chapeau +3",
+		neck="Sanctity Necklace",
+		ear1="Barkarole earring",
+		ear2="Friomisi earring",
+		body="Amalric Doublet +1",
+		hands="Amalric gages +1",
+		left_ring="Freke Ring",
+		right_ring="Shiva Ring +1",
+		back=Cape_Int,
+		waist="Eschan stone",
+		legs="Amalric Slops +1",
+		feet="Amalric Nails +1"
 		}
 		
 		        
     sets.midcast.dark_magic = set_combine(sets.midcast.elemental, {
-        head="Pixie hairpin +1",
-        neck="Erra pendant",
-        ring1="Evanescence ring",
-        waist="Fucho-no-obi",
+		head="Pixie hairpin +1",
+		neck="Erra pendant",
+		ring1="Evanescence ring",
+		waist="Fucho-no-obi",
     })
     
     sets.midcast.drain = set_combine(sets.midcast.dark_magic, {
-        ring2="Excelsis ring",
-        waist="Fucho-no-obi",
-        feet="Merlinic crackows"
+		ring2="Excelsis ring",
+		waist="Fucho-no-obi",
+		feet="Merlinic crackows"
     })
 
     sets.midcast.aspir = sets.midcast.drain
@@ -481,14 +481,13 @@ MFeet= {}
     sets.midcast.elemental["Magic Burst"] = set_combine(sets.midcast.elemental, {
 		head="Ea Hat",
 		neck="Mizu. Kubikazari",
-        body="Ea Houppelande",
-        hands="Ea Cuffs",
-        left_ring="Mujin band",
-        right_ring="Locus ring",
-        legs="Merlinic Shalwar",
-        feet=MFeet.MB
-		}
-		)
+		body="Ea Houppelande",
+		hands="Ea Cuffs",
+		left_ring="Mujin band",
+		right_ring="Locus ring",
+		legs="Merlinic Shalwar",
+		feet=MFeet.MB
+		})
 
     sets.ws = {}
     
@@ -500,8 +499,8 @@ MFeet= {}
 		ear2="Regal Earring",
 		body="Nyame Mail",
 		hands="Jhakri Cuffs +2",
-		ring1="Metamorph Ring +1",
-		ring2="Freke Ring",
+		ring1="Freke Ring",
+		ring2="Epaminondas's Ring",
 		back=Cape_WSD,
 		waist="Orpheus's Sash",
 		legs="Amalric Slops +1",
