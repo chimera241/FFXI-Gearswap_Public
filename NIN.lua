@@ -752,9 +752,9 @@ function get_sets()
   }
 
   sets.Treasure = {
-    head="Volte Cap",
+    ammo="Per. Lucky Egg",
+	head="Herculean Helm",
     feet="Volte Boots",
-    hands="Volte Bracers",
     waist="Chaac Belt",
   }
 

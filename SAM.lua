@@ -1,7 +1,7 @@
 -- Get Sets: Everything in this section is run as soon as you change jobs.
 Engaged_Modes = {"TP", "More ACC", "Hybrid", "MEva", "DT", "Subtle Blow"}
 Engaged_Modes_Index = 1
-Weapon_Sets = {"Masamune", "Shining One"} --"Soboro"
+Weapon_Sets = {"Masamune", "Dojikiri", "Shining One"} --"Soboro"
 WeaponSetsIndex = 1	
 
 
@@ -47,6 +47,7 @@ Cape = {}
 	sets.weapons = {}
 	sets.weapons["Masamune"] = {main = "Masamune"}
 	sets.weapons["Shining One"]  = {main = "Shining One"}
+	sets.weapons["Dojikiri"]  = {main = "Dojikiri Yasutsuna"}
 	sets.weapons["Soboro"]  = {main = "Soboro Sukehiro"}	
 	
 	--TP Sets
@@ -72,26 +73,25 @@ Cape = {}
 	
 	sets.tp["More Acc"] = set_combine(sets.tp["TP"], { --% PDT, % MDT--	
 		head="Ken. Samue +1",
+		hands="Tatena. Gate +1",
 		ring2="Chirich Ring +1",
 		legs="Tatena Haidate +1",
 		feet="Tatena. Sune. +1"
 		})	
 	
-	sets.tp["Hybrid"] = set_combine(sets.tp["TP"], { --19% PDT, % MDT, 25% DT, 10 SBII, 
-		ammo="Staunch Tathlum +1", --3% DT
-		ear1="Odnowa Earring +1", --3% DT
-		body="Wakido Domaru +3", --9% DT
-		ring2="Defending Ring",	--10% DT
-		legs="Mpaca's Hose", --9% PDT, 98 MEVA, 5% SBII
+	sets.tp["Hybrid"] = set_combine(sets.tp["TP"], { --23% DT, 10 SBII, 
+		body="Kasuga Domaru +2", --13% DT
+		ring2="Chirich Ring +1",
+		legs="Kasuga Haidate +2", --10% DT
 		})
 		
 	sets.tp["MEva"] = set_combine(sets.tp["TP"], { --% PDT, % MDT--
 		ammo="Staunch Tathlum +1",
-		head="Ken. Samue +1",
+		head="Ken. Jinpachi +1",
 		neck="Warder's Charm +1",
 		body="Ken. Samue +1",
 		ear2="Eabani Earring",
-		legs="Ken. Hakama +1",		
+		legs="Mpaca's Hose",		
 		feet="Nyame Sollerets"
 		})		
 	

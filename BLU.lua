@@ -20,6 +20,7 @@ function file_unload()
 function get_sets()	
  
 	send_command('bind f9 gs c toggle tp set')
+	send_command('bind ^f9 gs c equip Treasure Hunter')
 	send_command('bind f10 gs c Cycle WeaponSet')
 	send_command('bind f11 gs c toggle idle set')
 	send_command('bind f12 gs c blueeva')
@@ -43,7 +44,7 @@ function get_sets()
 
 		-- Weapon Sets --
 	
-	Weapon_Sets = {"Savage", "Naegling/Sakpata", "Maxentius/Thibron", "Nuking", "OmenDef"}
+	Weapon_Sets = {"Savage", "Maxentius/Thibron", "Nuking", "OmenDef"} ----"Naegling/Sakpata", 
 	WeaponSetsIndex = 1	
 
 	sets.weapons = {}
@@ -80,7 +81,7 @@ function get_sets()
 			neck="Loricate Torque +1", --6% DT
 			ear1="Odnowa Earring +1", --3% DT
 			ear2="Hearty Earring",
-			body="Malignance Tabard",--9% DT, 102 Eva, 139 MEva
+			body="Shamash Robe",--9% DT, 102 Eva, 139 MEva
 			hands="Malignance Gloves", --5% DT, 80 Eva, 112 MEva
 			ring1="Warden's Ring",
 			ring2="Defending Ring", --10% DT
@@ -103,15 +104,15 @@ function get_sets()
         --tp Sets--
 	sets.tp = {}
  
-        tp_mode = {'Hybrid', 'Standard', 'DT', 'MEva'}
-        --1=Standard, 2=Accuracy, 3=DT--
-        tp_ind = 1
+	tp_mode = {'Hybrid', 'TH', 'DT' } --'MEva'
+	--1=Standard, 2=Accuracy, 3=DT--
+	tp_ind = 1
        
 	   sets.tp['Standard'] = {
 			ammo="Ginsen",
 			head="Adhemar Bonnet +1", 
 			neck="Mirage Stole +2", 
-			ear1="Cessance Earring", 
+			ear1="Suppanomimi", 
 			ear2="Telos Earring",
 			body="Adhemar Jacket +1",
 			hands="Adhemar Wristbands +1",
@@ -129,6 +130,12 @@ function get_sets()
 			body="Malignance Tabard", --9% DT 139 MEva
 			ring2="Defending Ring", --10% DT
 			feet="Malignance Boots" --4% DT 150 MEva
+		})
+
+		sets.tp['TH'] = set_combine(sets.tp['Hybrid	'], { -- Set = 41% DT, 10% PDT
+			ammo="Perfect Lucky Egg",
+			hands="Herculean Gloves",
+			waist="Chaac Belt"
 		})
 		
 		sets.tp['DT'] = set_combine(sets.tp['Hybrid'], { -- Set = 51% DT
@@ -153,7 +160,7 @@ function get_sets()
 			body="Nyame Mail",
 			hands="Nyame Gauntlets",
 			ring1="Epona's ring",
-			ring2="Epaminondas' Ring",
+			ring2="Epaminondas's Ring",
 			back=cape_wsd, 
 			waist="Sailfi Belt +1", 
 			legs="Luhlaza Shalwar +3",
@@ -261,12 +268,12 @@ function get_sets()
         BlueMagic_ind = 1                     
 		
 		sets.BlueMagic.Nukes = {
-			ammo="Pemphredo Tathlum",
+			ammo="Ghastly Tathlum +1",
 			head="Jhakri Coronal +2",
-			neck="Sanctity Necklace", 
+			neck="Sibyl Scarf", 
 			ear1="Fromisi Earring", 
 			ear2="Moldavite Earring",
-			body="Amalric Doublet +1", 
+			body="Shamash Robe", 
 			hands="Amalric Gages +1",
 			ring1="Metamorph Ring +1", 
 			ring2="Shiva Ring +1",  
@@ -287,7 +294,7 @@ function get_sets()
 			ear2="Dignitary's Earring",
 			body="Malignance Tabard", --50 MACC
 			hands="Malignance Cuffs", --50 MACC
-			ring1="Metamorph Ring +1", --11-16 MACC
+			ring1="8 Ring +1", --11-16 MACC
 			ring2="Stikini Ring +1", --11 MACC
 			back=cape_nuke,
 			waist="Acuity Belt +1", --15 MACC
@@ -351,9 +358,8 @@ function get_sets()
 		
 		sets.BlueMagic.THnuke = set_combine(sets.BlueMagic.Nukes, {
 			ammo="Perfect Lucky Egg",
-			head=HHead_th,
-			waist="Chaac Belt", 
-			feet="Volte Boots"
+			hands="Herculean Gloves",
+			waist="Chaac Belt"
 		})
 		
 		sets.BlueMagic['On'] = {
@@ -455,7 +461,7 @@ spell_maps = {
     ['Regen']='Regen',['Regen II']='Regen',['Regen III']='Regen',['Regen IV']='Regen',['Regen V']='Regen',
     ['Refresh']='Refresh',    
 	['Spectral Floe']='nuke', ['Tenebral Crush']='darknuke', ['Silent Storm']='nuke', ['Searing Tempest']='nuke', ['Anvil Lightning']='nuke', ['Subduction']='nuke',
-	['Sheep Song']='MACC', ['Magic Hammer']='MACC', ['Voracious Trunk']='MACC',['Tourbillion']='MACC', ['Blank Gaze']='MACC', ['Feather Tickle']='MACC', ['Delta Thrust']='MACC', ['Actinic Burst']='MACC', ['Infrasonics']='MACC', 
+	['Sheep Song']='MACC', ['Reaving Wind']='MACC', ['Magic Hammer']='MACC', ['Voracious Trunk']='MACC',['Tourbillion']='MACC', ['Blank Gaze']='MACC', ['Feather Tickle']='MACC', ['Delta Thrust']='MACC', ['Actinic Burst']='MACC', ['Infrasonics']='MACC', 
 	['Magic Fruit']='BluCure', ['White Wind']='BluCure', 
 	['Battery Charge']='Refresh', ['Mighty Guard']='Conserve', ['Winds of Promvyion']='Conserve', ['Erratic Flutter']='Conserve', ['Mighty Guard']='Conserve', ['Carcharian Verve']='Conserve', 
 	['Occultation']='Skill', ['Diamondhide']='Skill', 
@@ -602,7 +608,10 @@ function self_command(command)
 			BlueMagic_ind = BlueMagic_ind +1
 			if BlueMagic_ind > #BlueMagic_mode then BlueMagic_ind = 1 end
 			send_command('@input /echo <----- Evasion Override changed to '..BlueMagic_mode[BlueMagic_ind]..' ----->')
-			equip(sets.idle[idle_mode[idle_ind]])
-
+			equip(sets.idle[idle_mode[idle_ind]])		
         end
+		if command == 'Equip Treasure Hunter' then
+		equip(sets.tp['TH'])
+      send_command('@input /echo Treasure Hunter +4 equipped')
+    end
 end

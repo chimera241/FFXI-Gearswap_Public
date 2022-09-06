@@ -236,15 +236,15 @@ function get_sets()
 		
     sets.midcast.elemental = {}
     sets.midcast.elemental["Magic Attack Bonus"] = {
-		main="Tupsimati",
-		sub="Enki Strap",
+		main="Bunzi's Rod",
+		sub="Ammurapi Shield",
 		ammo="Pemphredo tathlum",
 		head="Peda. M.board +3",
 		neck="Sanctity Necklace",
 		ear1="Barkarole earring",
 		ear2="Malignance earring",
-		body="Jhakri robe +2",
-		hands="Amalric gages +1",
+		body="Agwu's Robe",
+		hands="Agwu's Gages",
 		left_ring="Freke Ring",
 		right_ring="Shiva Ring +1",
 		back=nuke_cape,
@@ -355,6 +355,7 @@ function get_sets()
 		neck="Nodens Gorget", --5% Cure Pot
 		body="Kaykaus Bliaut +1",
 		ear1="Mendi. earring", 	--5% Cure Pot, 2 Con MP, 2% Cure Casting
+		ear2="Calamitous Earring",
 		hands="Kaykaus Cuffs +1", --11%, 7 Con MP
 		back="Fi Follet Cape +1", --5 Con MP
 		waist="Luminary Sash", -- 4 Con MP

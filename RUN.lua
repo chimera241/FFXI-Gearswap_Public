@@ -45,8 +45,8 @@ function get_sets()
 		ring2="Defending Ring", --10 DT
 		back=Ogma.Tanking, 
 		waist="Flume Belt", --4 PDT
-		legs="Nyame Flanchard", --8 DT, 150 MEva
-		feet="Nyame Sollerets" --7 DT, 150 MEva 
+		legs="Eri. Leg Guards +2",
+		feet="Erilaz Greaves +2" --7 DT, 150 MEva 
 		}
 
     sets.idle['Phalanx'] = {
@@ -114,13 +114,13 @@ function get_sets()
 		ring2="Defending Ring",
 		back=Ogma.Tanking, 
 		waist="Flume Belt",
-		legs="Eri. Leg Guards +1",
-		feet="Nyame Sollerets"
+		legs="Eri. Leg Guards +2",
+		feet="Erilaz Greaves +2"
 		}
    
     sets.melee["MEVA"] = set_combine(sets.melee['PDT'], {
 		sub="Refined Grip +1", 
-		ammo="Staunch Tathlum",          
+		ammo="Staunch Tathlum +1",          
 		head="Rune. Bandeau +2",
 		neck="Futhark Torque +2",
 		ear1="Hearty Earring",
@@ -132,7 +132,7 @@ function get_sets()
 		back=Ogma.Tanking, 
 		waist="Flume Belt",
 		legs="Rune. Trousers +1",
-		feet="Turms Leggings +1"
+		feet="Erilaz Greaves +2"
 		})
  
     -- JA Sets for Precast Function -- 
@@ -150,7 +150,7 @@ function get_sets()
 		ring2="Petrov Ring", --4--
 		back=Ogma.SIRD, --10%--
 		waist="Audumbla Sash", --10% 
-		legs="Eri. Leg Guards +1", --11--	
+		legs="Eri. Leg Guards +2", --11--	
 		feet="Eri. Greaves +1" --6--
 		}   
 					
@@ -189,7 +189,7 @@ function get_sets()
 
 	sets.JA['Embolden'] = {back="Evasionist's Cape"}
 
-	sets.JA['Vivacious Pulse'] = {head="Erilaz Galea +1",legs="Runeist Trousers +1"}
+	sets.JA['Vivacious Pulse'] = {head="Erilaz Galea +2",legs="Runeist Trousers +1"}
 
 	sets.JA['Rayke'] = {feet="Futhark Bootes +1"}
 
@@ -290,7 +290,7 @@ function get_sets()
 
 	sets.midcast.base = { ---Enhancing Skill Set----
 		ammo="Staunch Tathlum +1", --11 SIRD--
-		head="Carmine Mask +1", --11 skill--
+		head="Erilaz Galea +2", 
 		neck="Moonlight Necklace", --15% SIRD--
 		ear1="Odnowa Earring +1",
 		ear2="Andoaa Earring",
@@ -301,11 +301,11 @@ function get_sets()
 		back=Ogma.Tanking,
 		waist="Audumbla Sash",
 		legs="Carmine Cuisses +1", --20% SIRD, 18 skill--
-		feet="Carmine Greaves +1" --FC and 4% PDT--
+		feet="Taeon Boots" --FC and 4% PDT--
 		}
 					
 	sets.midcast.duration = set_combine(sets.midcast.base,{
-		head="Erilaz Galea +1", 
+		head="Erilaz Galea +2", 
 		legs="Fu. Trousers +3",
 		waist="Gishdubar Sash"
 		})
@@ -315,27 +315,27 @@ function get_sets()
 		legs="Fu. Trousers +1"
 		})			
 
-	sets.midcast.SIRD = set_combine(sets.midcast.base,{ --114% inc Merits, Note: Magnetic Earring (Apoc Nigh) 8%
+	sets.midcast.SIRD = set_combine(sets.midcast.base,{ --104% inc Merits, Note: Magnetic Earring (Apoc Nigh) 8%
 		ammo="Staunch Tathlum +1", --11%--
-		head="Agwu's Cap", --10%
+		head="Erilaz Galea +2", --15%
 		neck="Loricate Torque +1", --5%-- 
 		ear1="Odnowa Earring +1",
 		ear2="Magnetic Earring", --8%--
 		body="Nyame Mail",
 		hands="Rawhide Gloves", --15%--
 		back=Ogma.SIRD, --10%--
-		ring1="Evanescence Ring", --5%--
+		ring1="Moonlight Ring",
 		ring2="Defending Ring",
 		waist="Audumbla Sash", --10%--
 		legs="Carmine Cuisses +1", --20%--
-		feet="Nyame Sollerets" --10%
+		feet="Nyame Sollerets"
 		})
 					
 	sets.midcast.phalanx = { --Enhancing Skill 436, Phalanx +21, (Blocks 55 dmg) 63% SIRD--
 		ammo="Staunch Tathlum +1", --11% SIRD--
 		neck="Loricate Torque +1", --5% SIRD-- 
 		head="Fu. Bandeau +3", --Phalanx +7--
-		body="Taeon Tabard", --Phalanx +3, 8% SIRD--
+		body="Herculean Vest", --Phalanx +3, 8% SIRD--
 		hands="Taeon Gloves", --Phalanx +3, 9% SIRD--
 		ring1="Moonlight Ring", 
 		ring2="Defending Ring",
@@ -345,7 +345,7 @@ function get_sets()
 		feet="Taeon Boots" --Phalanx +3, 10% SIRD--
 		}
 	
-	sets.midcast.enmity = { --88 inc Epeo--
+	sets.midcast.enmity = { --90 inc Epeo--
 		head="Runeist Bandeau +2",
 		neck="Futhark Torque +2", --10--
 		ear1="Cryptic Earring", --4--
@@ -356,8 +356,8 @@ function get_sets()
 		ring2="Defending Ring", --10% DT
 		back=Ogma.Tanking, --10--
 		waist="Kasiri Belt", --3 
-		legs="Eri. Leg Guards +1", --11--
-		feet="Eri. Greaves +1" --6--
+		legs="Eri. Leg Guards +2", --12--
+		feet="Eri. Greaves +2" --7--
 		}					
  
 -----Automatic Assigning Enfeebling/Enhancing Magic Sets----- NEEDS CHANGING THIS IS FROM RDM!!!!!-----
