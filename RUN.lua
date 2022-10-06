@@ -87,25 +87,41 @@ function get_sets()
     sets.melee["Hybrid"] = { --29% DT, 46 PDT, 71% PDT inc Epeo--
 		sub="Utu Grip", 
 		ammo="Ginsen",
-		head="Aya. Zucchetto +2", --3--
+		head="Nyame Helm",  --7--
 		neck="Futhark Torque +2", --7--
 		ear1="Telos Earring",
 		ear2="Sherida Earring",
-		body="Ayanmo Corazza +2", --6--
+		body="Nyame Mail", --9--
 		hands="Turms Mittens +1", 
 		ring1="Epona's Ring",
-		ring2="Defending Ring", --10--
+		ring2="Moonlight Ring", --5--
 		back=Ogma.TP, --10 PDT--
 		waist="Sailfi Belt +1",
-		legs="Eri. Leg Guards +1", --7 PDT--
-		feet="Aya. Gambieras +2" --3--
+		legs="Eri. Leg Guards +2", --12--
+		feet="Erilaz Greaves +2" --10%
 		}
    
     sets.melee["PDT"] = { --37 DT, 84 PDT inc Epeo--
-		sub="Refined Grip +1", 
-		ammo="Staunch Tathlum +1",
+		ammo="Staunch Tathlum +1", --3%
 		head="Nyame Helm",
-		neck="Futhark Torque +2",
+		neck="Futhark Torque +2", --7%
+		ear1="Hearty Earring",
+		ear2="Odnowa Earring +1", --3%
+		body="Nyame Mail",
+		hands="Turms Mittens +1",
+		ring1="Moonlight Ring", --5%
+		ring2="Defending Ring", --10%
+		back=Ogma.Tanking, 
+		waist="Flume Belt",
+		legs="Eri. Leg Guards +2", --12%
+		feet="Erilaz Greaves +2" --10%
+		}
+   
+    sets.melee["MEVA"] = set_combine(sets.melee['PDT'], {
+		sub="Refined Grip +1", 
+		ammo="Staunch Tathlum +1",          
+		head="Rune. Bandeau +2",
+		neck="Warder's Charm +1",
 		ear1="Hearty Earring",
 		ear2="Ethereal Earring",
 		body="Nyame Mail",
@@ -114,24 +130,7 @@ function get_sets()
 		ring2="Defending Ring",
 		back=Ogma.Tanking, 
 		waist="Flume Belt",
-		legs="Eri. Leg Guards +2",
-		feet="Erilaz Greaves +2"
-		}
-   
-    sets.melee["MEVA"] = set_combine(sets.melee['PDT'], {
-		sub="Refined Grip +1", 
-		ammo="Staunch Tathlum +1",          
-		head="Rune. Bandeau +2",
-		neck="Futhark Torque +2",
-		ear1="Hearty Earring",
-		ear2="Ethereal Earring",
-		body="Runeist's Coat +2",
-		hands="Turms Mittens +1",
-		ring1="Moonlight Ring",
-		ring2="Defending Ring",
-		back=Ogma.Tanking, 
-		waist="Flume Belt",
-		legs="Rune. Trousers +1",
+		legs="Nyame Flanchard",
 		feet="Erilaz Greaves +2"
 		})
  
@@ -315,7 +314,7 @@ function get_sets()
 		legs="Fu. Trousers +1"
 		})			
 
-	sets.midcast.SIRD = set_combine(sets.midcast.base,{ --104% inc Merits, Note: Magnetic Earring (Apoc Nigh) 8%
+	sets.midcast.SIRD = set_combine(sets.midcast.base,{ --104% inc Merits
 		ammo="Staunch Tathlum +1", --11%--
 		head="Erilaz Galea +2", --15%
 		neck="Loricate Torque +1", --5%-- 
@@ -328,14 +327,14 @@ function get_sets()
 		ring2="Defending Ring",
 		waist="Audumbla Sash", --10%--
 		legs="Carmine Cuisses +1", --20%--
-		feet="Nyame Sollerets"
+		feet="Erilaz Greaves +2	"
 		})
 					
 	sets.midcast.phalanx = { --Enhancing Skill 436, Phalanx +21, (Blocks 55 dmg) 63% SIRD--
 		ammo="Staunch Tathlum +1", --11% SIRD--
 		neck="Loricate Torque +1", --5% SIRD-- 
 		head="Fu. Bandeau +3", --Phalanx +7--
-		body="Herculean Vest", --Phalanx +3, 8% SIRD--
+		body="Herculean Vest", --Phalanx +4, 8% SIRD--
 		hands="Taeon Gloves", --Phalanx +3, 9% SIRD--
 		ring1="Moonlight Ring", 
 		ring2="Defending Ring",
@@ -360,7 +359,7 @@ function get_sets()
 		feet="Eri. Greaves +2" --7--
 		}					
  
------Automatic Assigning Enfeebling/Enhancing Magic Sets----- NEEDS CHANGING THIS IS FROM RDM!!!!!-----
+-----Automatic Assigning Enfeebling/Enhancing Magic Sets----
  -----Enfeebling------
  -----enmity------
 sets.midcast["Flash"] = sets.midcast.enmity

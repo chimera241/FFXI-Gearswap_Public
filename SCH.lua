@@ -1,5 +1,5 @@
 NukeTypeIndex = 1
-NukeSet = {"Magic Attack Bonus","Magic Burst", "Vagary Low Dmg", "Vagary"}
+NukeSet = {"Magic Attack Bonus","Magic Burst"} ----, "Vagary Low Dmg", "Vagary"
 
 IdleSetIndex = 1
 IdleSet = {"Refresh", "DT"}
@@ -96,6 +96,8 @@ function get_sets()
     fc_cape = idle_cape
     int_enfeeble_cape = nuke_cape
     mnd_enfeeble_cape = healing_cape
+	fc_feet = { name="Merlinic Crackows", augments={'Mag. Acc.+14 "Mag.Atk.Bns."+14','"Fast Cast"+7','Mag. Acc.+6','"Mag.Atk.Bns."+8',}}
+
 
     sets.WeaponSet = {}
     sets.WeaponSet["None"] = {}
@@ -109,7 +111,7 @@ function get_sets()
 		main="Malignance Pole",
 		sub="Kaja Grip",
 		ammo="Staunch Tathlum +1",
-		head="Nyame Helm",
+		head="Arbatel Bonnet +2",
 		neck="Loricate Torque +1",
 		ear1="Etiolation earring",
 		ear2="Odnowa earring +1",
@@ -166,14 +168,14 @@ function get_sets()
     -- Gear that needs to be worn to **actively** enhance a current player buff.
     -- Fill up following with your avaible pieces.
     sets.buff = {}
-    sets.buff['Rapture'] = {head="Arbatel bonnet +1"}
-    sets.buff['Perpetuance'] = {hands="Arbatel Bracers +1"}
-    sets.buff['Immanence'] = {hands="Arbatel Bracers +1"}
+    sets.buff['Rapture'] = {head="Arbatel bonnet +2"}
+    sets.buff['Perpetuance'] = {hands="Arbatel Bracers +2"}
+    sets.buff['Immanence'] = {hands="Arbatel Bracers +2"}
     sets.buff['Penury'] = {legs="Arbatel Pants +1"}
     sets.buff['Parsimony'] = {legs="Arbatel Pants +1"}
     sets.buff['Celerity'] = {feet="Pedagogy Loafers +1"}
     sets.buff['Alacrity'] = {feet="Pedagogy Loafers +1"}
-    sets.buff['Klimaform'] = {feet="Arbatel Loafers +1"}	
+    sets.buff['Klimaform'] = {feet="Arbatel Loafers +2"}	
     -- Ebulience set empy now as we get better damage out of a good Merlinic head
     sets.buff['Ebullience'] = {} -- I left it there still if it becomes needed so the SCH.lua file won't need modification should you want to use this set
 
@@ -186,8 +188,7 @@ function get_sets()
 		feet="Academic's loafers +3",
     }
     sets.precast = {}
-    --37% fc
-    sets.precast.fc = {
+    sets.precast.fc = {    --71% fc
 		ammo="Incantor stone", --fast cast 2%
 		head="Pedagogy Mortarboard +3", --fast cast 13%
 		neck="Voltsurge Torque", --fast cast 4%
@@ -200,7 +201,7 @@ function get_sets()
 		back=idle_cape, --fast cast 10%
 		waist="Embla Sash", --fast cast 2%
 		legs="Artsieq Hose", --fast cast 5%
-		feet="Academic's Loafers +3" --fast cast 5%
+		feet=fc_feet --fast cast 12%
     }
 
     sets.precast["Stoneskin"] = set_combine(sets.precast.fc, {
@@ -216,9 +217,6 @@ function get_sets()
     sets.precast.fc.cure = set_combine(sets.precast.fc, {
         back="Pahtli cape" -- cure spellcasting time -8%
     })
-
-  
-
 
     ------------------------------------------------------------------------------------------------
     ---------------------------------------- Midcast Sets ------------------------------------------
@@ -245,31 +243,33 @@ function get_sets()
 		ear2="Malignance earring",
 		body="Agwu's Robe",
 		hands="Agwu's Gages",
-		left_ring="Freke Ring",
-		right_ring="Shiva Ring +1",
+		left_ring="Metamorph Ring +1",
+		right_ring="Freke Ring",
 		back=nuke_cape,
-		waist="Eschan stone",
+		waist="Acuity Belt +1",
 		legs="Amalric Slops +1",
 		feet="Amalric Nails +1",
     }
 	
     sets.midcast.elemental["Magic Burst"] = set_combine(sets.midcast.elemental["Magic Attack Bonus"], { --MBD 49, MBDII 11, MAB 287, MACC 190
-		main="Mpaca's Staff", --MBD 10, MAB35, MACC 40 + Augs
-		sub="Enki Strap", --MAB 38, MACC 38
-		head="Merlinic Hood", --MDB 9, MAB 39, MACC 12
-		neck="Agwu's Robe", --MBD 7
-		body="Merlinic Jubbah", --MBD 9, MAB 48, MACC 20
-		hands="Agwu's Gages", --MBDII 6, MAB33
-		legs="Agwu's Slops", -- MBD 9, MAB 42, MACC 35
-		feet=MFeet_MB, --MBD, MAB 52, MACC 20
-		waist="Acuity Belt +1", --MACC 10
-		left_ring="Mujin band", --MBDII 5
-		right_ring="Locus ring", --MBD 5
+		main="Bunzi's Rod", --MBD 10, MAB35, MACC 40 + Augs Int 15
+		sub="Ammurapi Shield", --MAB 38, MACC 38
+		head="Pedagogy Mortarboard +3", --MDBII 4, MAB 49, MACC 37, MB Acc +15 Int 39
+        neck="Argute Stole +1", --MBD 7 (upgrade) MACC 25
+		ear1="Barkarole earring",
+		ear2="Malignance earring",
+		body="Agwu's Robe", --MBD 10, MAB 35, MACC 40, Int 47 + Aug --priority 2
+		hands="Agwu's Gages", --MBD 8, MAB43, MACC 40 Int 33, MABII 2-5 (Aug) --priority 1
+        left_ring="Mujin band", --MBDII 5
+        right_ring="Metamorph Ring +1", --16 Int, 11-16 MACC
+		back=nuke_cape,
+        waist="Acuity Belt +1", --MACC 15, INT 16		
+		legs="Agwu's Slops", -- MBD 9, MAB 35, MACC 40, Int 49 + Aug
+        feet="Arbatel Loafers +2" -- MBDII 4, MAB 45, MACC 50, Int 29, Klimaform +20, Elemental Skill +28
     })
 	
     -- Make sure you have a non weather obi in this set. Helix get bonus naturally no need Obi.	
     sets.midcast.helix = set_combine(sets.midcast.elemental["Magic Burst"], {
-        -- Amalric Nails +1 are beating Arbatel Loafers +1 for Helix atm, YMMV
 		main="Bunzi's Rod",
 		sub="Culminus",        
 		head="Agwu's Cap",
@@ -279,7 +279,7 @@ function get_sets()
 		ring2="Metamorph Ring +1",
 		waist="Acuity Belt +1",
 		legs="Agwu's Slops",
-		feet="Amalric Nails +1"
+		feet="Arbatel Loafers +2"
     })	
 	
     sets.midcast.elemental["Vagary Low Dmg"] = {
@@ -322,7 +322,6 @@ function get_sets()
 		head="Pixie Hairpin +1"
 	})
     
-
     sets.midcast.enfeebling = set_combine(sets.precast.fc, {
 		ammo="Hydrocera",
 		head="Academic's Mortar. +2",
@@ -340,11 +339,11 @@ function get_sets()
     })
 
     sets.midcast.int_enfeebling = set_combine(sets.midcast.enfeebling, {
-        back =nuke_cape
+        back=nuke_cape
     })
 
     sets.midcast.mnd_enfeebling = set_combine(sets.midcast.enfeebling, {
-        back =idle_cape
+        back=idle_cape
     })
 
     sets.midcast.cure = set_combine(sets.precast.fc, { --74 Cure Pot, 34 Con MP, 4% Cure Pot II
@@ -394,7 +393,7 @@ function get_sets()
 
     sets.midcast.regen = {}
     sets.midcast.regen["Potency"] = set_combine(sets.midcast.enhancement_duration, {
-		head="Arbatel Bonnet +1",
+		head="Arbatel Bonnet +2",
 		body="Telchine Chas.",
 		back=idle_cape
     })

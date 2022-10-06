@@ -1,6 +1,6 @@
 res = require('resources')
 
-Weapon_Sets = {"Empty", "Crocea/Daybreak", "Savage Blade"} --,"Sword""Maxentius""Crocea/Thibron", , "Savage Blade""Aeolian Edge", "Crocea/Thibron", "Crocea/Daybreak", "Crocea/Gleti's", --"Maxentius","Low TP"}
+Weapon_Sets = {"Empty", "Maxentius", "Crocea/Daybreak", "Savage Blade"} --,"Sword""Crocea/Thibron", , "Savage Blade""Aeolian Edge", "Crocea/Thibron", "Crocea/Daybreak", "Crocea/Gleti's", --"Maxentius","Low TP"}
 WeaponSetsIndex = 1
 
 NukeSet = {"Low Acc", "High Acc", "Magic Burst"}
@@ -124,7 +124,7 @@ MFeet= {}
 
     sets.ja = {}
 	sets.ja["Convert"] = {}
-	sets.ja["Saboteur"] = {hands="Lethargy gantherots +1"}
+	sets.ja["Saboteur"] = {hands="Lethargy gantherots +2"}
 	sets.ja["Chainspell"] = {body="Vitiation tabard +3"}
 
 	sets.weapons = {}
@@ -189,7 +189,7 @@ MFeet= {}
     sets.fc = {   
 		head="Atro. Chapeau +2", --14
 		neck="Voltsurge torque", --4
-		ear1="Lethargy earring", --2
+		ear1="Lethargy earring +1", --2
     	ear2="Malignance earring", --4
 		body="Viti. Tabard +3", --15
 		hands="Malignance gloves",
@@ -234,16 +234,16 @@ MFeet= {}
 		ammo="Pemphredo Tathlum",
 		head="Befouled Crown",
 		neck="Duelist's Torque +2",
-		ear1="Lethargy Earring",
+		ear1="Lethargy Earring +1",
 		ear2="Andoaa Earring",
 		body="Viti. Tabard +3",
-		hands="Vitiation Gloves +2",
+		hands="Leth. Gantherots +2",
 		ring1="Stikini ring +1",
 		ring2="Stikini ring +1",
 		back="Ghostfyre Cape",
 		waist="Embla Sash",
-		legs="Carmine Cuisses +1",
-		feet="Leth. Houseaux +1"
+		legs="Lethargy Fuseau +2",
+		feet="Leth. Houseaux +2"
         }
 
     sets.midcast.enhancing["Skill"] = {
@@ -252,7 +252,7 @@ MFeet= {}
 		ammo="Pemphredo Tathlum",
 		head="Befouled Crown",
 		neck="Duelist's Torque +2",
-		ear1="Lethargy Earring",
+		ear1="Lethargy Earring +1",
 		ear2="Andoaa Earring",
 		body="Viti. Tabard +3",
 		hands="Vitiation Gloves +2",
@@ -261,17 +261,17 @@ MFeet= {}
 		back="Ghostfyre Cape",
 		waist="Embla Sash",
 		legs="Carmine Cuisses +1",
-		feet="Leth. Houseaux +1"
+		feet="Leth. Houseaux +2"
         }
     
     sets.midcast.enhancing["Duration"] = set_combine(sets.midcast.enhancing["Skill"], {
 		head="Telchine Cap",
-		body="Lethargy Sayon +1",
-		ear1="Lethargy Earring",
+		body="Lethargy Sayon +2",
+		ear1="Lethargy Earring +1",
 		hands="Atrophy Gloves +3",
 		waist="Embla Sash",
-		legs="Lethargy Fuseau +1",
-		feet="Lethargy Houseaux +1",
+		legs="Lethargy Fuseau +2",
+		feet="Lethargy Houseaux +2",
 		back="Ghostfyre Cape"
     })
 
@@ -285,7 +285,7 @@ MFeet= {}
 
     sets.midcast.enhancing.refresh = set_combine(sets.midcast.enhancing["Duration"], {
 		head="Amalric Coif +1",
-		legs="Lethargy Fuseau +1",
+		legs="Lethargy Fuseau +2",
 		left_ring="Defending Ring"
     })
 	
@@ -296,8 +296,8 @@ MFeet= {}
 		left_ring="Defending Ring",
 		back="Ghostfyre Cape",
 		waist="Embla Sash",
-		legs="Lethargy Fuseau +1",
-		feet="Lethargy Houseaux +1"
+		legs="Lethargy Fuseau +2",
+		feet="Lethargy Houseaux +2"
 	})
 
     sets.midcast.enhancing.stoneskin = set_combine(sets.midcast.enhancing, {
@@ -396,7 +396,7 @@ MFeet= {}
 		waist="Obstinate Sash", --10 MACC--
 		back=Cape_Int, --20 MACC--
 		legs="Lethargy Fuseau +1", --22 MACC, 10% Duration set bonus--
-		feet="Lethargy Houseaux +1" --10% Duration set bonus--
+		feet="Lethargy Houseaux +2" --10% Duration set bonus--
     }
 
 	sets.midcast.enfeebling.hybrid = { --415 MACC, 34 Potency, 29 Skill, 65% Duration--
@@ -439,7 +439,7 @@ MFeet= {}
     })
             
     sets.midcast.enfeebling.int["Low Acc"]= set_combine(sets.midcast.enfeebling.int, {
-		body="Lethargy Sayon +1",
+		body="Lethargy Sayon +2",
 		right_ring="Kishar Ring"
     })
 
@@ -507,7 +507,7 @@ MFeet= {}
 		back=Cape_WSD,
 		waist="Orpheus's Sash",
 		legs="Amalric Slops +1",
-		feet="Nyame Sollerets",
+		feet="Lethargy Houseaux +2",
         }
 
     sets.ws.physical = {

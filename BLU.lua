@@ -44,10 +44,11 @@ function get_sets()
 
 		-- Weapon Sets --
 	
-	Weapon_Sets = {"Savage", "Maxentius/Thibron", "Nuking", "OmenDef"} ----"Naegling/Sakpata", 
+	Weapon_Sets = {"Tizona", "Savage", "Maxentius/Thibron", "Nuking", "OmenDef"} ----"Naegling/Sakpata", 
 	WeaponSetsIndex = 1	
 
 	sets.weapons = {}
+	sets.weapons["Tizona"] = {main = "Tizona", sub = "Thibron"}
 	sets.weapons["Savage"] = {main = "Naegling", sub = "Thibron"}
 	sets.weapons["Naegling/Sakpata"]  = {main = "Naegling", sub = "Sakpata's Sword"}
 	sets.weapons["Maxentius/Thibron"] = {main = "Maxentius", sub = "Thibron"}
@@ -82,11 +83,10 @@ function get_sets()
 			ear1="Odnowa Earring +1", --3% DT
 			ear2="Hearty Earring",
 			body="Shamash Robe",--9% DT, 102 Eva, 139 MEva
-			hands="Malignance Gloves", --5% DT, 80 Eva, 112 MEva
 			ring1="Warden's Ring",
 			ring2="Defending Ring", --10% DT
 			waist="Flume Belt", --3% PDT
-			legs="Nyame Flanchard" --8% DT, 150 MEva
+			legs="Hashishin Basmak +2" --8% DT, 150 MEva
         })    
 
 		sets.idle.Eva = set_combine(sets.idle.DT, { --47% DT, 10% PDT, 
@@ -95,6 +95,7 @@ function get_sets()
 			ear1="Eabani Earring",
 			ear2="Infused Earring",
 			body="Nyame Mail", --9% DT, 102 Eva, 139 MEva
+			hands="Nyame Gauntlets",
 			ring1="Shneddick Ring",
 			back=cape_eva,
 			waist="Kasiri Belt",
@@ -104,24 +105,24 @@ function get_sets()
         --tp Sets--
 	sets.tp = {}
  
-	tp_mode = {'Hybrid', 'TH', 'DT' } --'MEva'
+	tp_mode = {'Standard','Hybrid', 'TH', 'DT' } --'MEva'
 	--1=Standard, 2=Accuracy, 3=DT--
 	tp_ind = 1
        
 	   sets.tp['Standard'] = {
-			ammo="Ginsen",
-			head="Adhemar Bonnet +1", 
+			ammo="Coiste Bodhar",
+			head="Malignance Chapeau", --6% DT, 123 MEva
 			neck="Mirage Stole +2", 
 			ear1="Suppanomimi", 
 			ear2="Telos Earring",
-			body="Adhemar Jacket +1",
+			body="Malignance Tabard", --9% DT 139 MEva
 			hands="Adhemar Wristbands +1",
 			ring1="Epona's Ring",
-			ring2="Petrov Ring",
+			ring2="Chirich Ring +1",
 			back=cape_DD, 
 			waist="Salifi Belt +1",
 			legs="Samnuha Tights",
-			feet=HFeet_tp
+			feet="Malignance Boots" --4% DT 150 MEva
 		}
 
 		sets.tp['Hybrid'] = set_combine(sets.tp['Standard'], { -- Set = 41% DT, 10% PDT
@@ -144,7 +145,23 @@ function get_sets()
 			hands="Malignance Gloves", --5% DT, 112 MEva
 			legs="Nyame Flanchard", --8% DT, 150 MEva
 		})
-
+		
+	   sets.tp['Zerg'] = {
+			ammo="Coiste Bodhar",
+			head="Adhemar Bonnet +1", 
+			neck="Mirage Stole +2", 
+			ear1="Suppanomimi", 
+			ear2="Telos Earring",
+			body="Adhemar Jacket +1",
+			hands="Adhemar Wristbands +1",
+			ring1="Epona's Ring",
+			ring2="Chirich Ring +1",
+			back=cape_DD, 
+			waist="Salifi Belt +1",
+			legs="Samnuha Tights",
+			feet=HFeet_tp
+		}
+		
 		sets.tp['MEva'] = set_combine(sets.tp.DT, {
 		})
       
@@ -163,10 +180,25 @@ function get_sets()
 			ring2="Epaminondas's Ring",
 			back=cape_wsd, 
 			waist="Sailfi Belt +1", 
-			legs="Luhlaza Shalwar +3",
+			legs="Nyame Flanchard",
 			feet="Nyame Sollerets"
 		}
-		
+	
+        sets.ws['Expiacion'] = {
+			ammo="Oshasha's Treatise",
+			head="Nyame Helm",
+			neck="Rep. Plat. Medal",
+			ear1="Moonshade earring",
+			ear2="Ishvara earring",
+			body="Nyame Mail",
+			hands="Nyame Gauntlets",
+			ring1="Epona's ring",
+			ring2="Epaminondas's Ring",
+			back=cape_wsd, 
+			waist="Sailfi Belt +1", 
+			legs="Nyame Flanchard",
+			feet="Nyame Sollerets"
+		}	
 		sets.ws['Chant du Cygne'] = {
 			ammo="Ginsen",
 			head="Adhemar Bonnet +1",
@@ -274,13 +306,13 @@ function get_sets()
 			ear1="Fromisi Earring", 
 			ear2="Moldavite Earring",
 			body="Shamash Robe", 
-			hands="Amalric Gages +1",
+			hands="Hashishin Bazubands +2",
 			ring1="Metamorph Ring +1", 
 			ring2="Shiva Ring +1",  
 			back=cape_nuke,
-			waist="Orpheus's Sash",
+			waist="Acuity Belt +1",
 			legs="Luhlaza Shalwar +3",
-			feet="Amalric Nails +1",
+			feet="Hashishin Basmak +2",
 		}
 		
 		sets.BlueMagic.Nukes.Dark = set_combine(sets.BlueMagic.Nukes, {
@@ -294,7 +326,7 @@ function get_sets()
 			ear2="Dignitary's Earring",
 			body="Malignance Tabard", --50 MACC
 			hands="Malignance Cuffs", --50 MACC
-			ring1="8 Ring +1", --11-16 MACC
+			ring1="Stikini Ring +1", --11-16 MACC
 			ring2="Stikini Ring +1", --11 MACC
 			back=cape_nuke,
 			waist="Acuity Belt +1", --15 MACC
@@ -316,8 +348,8 @@ function get_sets()
 		})
 
 		sets.BlueMagic.Conserve = set_combine(sets.BlueMagic.Skill, {
-		waist="Luminary Sash",
-		ring1="Mephitas's Ring +1"
+			waist="Luminary Sash",
+			ring1="Mephitas's Ring +1"
 		})
 
 		sets.BlueMagic.BluCure = {
@@ -402,7 +434,7 @@ function get_sets()
 			neck="Loricate Torque +1",
 			ear1="Loquac. earring",
 			ear2="Augment. earring",
-			body={ name="Taeon Tabard", augments={'"Fast Cast"+4','Phalanx +3',}},
+			body="Herculean Vest",
 			hands={ name="Taeon Gloves", augments={'"Fast Cast"+5','Phalanx +3',}},
 			ring1="Stikini Ring +1",
 			ring2="Stikini Ring +1",
@@ -438,7 +470,7 @@ function get_sets()
        
         sets.JA.ChainAffinity = {feet="Assim. Charuqs +1"}
        
-        sets.JA.BurstAffinity = {feet="Assim. Shalwar +2"}
+        sets.JA.BurstAffinity = {feet="Hashishin Basmak +2"}
        
         sets.JA.Efflux = {legs="Mavi tayt +2"}
        

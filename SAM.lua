@@ -20,7 +20,7 @@ function get_sets()
 Cape = {}
 	Cape_TP = { name="Smertrios's Mantle", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','"Dbl.Atk."+10','Phys. dmg. taken-10%',}}
 	Cape_ws = { name="Smertrios's Mantle", augments={'STR+20','Accuracy+20 Attack+20','STR+10','Weapon skill damage +10%',}}
-	Cape_Magicws = { name="Smertrios's Mantle", augments={'STR+20','Mag. Accuracy+20 Attack+20','Magic Damage +10','Weapon skill damage +10%',}}
+	Cape_Magicws = { name="Smertrios's Mantle", augments={'STR+20','Mag. Acc+20 /Mag. Dmg.+20','Magic Damage +10','Weapon skill damage +10%',}}
 
 	sets = {}
 	petcast = false
@@ -30,11 +30,11 @@ Cape = {}
 		ammo="Staunch Tathlum +1",
 		head="Nyame Helm",
 		neck="Loricate Torque +1",
-		body="Nyame Mail",
+		body="Kasuga Domaru +2",
 		hands="Nyame Gauntlets",
 		ring1="Shneddick Ring",
 		ring2="Defending Ring",
-		legs="Nyame Flanchard",
+		legs="Kasuga Haidate +2",
 		feet="Nyame Sollerets",
 		waist="Flume Belt",
 		ear1="Cessance Earring",
@@ -131,7 +131,7 @@ Cape = {}
 		head="Nyame Helm",
 		ear1="Friomisi Earring",
 		back=Cape_Magicws,
-		waist="Orpheus's Sash"
+		legs="Nyame Flanchard"
 		})	
 			
 	sets.ws["Ageha"] = set_combine(sets.ws["wsd"], {
@@ -139,7 +139,8 @@ Cape = {}
 		ear2={ name="Moonshade Earring", augments={'Accuracy+4','TP Bonus +250',}},
 		ring1="Stikini Ring +1",
 		ring2="Metamor. Ring +1",
-		waist="Eschan Stone"
+		waist="Eschan Stone",
+		legs="Nyame Flanchard"
 		})
 		
 	sets.ws["Stardiver"] = set_combine(sets.ws["wsd"], {
