@@ -1,5 +1,5 @@
 -- Get Sets: Everything in this section is run as soon as you change jobs.
-Engaged_Modes = {"TP", "More ACC", "Hybrid", "MEva", "DT", "Subtle Blow"}
+Engaged_Modes = {"TP", "More ACC", "Hybrid", "MEva", "DT", "Subtle Blow", "TH"}
 Engaged_Modes_Index = 1
 Weapon_Sets = {"Masamune", "Dojikiri", "Shining One"} --"Soboro"
 WeaponSetsIndex = 1	
@@ -9,6 +9,7 @@ send_command('bind f9 gs c set meleeTP')
 send_command('bind !f9 gs c set meleeAcc')
 send_command('bind ^f9 gs c set meleeHybrid')
 send_command('bind ^@f9 gs c set meleeMEva')
+send_command('bind @f10 gs c set meleeTH')
 send_command('bind f10 gs c Weapon')
 send_command('bind ^f10 gs c set meleeMEva')
 send_command('bind f11 gs c set meleeDT')
@@ -62,7 +63,7 @@ Cape = {}
 		ear1="Telos Earring",
 		ear2="Schere Earring",		
 		body="Ken. Samue +1",
-		hands="Wakido Kote +3",
+		hands="Tatena. Gote +1",
 		ring1="Niqmaddu Ring",
 		ring2="Petrov Ring",
 		back=Cape_TP,
@@ -84,6 +85,12 @@ Cape = {}
 		ring2="Chirich Ring +1",
 		legs="Kasuga Haidate +2", --10% DT
 		})
+	
+	sets.tp["TH"] = set_combine(sets.tp["Hybrid"], { --23% DT, 10 SBII, 
+		ammo="Per. Lucky Egg", --13% DT
+		waist="Chaac Belt", --10% DT
+		feet="Volte Boots"
+		})	
 		
 	sets.tp["MEva"] = set_combine(sets.tp["TP"], { --% PDT, % MDT--
 		ammo="Staunch Tathlum +1",
@@ -131,6 +138,7 @@ Cape = {}
 		head="Nyame Helm",
 		ear1="Friomisi Earring",
 		back=Cape_Magicws,
+		waist="Skrymir Cord",
 		legs="Nyame Flanchard"
 		})	
 			
@@ -149,7 +157,7 @@ Cape = {}
 		waist="Fotia Belt",
 		feet="Valorous Greaves"
 		})
-    
+
     sets.ws["Tachi: Fudo"] = sets.ws["wsd"]
 	sets.ws["Tachi: Shoha"] = sets.ws["wsd"]
 	sets.ws["Tachi: Kasha"] = sets.ws["wsd"]	
@@ -161,7 +169,7 @@ Cape = {}
     sets.ws["Tachi: Koki"] = sets.ws["Magic"]	
     sets.ws["Tachi: Goten"] = sets.ws["Magic"]
 	
-	sets.ws["Impulse Drive"] = sets.ws["wsd"]
+	sets.ws["Impulse Drive"] = set_combine(sets.ws["wsd"], {head="Nyame Helm"})
 	sets.ws["Stardiver"] = sets.ws["Stardiver"]
 	sets.ws["Leg Sweep"] = sets.ws["Ageha"]
 
@@ -178,8 +186,10 @@ function precast(spell)
     if spell.action_type == "Magic" then
         equip(sets.fc)
     elseif spell.type == "WeaponSkill" then
-        if sets.ws[spell.name] then
-            equip(sets.ws[spell.name])
+        if sets.ws[spell.name] and 
+			(world.day_element == spell.element or world.weather_element == spell.element) then
+				equip(set_combine(sets.ws[spell.name], {waist = "Hachirin-no-Obi"})) 
+			else equip(sets.ws[spell.name])
         end
     elseif spell.type == "JobAbility" then
         if sets.ja[spell.name] then
@@ -234,6 +244,10 @@ function self_command(command)
 	elseif command == "set meleeSB" then
 		Engaged_Modes_Index = 6
 		send_command('@input /echo ----- Melee Mode: Subtle Blow -----')
+		set_gear(player.status)		
+	elseif command == "set meleeTH" then
+		Engaged_Modes_Index = 7
+		send_command('@input /echo ----- Melee Mode: Treasure Hunter 3 -----')
 		set_gear(player.status)		
 	elseif command == "Weapon" then
 		WeaponSetsIndex = WeaponSetsIndex % #Weapon_Sets + 1

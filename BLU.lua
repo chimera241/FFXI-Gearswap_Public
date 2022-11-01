@@ -44,7 +44,7 @@ function get_sets()
 
 		-- Weapon Sets --
 	
-	Weapon_Sets = {"Tizona", "Savage", "Maxentius/Thibron", "Nuking", "OmenDef"} ----"Naegling/Sakpata", 
+	Weapon_Sets = {"Tizona", "Savage", "Maxentius/Thibron", "Nuking"} ----"Naegling/Sakpata",  , "OmenDef"
 	WeaponSetsIndex = 1	
 
 	sets.weapons = {}
@@ -61,9 +61,9 @@ function get_sets()
 		idle_mode = {'Standard', 'DT', 'Eva'}
 		idle_ind = 1                   
        
-        sets.idle.Standard = { --21% DT, 10% PDT, 8 Refresh
+        sets.idle.Standard = { --21% DT, 10% PDT, 9-10 Refresh
 			ammo="Homilary", --1 Refresh
-			head="Malignance Chapeau", --6% DT, 91 Eva, 123 MEva
+			head="Herculean Helm", --1 Refresh
 			neck="Sibyl Scarf", --1 Refresh
 			ear1="Ethereal earring", 
 			ear2="Malignance Earring",
@@ -83,10 +83,11 @@ function get_sets()
 			ear1="Odnowa Earring +1", --3% DT
 			ear2="Hearty Earring",
 			body="Shamash Robe",--9% DT, 102 Eva, 139 MEva
-			ring1="Warden's Ring",
-			ring2="Defending Ring", --10% DT
+			ring1="Defending Ring",
+			ring2="Shneddick Ring +1", --10% DT
 			waist="Flume Belt", --3% PDT
-			legs="Hashishin Basmak +2" --8% DT, 150 MEva
+			legs="Hashishin Tayt +2", --18% move sp
+			feet="Hashishin Basmak +2" --8% DT, 150 MEva
         })    
 
 		sets.idle.Eva = set_combine(sets.idle.DT, { --47% DT, 10% PDT, 
@@ -96,22 +97,24 @@ function get_sets()
 			ear2="Infused Earring",
 			body="Nyame Mail", --9% DT, 102 Eva, 139 MEva
 			hands="Nyame Gauntlets",
-			ring1="Shneddick Ring",
+			ring1="Ilabrat Ring",
+			ring2="Shneddick Ring",
 			back=cape_eva,
 			waist="Kasiri Belt",
+			legs="Nyame Flanchard", --18% move sp
 			feet="Nyame Sollerets" --5% DT, 119 Eva, 150 MEva
 		})				
 			
         --tp Sets--
 	sets.tp = {}
  
-	tp_mode = {'Standard','Hybrid', 'TH', 'DT' } --'MEva'
+	tp_mode = {'Standard','Hybrid', 'TH', 'EvaMelee', 'DT'} --'MEva'
 	--1=Standard, 2=Accuracy, 3=DT--
 	tp_ind = 1
        
 	   sets.tp['Standard'] = {
 			ammo="Coiste Bodhar",
-			head="Malignance Chapeau", --6% DT, 123 MEva
+			head="Hashishin Kavuk +3", --6% DT, 123 MEva
 			neck="Mirage Stole +2", 
 			ear1="Suppanomimi", 
 			ear2="Telos Earring",
@@ -120,7 +123,7 @@ function get_sets()
 			ring1="Epona's Ring",
 			ring2="Chirich Ring +1",
 			back=cape_DD, 
-			waist="Salifi Belt +1",
+			waist="Sailfi Belt +1",
 			legs="Samnuha Tights",
 			feet="Malignance Boots" --4% DT 150 MEva
 		}
@@ -133,7 +136,7 @@ function get_sets()
 			feet="Malignance Boots" --4% DT 150 MEva
 		})
 
-		sets.tp['TH'] = set_combine(sets.tp['Hybrid	'], { -- Set = 41% DT, 10% PDT
+		sets.tp['TH'] = set_combine(sets.tp['Hybrid'], { -- Set = 41% DT, 10% PDT
 			ammo="Perfect Lucky Egg",
 			hands="Herculean Gloves",
 			waist="Chaac Belt"
@@ -146,7 +149,7 @@ function get_sets()
 			legs="Nyame Flanchard", --8% DT, 150 MEva
 		})
 		
-	   sets.tp['Zerg'] = {
+	   sets.tp['EvaMelee'] = set_combine(sets.idle.Eva, {
 			ammo="Coiste Bodhar",
 			head="Adhemar Bonnet +1", 
 			neck="Mirage Stole +2", 
@@ -160,7 +163,7 @@ function get_sets()
 			waist="Salifi Belt +1",
 			legs="Samnuha Tights",
 			feet=HFeet_tp
-		}
+		})
 		
 		sets.tp['MEva'] = set_combine(sets.tp.DT, {
 		})
@@ -170,7 +173,7 @@ function get_sets()
 
         sets.ws['Savage Blade'] = {
 			ammo="Oshasha's Treatise",
-			head="Nyame Helm",
+			head="Hashishin Kavuk +3",
 			neck="Rep. Plat. Medal",
 			ear1="Moonshade earring",
 			ear2="Ishvara earring",
@@ -186,7 +189,7 @@ function get_sets()
 	
         sets.ws['Expiacion'] = {
 			ammo="Oshasha's Treatise",
-			head="Nyame Helm",
+			head="Hashishin Kavuk +3",
 			neck="Rep. Plat. Medal",
 			ear1="Moonshade earring",
 			ear2="Ishvara earring",
@@ -217,7 +220,7 @@ function get_sets()
 		
 		sets.ws['Sanguine Blade'] = {
 			ammo="Ginsen",
-			head="Pixie Hairpin +1",
+			head="Hashishin Kavuk +3",
 			neck="Sanctity Necklace",
 			ear1="Friomisi earring",
 			ear2="Regal earring",
@@ -249,7 +252,7 @@ function get_sets()
 		
         sets.ws['Black Halo'] = {
 			ammo="Oshasha's Treatise",
-			head="Nyame Helm",
+			head="Hashishin Kavuk +3",
 			neck="Rep. Plat. Medal",
 			ear1="Moonshade earring",
 			ear2="Ishvara earring",
@@ -286,6 +289,8 @@ function get_sets()
 		}
        
         sets.precast.FC.Blue = set_combine(sets.precast.FC.Standard, {
+			body="Hashishin Mintan +2", 
+			hands="Hashishin Bazubands +2",
 		})
 
 		--Midcast Sets--
@@ -301,11 +306,11 @@ function get_sets()
 		
 		sets.BlueMagic.Nukes = {
 			ammo="Ghastly Tathlum +1",
-			head="Jhakri Coronal +2",
+			head="Hashishin Kavuk +3",
 			neck="Sibyl Scarf", 
-			ear1="Fromisi Earring", 
-			ear2="Moldavite Earring",
-			body="Shamash Robe", 
+			ear1="Friomisi Earring", 
+			ear2="Regal Earring",
+			body="Hashishin Mintan +2", 
 			hands="Hashishin Bazubands +2",
 			ring1="Metamorph Ring +1", 
 			ring2="Shiva Ring +1",  
@@ -324,19 +329,17 @@ function get_sets()
 			neck="Mirage Stole +2", --25 MACC
 			ear1="Regal Earring", --15 MACC Set Bonus
 			ear2="Dignitary's Earring",
-			body="Malignance Tabard", --50 MACC
-			hands="Malignance Cuffs", --50 MACC
+			body="Hashishin Mintan +2", 
+			hands="Hashishin Bazubands +2",
 			ring1="Stikini Ring +1", --11-16 MACC
 			ring2="Stikini Ring +1", --11 MACC
 			back=cape_nuke,
 			waist="Acuity Belt +1", --15 MACC
 			legs="Assimilator's Shalwar +3", --56 MACC
-			feet="Malignance Boots", --50 MACC
+			feet="Hashishin Basmak +2"
 		}
 		
         sets.BlueMagic.MaxMACC = set_combine(sets.BlueMagic.MACC, {
-			main="Maxentius",
-			sub="Bunzi's Rod", --46 MACC
 		})
 		
         sets.BlueMagic.Skill = set_combine(sets.BlueMagic.MACC, {
@@ -345,6 +348,7 @@ function get_sets()
 			hands="Rawhide Gloves",
 			ring2="Stikini Ring +1",  
 			back=cape_nuke,
+			legs="Hashishin Tayt +2"
 		})
 
 		sets.BlueMagic.Conserve = set_combine(sets.BlueMagic.Skill, {
@@ -369,24 +373,32 @@ function get_sets()
 		
         sets.BlueMagic.Added = {
 			ammo="Pemphredo Tathlum",
-			head="Jhakri Coronal +2",
+			head="Hashishin Kavuk +3",
 			neck="Sanctity Necklace", 
 			ear1="Regal Earring", 
 			ear2="Dignitary's Earring",
-			body="Jhakri Robe +2", 
-			hands="Jhakri Cuffs +2",
+			body="Hashishin Mintan +2", 
+			hands="Hashishin Bazubands +2",
 			ring1="Stikini Ring +1", 
 			ring2="Stikini Ring +1",  
 			back=cape_nuke,
 			waist="Eschan Stone",
-			legs="Amalric Slops +1",
-			feet="Amalric Nails +1",
+			legs="Hashishin Tayt +2",
+			feet="Hashishin Basmak +2"
 			}	
 		
 		sets.BlueMagic.EvaSleep = set_combine(sets.idle.Eva, {
 			ring1 = "Kishar Ring", 
 			ring2 = "Defending Ring"
 		})
+		
+		sets.BlueMagic.EvaEmn = set_combine(sets.idle.Eva, {
+			ammo="Staunch Tathlum +1",
+			neck="Loricate Torque +1",
+			body="Emet Harness +1",
+			ring1="Supershear Ring", 
+			ring2="Begrudging Ring"
+		})		
 		
 		sets.BlueMagic.THnuke = set_combine(sets.BlueMagic.Nukes, {
 			ammo="Perfect Lucky Egg",
@@ -498,7 +510,7 @@ spell_maps = {
 	['Battery Charge']='Refresh', ['Mighty Guard']='Conserve', ['Winds of Promvyion']='Conserve', ['Erratic Flutter']='Conserve', ['Mighty Guard']='Conserve', ['Carcharian Verve']='Conserve', 
 	['Occultation']='Skill', ['Diamondhide']='Skill', 
 	['Sudden Lunge']='Added', 
-	['Dream Flower']='EvaSleep', ['Actinic Burst']='EvaSleep', 
+	['Dream Flower']='EvaSleep', ['Actinic Burst']='EvaEmn',  ['Temporal Shift']='EvaEmn',
 	['Cruel Joke']='MaxMACC', ['Absolute Terror']='MaxMACC',
 	['Entomb']='THnuke'
 }  
@@ -513,7 +525,7 @@ function precast(spell)
 			if player.status == 'Idle' and idle_ind == 3 and spell.english == "Dream Flower" then
 				equip(set_combine(sets.idle.Eva, {ring1 = "Kishar Ring", ring2 = "Defending Ring"}))
 			else				
-				equip(sets.precast.FC.Standard)
+				equip(sets.precast.FC.Blue)
 			end
 		else
 			equip (sets.precast.FC.Standard)

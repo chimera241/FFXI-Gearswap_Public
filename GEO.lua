@@ -30,12 +30,13 @@ help()
 function get_sets()
 
 MFeet= {}
-	MFeet_Drain = { name="Merlinic Crackows", augments={'Mag. Acc.+23','"Drain" and "Aspir" potency +7','CHR+2',}}
-	MFeet_MB = { name="Merlinic Crackows", augments={'Mag. Acc.+19 "Mag.Atk.Bns."+19','Magic burst dmg.+9%','INT+5','Mag. Acc.+3','"Mag.Atk.Bns."+6',}}
+	MFeet_FC = { name="Merlinic Crackows", augments={'Mag. Acc.+14 "Mag.Atk.Bns."+14','"Fast Cast"+7','Mag. Acc.+6','"Mag.Atk.Bns."+8',}}
+	MFeet_Occult = { name="Merlinic Crackows", augments={'Mag. Acc.+17','"Occult Acumen"+11',}}
 Cape= {}
 	Cape_Idle = { name="Nantosuelta's Cape", augments={'HP+60','Eva.+20 /Mag. Eva.+20','Mag. Evasion+10','Pet: "Regen"+10','Pet: "Regen"+5',}}
 	Cape_Nuke = { name="Nantosuelta's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Mag.Atk.Bns."+10','Damage taken-5%',}}
-    sets.ja = {}
+	Cape_FC = { name="Nantosuelta's Cape", augments={'Eva.+20 /Mag. Eva.+20','"Fast Cast"+10',}}
+sets.ja = {}
     sets.ja['Bolster'] = {body="Bagua tunic +1"}
     sets.ja['Life cycle'] = {body="Geomancy tunic +2", back="Nantosuelta's cape"}
     sets.ja['Full Circle'] = {
@@ -44,18 +45,18 @@ Cape= {}
     }
     sets.ja['Concentric Pulse'] = { head="Bagua galero +3" }
 
-    sets.fc = {
-        head="Merlinic Hood",
-        neck="Voltsurge torque",
-        ear2="Loquacious Earring",
-        ear1="Malignance earring",
-        body="Merlinic Jubbah",
-        ring1="Prolix ring",
-        ring2="Kishar ring",
-        back=Cape_Idle,
-        belt="Channeler's stone",
-        legs="Geomancy pants +2",
-        feet="Merlinic crackows"
+    sets.fc = { --69%
+        head="Merlinic Hood", ---15%
+        neck="Voltsurge torque", --4%
+        ear1="Malignance earring", --4%
+        ear2="Loquacious Earring", --2%
+        body="Agwu's Robe", --8%
+        ring1="Prolix ring", --2%
+        ring2="Kishar ring", --4%
+        back=Cape_FC,
+        waist="Embla Sash", --5%
+        legs="Geomancy pants +2", --13%
+        feet=MFeet_FC --12%
     }
 
     sets.fc.cure = set_combine(sets.fc, {
@@ -80,7 +81,7 @@ Cape= {}
         head="Vanya hood",
         body="Vedic Coat",
         waist="Austerity belt",
-        legs="Geomancy pants +1",
+        legs="Geomancy pants +2",
         feet="Medium's sabots"
     }
 
@@ -93,8 +94,8 @@ Cape= {}
         hands="Geomancy mitaines +3",
         back="Lifestream Cape",
         feet="Medium's sabots",
-		ring1="Stikini Ring",
-		ring2="Stikini Ring"
+		ring1="Stikini Ring +1",
+		ring2="Stikini Ring +1"
     })
 
     sets.midcast.geomancy.indi = set_combine(sets.midcast.geomancy, {
@@ -106,48 +107,39 @@ Cape= {}
         back="Lifestream Cape",
         legs="Bagua Pants +1",
         feet="Azimuth gaiters +1",
-		ring1="Stikini Ring",
-		ring2="Stikini Ring"
+		ring1="Stikini Ring +1",
+		ring2="Stikini Ring +1"
     })
 
-    sets.midcast.cure = set_combine(sets.midcast.conserve_mp, {
+    sets.midcast.cure = {
 		main="Daybreak",
 		sub="Sors Shield",
 		head="Vanya Hood",
 		body="Vanya Robe",
-		hands="Kaykaus cuffs",
-		ring1="Stikini ring",
+		hands="Telchine Gloves",
+		ring1="Stikini ring +1",
 		ring2="Lebeche ring",
-		legs="Chironic hose",		
-		back="Solemnity Cape",		
-		feet="Kaykaus boots"
-    })
+		back="Fi Follet Cape +1",	
+		legs="Vanya Slops",			
+		feet="Vanya Clogs"
+    }
 
-    sets.midcast.dark_magic = set_combine(sets.midcast.conserve_mp, {
+    sets.midcast.dark_magic = {
         head="Pixie Hairpin +1",
         neck="Erra pendant",
-        feet=MFeet_Drain,
-        ring1="Stikini ring",
-		ring2="Evanescence Ring",
 		ear1="Hirudinea Earring",
 		ear2="Malignance earring",
+        ring1="Stikini ring",
+		ring2="Evanescence Ring",
+		back=Cape_Nuke,
         waist="Fucho-no-obi",
-		back=Cape_Nuke
-    })
+		legs="Chironic Hose",
+        feet="Agwu's Pgiaches"
+    }
     
-    sets.midcast.drain = set_combine(sets.midcast.dark_magic, {
-        head="Pixie Hairpin +1",
-        neck="Erra pendant",
-        feet=MFeet_Drain,
-        ring1="Stikini ring",
-		ring2="Evanescence Ring",
-		ear1="Hirudinea Earring",
-		ear2="Malignance earring",
-        waist="Fucho-no-obi",
-		back=Cape_Nuke
-    })
+    sets.midcast.drain = sets.midcast.dark_magic
 
-    sets.midcast.aspir = sets.midcast.drain
+    sets.midcast.aspir = sets.midcast.dark_magic
 
     sets.midcast.elemental = {}
 
@@ -160,8 +152,8 @@ Cape= {}
         ear2="Malignance earring",
         body="Geomancy tunic +2",
         hands="Geomancy mitaines +3",
-        ring1="Stikini ring",
-        ring2="Stikini ring",
+        ring1="Stikini ring +1",
+        ring2="Stikini ring +1",
         waist="Luminary sash",
         legs="Geomancy pants +2",
         feet="Geomancy sandals +3",
@@ -173,33 +165,33 @@ Cape= {}
     sets.midcast.elemental["magic-atk-bonus"] = {
         main="Daybreak",
 		sub="Ammurapi shield",
-        head="Bagua galero +1",
+        head="Agwu's Cap",
         neck="Sanctity necklace",
         ear1="Barkarole earring",
         ear2="Malignance earring",
-        body="Jhakri Robe +2",
-        hands="Amalric gages +1",
+        body="Agwu's Robe",
+        hands="Agwu's Gages",
         ring1="Freke ring",
         ring2="Shiva ring +1",
         waist="Eschan stone",
-        legs="Amalric Slops +1",
-        feet=merlinic_feet_mab,
+        legs="Agwu's Slops",
+        feet="Agwu's Pigaches",
         back=Cape_Nuke,
 		}
 
     --MB: 52
     --MB2: 32
     --Total MB: 82
-    sets.midcast.elemental["magic-burst"] = set_combine(sets.midcast.elemental["magic-atk-bonus"], {
-        head="Ea hat", --MB: 6 MB2:6
+    sets.midcast.elemental["magic-burst"] = set_combine(sets.midcast.elemental["magic-atk-bonus"], { --MB40 MBII 27
+        head="Ea hat +1", --MB:7 MB2:7
         neck="Mizukage-no-Kubikazari", -- MB: 10
-        ear2="Malignance earring", --MB: 5
-        body="Ea houppelande", --MB: 8 MB2:8
-        hands="Amalric gages +1", --MB2: 6
-        ring1="Mujin band", --MB2: 5
-        ring2="Locus ring", --MB: 5
+        ear2="Malignance earring", --
+        body="Ea houppelande +1", --MB:9 MB2:9
+        hands="Agwu's Gages", --MB:8, MB2:4
+        ring1="Metamorph Ring +1", --M
+        ring2="Freke ring", --MB: 5
         legs="Ea Slops", --MB: 7 MB2:7
-        feet=MFeet_MB --MB: 11
+        feet="Agwu's Pigaches" --MB: 6
     })
 
     sets.midcast.enfeeble = {
@@ -212,10 +204,10 @@ Cape= {}
         ear2="Malignance earring",
         body="Geomancy tunic +2",
         hands="Geomancy mitaines +3",
-        ring1="Stikini ring",
-        ring2="Stikini ring",
+        ring1="Stikini ring +1",
+        ring2="Stikini ring +1",
         back=Cape_Nuke, 
-        waist="Luminary sash",
+        waist="Acuity Belt +1",
         legs="Geomancy pants +2",
         feet="Geomancy sandals +3"
     }
@@ -226,8 +218,8 @@ Cape= {}
 		hands="Telchine Gloves",
 		legs="Telchine Braconi",
 		feet="Telchine Pigaches",
-        ring1="Stikini ring",
-        ring2="Stikini ring"
+        ring1="Stikini ring +1",
+        ring2="Stikini ring +1"
     })
 
     sets.idle = {
@@ -241,36 +233,46 @@ Cape= {}
         body="Nyame Mail",
         hands="Nyame Gauntlets",
         ring1="Defending Ring",
-        ring2="Warden's ring",
+        ring2="Shneddick ring +1",
         back=Cape_Idle,
         waist="Fucho-no-obi",
 		legs="Nyame Flanchard",
         feet="Nyame Sollerets"
     }
 
-    sets.idle.luopan = set_combine(sets.idle, {
-        main="Idris",
-        range="Dunna",
-        head="Nyame Helm",
-        body="Nyame Mail",		
-        hands="Nyame Gauntlets",
-		back=Cape_Idle,
-		legs="Nyame Flanchard",
-        feet="Nyame Sollerets"
+    sets.idle.luopan = set_combine(sets.idle, { --48 DT (inc D Ring)
+        main="Idris", --25 Pet DT
+        range="Dunna", --5 Pet DT
+        head="Azimuth Hood +2", --11 DT, 4 Pet Regen 
+		ear1="Odnowa Earring +1", --3 DT
+        body="Nyame Mail",	--9 DT	
+        hands="Geomancy Mitaines +3",
+		back=Cape_Idle, --15 Pet Regen
+		legs="Nyame Flanchard", --8
+        feet="Nyame Sollerets" --7
     })
 
     sets.kiting = {
-        head="Befouled crown",
-        body="Jhakri robe +2",
-        hands="Bagua Mitaines +1",
-        ring1="Stikini Ring +1",
-        ring2="Stikini Ring +1",
         feet="Geomancy sandals +3"
     }
 	
 	sets.engaged = {}
 	
-	sets.engaged["tp"] = {
+	sets.engaged['tp'] = {
+		main="Idris",
+		sub="Genmei Shield",
+		head="Nyame Helm",
+		neck="Rep. Plat. Medal",
+		ear1="Cessance Earring",
+		ear2="Brutal Earring",
+		body="Nyame Mail",
+		hands="Gazu Bracelet +1",
+		ring1="Chirich Ring +1",
+		ring2="Chirich Ring +1",
+		back=Cape_WSD,
+		waist="Grunfeld Rope",
+		legs="Nyame Flanchard",
+		feet="Nyame Sollerets"
 	}
 
 	sets.ws = {}
@@ -353,8 +355,8 @@ function midcast(spell)
 end
 
 function equip_set(status)
-    if pet.isvalid and Luopan_Idle_On then
-        equip(sets.idle.luopan)
+	if pet.isvalid and Luopan_Idle_On then
+        equip(sets.idle.luopan)	
     else
         equip(sets.idle)
     end
@@ -365,8 +367,10 @@ function equip_set(status)
 end
 
 function aftercast(spell)
-    if (not spell.name:startswith('Geo-')) and spell.name ~= 'Full Circle' and spell.name ~= 'Radial Arcana' and spell.name ~= 'Mending Halation' and spell.name ~= 'Concentric Pulse' then
-        equip_set(player.status)
+	if player.status == 'Engaged' then
+		equip(sets.engaged['tp'])
+	else
+		equip_set(player.status)
     end
 end
 

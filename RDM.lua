@@ -80,14 +80,14 @@ Cape = {}
 	Cape_TP = { name="Sucellos's Cape", augments={'DEX+20','Accuracy+20 Attack+20','"Dual Wield"+9',}}
 	Cape_WSD = { name="Sucellos's Cape", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','MND+10','Weapon skill damage +10%',}}
 MFeet= {}
-	MFeet_Drain = { name="Merlinic Crackows", augments={'Mag. Acc.+23','"Drain" and "Aspir" potency +7','CHR+2',}}
-	MFeet_MB = { name="Merlinic Crackows", augments={'Mag. Acc.+19 "Mag.Atk.Bns."+19','Magic burst dmg.+9%','INT+5','Mag. Acc.+3','"Mag.Atk.Bns."+6',}}
+	MFeet_FC = { name="Merlinic Crackows", augments={'Mag. Acc.+14 "Mag.Atk.Bns."+14','"Fast Cast"+7','Mag. Acc.+6','"Mag.Atk.Bns."+8',}}
+	MFeet_Occult = { name="Merlinic Crackows", augments={'Mag. Acc.+17','"Occult Acumen"+11',}}
 
 
     sets.idle = {}
 
     sets.idle["Damage Taken"] = {
-		main="",
+		main="Daybreak",
 		sub="Genmei Shield",
 		ammo="Staunch Tathlum +1",
 		head="Malignance Chapeau",
@@ -126,6 +126,37 @@ MFeet= {}
 	sets.ja["Convert"] = {}
 	sets.ja["Saboteur"] = {hands="Lethargy gantherots +2"}
 	sets.ja["Chainspell"] = {body="Vitiation tabard +3"}
+	sets.ja["Valiance"] = {
+		--ammo="Staunch Tathlum +1",
+		--head="Bunzi's Hat",
+		neck="Warder's Charm +1",
+		ear1="Cryptic Earring",
+		ear2="Friomisi Earring",
+		body="Emet Harness +1",
+		hands="Merlinic Dastanas",
+		ring1="Begrudging Ring",
+		ring2="Supershear Ring",
+		back=Cape_TP,
+		waist="Sailfi Belt +1",
+		legs="Carmine Cuisses +1",
+		feet="Malignance Boots"
+    }	
+	sets.ja["Vallation"] = {
+		--ammo="Staunch Tathlum +1",
+		--head="Bunzi's Hat",
+		neck="Warder's Charm +1",
+		ear1="Cryptic Earring",
+		ear2="Friomisi Earring",
+		body="Emet Harness +1",
+		hands="Merlinic Dastanas",
+		ring1="Begrudging Ring",
+		ring2="Supershear Ring",
+		back=Cape_TP,
+		waist="Sailfi Belt +1",
+		legs="Carmine Cuisses +1",
+		feet="Malignance Boots"
+    }	
+
 
 	sets.weapons = {}
 	sets.weapons["Empty"] = {}
@@ -189,16 +220,16 @@ MFeet= {}
     sets.fc = {   
 		head="Atro. Chapeau +2", --14
 		neck="Voltsurge torque", --4
-		ear1="Lethargy earring +1", --2
+		ear1="Lethargy earring +1", --8
     	ear2="Malignance earring", --4
 		body="Viti. Tabard +3", --15
 		hands="Malignance gloves",
-    	waist="Embla Sash", --2
     	ring1="Kishar Ring", --4
     	ring2="Prolix Ring", --5
+    	waist="Embla Sash", --2
 		back=Cape_Int,
 		legs="Aya. Cosciales +2", --6
-    	feet="Merlinic Crackows" --5
+    	feet=MFeet_FC --12
     }
 
     sets.midcast = {}
@@ -476,6 +507,22 @@ MFeet= {}
     })
 
     sets.midcast.aspir = sets.midcast.drain
+	
+	sets.midcast.emnity = {
+		--ammo="Staunch Tathlum +1",
+		--head="Bunzi's Hat",
+		neck="Warder's Charm +1",
+		ear1="Cryptic Earring",
+		ear2="Friomisi Earring",
+		body="Emet Harness +1",
+		hands="Merlinic Dastanas",
+		ring1="Begrudging Ring",
+		ring2="Supershear Ring",
+		back=Cape_TP,
+		waist="Sailfi Belt +1",
+		legs="Carmine Cuisses +1",
+		feet="Malignance Boots"
+    }	
 		
     sets.midcast.elemental["Low Acc"] = set_combine(sets.midcast.elemental, {})
     sets.midcast.elemental["High Acc"] = set_combine(sets.midcast.elemental, {})
@@ -491,6 +538,9 @@ MFeet= {}
 		legs="Merlinic Shalwar",
 		feet=MFeet.MB
 		})
+			
+
+----WS----
 
     sets.ws = {}
     
@@ -624,6 +674,8 @@ MFeet= {}
  -----Skill-----
  sets.midcast["Dia III"] = sets.midcast.enfeebling.duration
  sets.midcast["Poison II"] = sets.midcast.enfeebling.duration
+ -----Emnity-----
+ sets.midcast["Flash"] = sets.midcast.emnity
  
  -----Enhancing-----
  -----Skill-----
