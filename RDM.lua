@@ -1,6 +1,6 @@
 res = require('resources')
 
-Weapon_Sets = {"Empty", "Maxentius", "Crocea/Daybreak", "Savage Blade"} --,"Sword""Crocea/Thibron", , "Savage Blade""Aeolian Edge", "Crocea/Thibron", "Crocea/Daybreak", "Crocea/Gleti's", --"Maxentius","Low TP"}
+Weapon_Sets = {"Empty","Aeolian Edge", "Savage Blade", "Crocea/Daybreak", "Maxentius", "Low TP"} --, , ,"Sword""Crocea/Thibron", , "Savage Blade""Aeolian Edge", "Crocea/Thibron", "Crocea/Daybreak", "Crocea/Gleti's", --"Maxentius","Low TP"}
 WeaponSetsIndex = 1
 
 NukeSet = {"Low Acc", "High Acc", "Magic Burst"}
@@ -79,9 +79,20 @@ Cape = {}
 	Cape_Mnd = { name="Sucellos's Cape", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','"Cure" potency +10%',}}
 	Cape_TP = { name="Sucellos's Cape", augments={'DEX+20','Accuracy+20 Attack+20','"Dual Wield"+9',}}
 	Cape_WSD = { name="Sucellos's Cape", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','MND+10','Weapon skill damage +10%',}}
-MFeet= {}
-	MFeet_FC = { name="Merlinic Crackows", augments={'Mag. Acc.+14 "Mag.Atk.Bns."+14','"Fast Cast"+7','Mag. Acc.+6','"Mag.Atk.Bns."+8',}}
-	MFeet_Occult = { name="Merlinic Crackows", augments={'Mag. Acc.+17','"Occult Acumen"+11',}}
+Mhead = {}
+		Mhead.Phalanx = { name="Merlinic Hood", augments={'Attack+11','"Mag.Atk.Bns."+8','Phalanx +4','Accuracy+5 Attack+5',}}
+		Mhead.FC = { name="Merlinic Hood", augments={'"Mag.Atk.Bns."+22','"Fast Cast"+7','INT+9',}}
+	Mbody = {}	
+		Mbody.Phalanx = { name="Merlinic Jubbah", augments={'VIT+8','Accuracy+15','Phalanx +5','Accuracy+13 Attack+13','Mag. Acc.+8 "Mag.Atk.Bns."+8',}}
+	Mhands = {}
+		Mhands.Phalanx = { name="Merlinic Dastanas", augments={'Attack+21','MND+6','Phalanx +3','Mag. Acc.+4 "Mag.Atk.Bns."+4',}}
+		Mhands.Occult = { name="Merlinic Dastanas", augments={'Mag. Acc.+26','"Occult Acumen"+10','CHR+5',}}
+	Mlegs = {}	
+		Mlegs.Refresh = { name="Merlinic Shalwar", augments={'"Fast Cast"+2','Pet: "Dbl. Atk."+1','"Refresh"+2','Accuracy+15 Attack+15','Mag. Acc.+19 "Mag.Atk.Bns."+19',}}
+	Mfeet= {}
+		Mfeet.FC = { name="Merlinic Crackows", augments={'Mag. Acc.+14 "Mag.Atk.Bns."+14','"Fast Cast"+7','Mag. Acc.+6','"Mag.Atk.Bns."+8',}}
+		Mfeet.Occult = { name="Merlinic Crackows", augments={'Mag. Acc.+17','"Occult Acumen"+11',}}
+		Mfeet.Phalanx = { name="Merlinic Crackows", augments={'"Dbl.Atk."+3','INT+8','Phalanx +2',}}
 
 
     sets.idle = {}
@@ -114,12 +125,12 @@ MFeet= {}
 		ring1="Stikini ring +1",
 		ring2="Stikini ring +1",		
 		waist="Fucho-no-Obi",
-		legs="Carmine Cuisses +1",
+		legs=Mlegs.Refresh,
 		feet="Chironic Slippers"
 		})
 
     sets.kite = {
-		legs="Carmine cuisses +1"
+		ring1="Shneddick Ring"
 		}
 
     sets.ja = {}
@@ -229,8 +240,13 @@ MFeet= {}
     	waist="Embla Sash", --2
 		back=Cape_Int,
 		legs="Aya. Cosciales +2", --6
-    	feet=MFeet_FC --12
+    	feet=Mfeet.FC --12
     }
+	
+    sets.fc['Impact'] = set_combine(sets.fc, {
+        head=empty,
+        body='Twilight cloak'
+    })	
 
     sets.midcast = {}
     
@@ -274,7 +290,7 @@ MFeet= {}
 		back="Ghostfyre Cape",
 		waist="Embla Sash",
 		legs="Lethargy Fuseau +2",
-		feet="Leth. Houseaux +2"
+		feet="Leth. Houseaux +3"
         }
 
     sets.midcast.enhancing["Skill"] = {
@@ -292,7 +308,7 @@ MFeet= {}
 		back="Ghostfyre Cape",
 		waist="Embla Sash",
 		legs="Carmine Cuisses +1",
-		feet="Leth. Houseaux +2"
+		feet="Leth. Houseaux +3"
         }
     
     sets.midcast.enhancing["Duration"] = set_combine(sets.midcast.enhancing["Skill"], {
@@ -302,7 +318,7 @@ MFeet= {}
 		hands="Atrophy Gloves +3",
 		waist="Embla Sash",
 		legs="Lethargy Fuseau +2",
-		feet="Lethargy Houseaux +2",
+		feet="Lethargy Houseaux +3",
 		back="Ghostfyre Cape"
     })
 
@@ -342,10 +358,10 @@ MFeet= {}
 		})
 		
     sets.midcast.enhancing.phalanx = set_combine(sets.midcast.enhancing, {
-		head={ name="Taeon Chapeau", augments={'Phalanx +3',}},
-		body={ name="Taeon Tabard", augments={'"Fast Cast"+4','Phalanx +3',}},
-		hands={ name="Taeon Gloves", augments={'"Fast Cast"+5','Phalanx +3',}},
-		legs={ name="Herculean Trousers", augments={'Attack+9','Haste+1','Phalanx +5','Accuracy+5 Attack+5','Mag. Acc.+20 "Mag.Atk.Bns."+20',}},
+		head=Mhead.Phalanx, --4
+		body= Mbody.Phalanx, --5
+		hands={ name="Taeon Gloves", augments={'"Fast Cast"+5','Phalanx +3',}}, --3
+		legs={ name="Herculean Trousers", augments={'Attack+9','Haste+1','Phalanx +5','Accuracy+5 Attack+5','Mag. Acc.+20 "Mag.Atk.Bns."+20',}}, --5
 		feet={ name="Taeon Boots", augments={'"Cure" potency +5%','Phalanx +3',}},
 		})		
 
@@ -377,9 +393,9 @@ MFeet= {}
     }
 	
 	sets.midcast.enfeebling.MACC = { ---481 MACC, 45% Duration, 50 Skill, 20 Potency---   
-		main="Contemplator +1", --50 MACC, 255 Enf Skill--
-		sub="Enki Strap", --38 MACC--
-		range="Kaja Bow", --35 MACC--	
+		main="Crocea Mors", --50 MACC, 255 Enf Skill--
+		sub="Ammurapi Shield", --38 MACC--
+		range="Ullr", --35 MACC--	
 		head="Vitiation Chapeau +3", --45 MACC--
 		neck="Duelist's Torque +2", --30 MACC, Potency 10, Duration 25--
 		ear1="Snotra Earring", --10 MACC--
@@ -414,7 +430,7 @@ MFeet= {}
 
 	sets.midcast.enfeebling.duration = { --340 MACC, 20 Potency, 85% Duration--
 		main="Contemplator +1", --50 MACC, 255 Enf Skill--
-		sub="Enki Strap", --38 MACC--
+		sub="Kaja Grip", --38 MACC--
 		ammo="Regal Gem", --15 MACC, 10 Potency--
 		head="Atro. Chapeau +2", --45 MACC--
 		neck="Duelist's Torque +2", --30 MACC, Potency 10, 25% Duration--
@@ -536,7 +552,7 @@ MFeet= {}
 		left_ring="Mujin band",
 		right_ring="Locus ring",
 		legs="Merlinic Shalwar",
-		feet=MFeet.MB
+		feet=Mfeet.MB
 		})
 			
 
@@ -557,7 +573,7 @@ MFeet= {}
 		back=Cape_WSD,
 		waist="Orpheus's Sash",
 		legs="Amalric Slops +1",
-		feet="Lethargy Houseaux +2",
+		feet="Lethargy Houseaux +3",
         }
 
     sets.ws.physical = {
@@ -573,7 +589,7 @@ MFeet= {}
 		back=Cape_WSD,
 		waist="Sailfi Belt +1",
 		legs="Nyame Flanchard",
-		feet="Nyame Sollerets",
+		feet="Lethargy Houseaux +3",
     }
         
 	sets.ws["Sanguine Blade"] = set_combine(sets.ws.magic, {
@@ -712,7 +728,10 @@ end
 function precast(spell)
     -- print_set(spell)
     if spell.action_type == "Magic" then
+        if sets.fc[spell.english] then
+            equip(sets.fc[spell.english]) else
         equip(sets.fc)
+		end
     elseif spell.type == "WeaponSkill" then
         if sets.ws[spell.name] then
             equip(sets.ws[spell.name])

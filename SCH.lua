@@ -11,7 +11,7 @@ RegenSetIndex = 1
 RegenSet = {"Potency", "Duration"}
 
 WeaponSetIndex = 1
-WeaponSet = {"None", "Grioavolr", "Akademos", "Gada"}
+WeaponSet = {"None", "Tupsimati", "Mpaca's Staff", "Marin Staff +1"}
 
 Kiting = false
 
@@ -90,20 +90,34 @@ function get_sets()
     ---------------------------------------- Precast Sets ------------------------------------------
     ------------------------------------------------------------------------------------------------
     idle_cape = { name="Lugh's Cape", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Phys. dmg. taken-10%',}}
-    nuke_cape = { name="Lugh's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Mag.Atk.Bns."+10',}}
-	MFeet_Drain = { name="Merlinic Crackows", augments={'Mag. Acc.+23','"Drain" and "Aspir" potency +7','CHR+2',}}
-	MFeet_MB = { name="Merlinic Crackows", augments={'Mag. Acc.+19 "Mag.Atk.Bns."+19','Magic burst dmg.+9%','INT+5','Mag. Acc.+3','"Mag.Atk.Bns."+6',}}
-    fc_cape = idle_cape
+    nuke_cape = { name="Lugh's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Mag.Atk.Bns."+10',}}	
+	fc_cape = idle_cape
+    chir_macc = { name="Chironic Hose", augments={'Mag. Acc.+20 "Mag.Atk.Bns."+20','"Drain" and "Aspir" potency +6','CHR+3','Mag. Acc.+14','"Mag.Atk.Bns."+13',}}
+	chir_phalanx = { name="Chironic Hose", augments={'CHR+10','Pet: INT+3','Phalanx +3','Accuracy+16 Attack+16',}}
     int_enfeeble_cape = nuke_cape
     mnd_enfeeble_cape = healing_cape
-	fc_feet = { name="Merlinic Crackows", augments={'Mag. Acc.+14 "Mag.Atk.Bns."+14','"Fast Cast"+7','Mag. Acc.+6','"Mag.Atk.Bns."+8',}}
-
+	
+	Mhead = {}
+		Mhead.Phalanx = { name="Merlinic Hood", augments={'Attack+11','"Mag.Atk.Bns."+8','Phalanx +4','Accuracy+5 Attack+5',}}
+		Mhead.FC = { name="Merlinic Hood", augments={'"Mag.Atk.Bns."+22','"Fast Cast"+7','INT+9',}}
+	Mbody = {}	
+		Mbody.Phalanx = { name="Merlinic Jubbah", augments={'VIT+8','Accuracy+15','Phalanx +5','Accuracy+13 Attack+13','Mag. Acc.+8 "Mag.Atk.Bns."+8',}}
+	Mhands = {}
+		Mhands.Phalanx = { name="Merlinic Dastanas", augments={'Attack+21','MND+6','Phalanx +3','Mag. Acc.+4 "Mag.Atk.Bns."+4',}}
+		Mhands.Occult = { name="Merlinic Dastanas", augments={'Mag. Acc.+26','"Occult Acumen"+10','CHR+5',}}
+	Mlegs = {}	
+		Mlegs.Refresh = { name="Merlinic Shalwar", augments={'"Fast Cast"+2','Pet: "Dbl. Atk."+1','"Refresh"+2','Accuracy+15 Attack+15','Mag. Acc.+19 "Mag.Atk.Bns."+19',}}
+		Mlegs.Phalanx = { name="Merlinic Shalwar", augments={'CHR+9','Phys. dmg. taken -1%','Phalanx +2','Mag. Acc.+20 "Mag.Atk.Bns."+20',}}
+	Mfeet= {}
+		Mfeet.FC = { name="Merlinic Crackows", augments={'Mag. Acc.+14 "Mag.Atk.Bns."+14','"Fast Cast"+7','Mag. Acc.+6','"Mag.Atk.Bns."+8',}}
+		Mfeet.Occult = { name="Merlinic Crackows", augments={'Mag. Acc.+17','"Occult Acumen"+11',}}
+		Mfeet.Phalanx = { name="Merlinic Crackows", augments={'"Dbl.Atk."+3','INT+8','Phalanx +2',}}
 
     sets.WeaponSet = {}
     sets.WeaponSet["None"] = {}
-    sets.WeaponSet["Akademos"] = {main="Akademos", sub="Enki strap"}
-    sets.WeaponSet["Grioavolr"] = {main="Grioavolr", sub="Enki strap"}
-    sets.WeaponSet["Gada"] = {main="Gada", sub="Ammurapi shield"}
+    sets.WeaponSet["Tupsimati"] = {main="Tupsimati", sub="Enki strap"}
+    sets.WeaponSet["Mpaca's Staff"] = {main="Mpaca's Staff", sub="Enki strap"}
+    sets.WeaponSet["Marin Staff +1"] = {main="Marin Staff +1", sub="Enki Strap"}
 
     sets.idle = {}
 	
@@ -134,7 +148,7 @@ function get_sets()
 		ring1="Stikini Ring +1",
 		ring2="Stikini Ring +1",
 		waist="Fucho-no-obi",
-		legs="Assiduity pants +1",
+		legs=Mlegs.Refresh,
 		feet="Chironic Slippers"
 	})
 	
@@ -156,10 +170,12 @@ function get_sets()
         ear1="",
         ear2="Dignitary's earring",
         body="Jhakri robe +2",
-        hands="Jhakri cuffs +2",
+        hands="Gazu Bracelet's",
+        ring1="Chirich Ring +1",
+        ring2="Chirich Ring +1",
         waist="Eschan stone",
-        legs="Jhakri slops +2",
-        feet="Jhakri pigaches +2"
+        legs="Nyame Flanchard",
+        feet="Nyame Sollerets"
     }
 
     ------------
@@ -194,15 +210,20 @@ function get_sets()
 		neck="Voltsurge Torque", --fast cast 4%
 		ear1="Loquacious Earring", --fast cast 2%
 		ear2="Malignance earring", --fast cast 4%
-		body="Merlinic Jubbah", --fast cast 6%
+		body="Shango Robe", --fast cast 6%
 		hands="Academic's bracers +3", --fast cast 9%
 		ring1="Kishar ring", --fast cast 4%
 		ring2="Prolix Ring", --fast cast 5%
 		back=idle_cape, --fast cast 10%
 		waist="Embla Sash", --fast cast 2%
 		legs="Artsieq Hose", --fast cast 5%
-		feet=fc_feet --fast cast 12%
+		feet=Mfeet.FC --fast cast 12%
     }
+
+    sets.precast['Impact'] = set_combine(sets.precast.fc, {
+        head=empty,
+        body='Twilight cloak'
+    })
 
     sets.precast["Stoneskin"] = set_combine(sets.precast.fc, {
         head=""
@@ -317,6 +338,12 @@ function get_sets()
 		feet=MFeet_Drain
     }
 
+    sets.midcast['Impact'] = set_combine(sets.midcast.enfeebling, {
+        head=empty,
+        ring2="Archon ring",
+        body='Twilight cloak'
+    })
+	
     -- Make sure you have a non weather obi in this set. Helix get bonus naturally no need Obi.	
     sets.midcast.dark_helix = set_combine(sets.midcast.helix, {
 		head="Pixie Hairpin +1"
@@ -334,7 +361,7 @@ function get_sets()
 		ring2="Stikini Ring +1",
 		back=nuke_cape,
 		waist="Luminary sash",
-		legs="Chironic Hose",
+		legs=chir_macc,
 		feet="Academic's Loafers +3"
     })
 
@@ -352,7 +379,7 @@ function get_sets()
 		ammo="Pemphredo Tathlum", -- 4 Con MP
 		head="Vanya Hood", --10 Cure Pot, 6 Con MP
 		neck="Nodens Gorget", --5% Cure Pot
-		body="Kaykaus Bliaut +1",
+		body="Arbatel Gown +2",
 		ear1="Mendi. earring", 	--5% Cure Pot, 2 Con MP, 2% Cure Casting
 		ear2="Calamitous Earring",
 		hands="Kaykaus Cuffs +1", --11%, 7 Con MP
@@ -360,7 +387,7 @@ function get_sets()
 		waist="Luminary Sash", -- 4 Con MP
 		ring1="Stikini Ring +1", --8 Healing Magic
 		ring2="Mephitas's ring", --9 Con MP, 110 HP to MP
-		legs="Kaykaus Tights +1", --17% Cure Pot, 7% Cure Casting, -7 Emnity
+		legs="Academic's Pants +2", --17% Cure Pot, 7% Cure Casting, -7 Emnity
 		feet="Kaykaus Boots" --15% Cure Pot, 6 Con MP
     })
 	
@@ -433,6 +460,7 @@ function get_sets()
     })
 
     sets.midcast.refresh = set_combine(sets.midcast.enhancement_duration,{
+		main="Musa",
 		head="Amalric Coif +1"
     })
 
@@ -446,6 +474,16 @@ function get_sets()
 		neck="Nodens Gorget",
 		waist="Siegel Sash"
 	})	
+	
+    sets.midcast.phalanx = set_combine(sets.midcast.enhancement_duration, {
+		head=Mhead.Phalanx,
+		body=Mbody.Phalanx,
+		hands=Mhands.Phalanx,
+		waist="Siegel Sash",
+		legs=Mlegs.Phalanx,
+		feet=Mfeet.Phalanx
+	})	
+	
 
     sets.ws = {}
     sets.ws["Shattersoul"] = {}
@@ -558,11 +596,17 @@ function midcast(spell)
                 equip(sets.midcast.regen[regenMode])
             elseif spellType == "Storm" then
                 equip(sets.midcast.storm)
-            elseif spellType == "Refresh" then
-                equip(sets.midcast.refresh)
-            elseif spell.name == "Aquaveil" then
-                equip(sets.midcast.aquaveil)
-            else
+			elseif sets.midcast[spell.english] then
+				equip(sets.midcast[spell.english])			
+			elseif spellType == "Refresh" then
+				equip(sets.midcast.Refresh)
+			elseif spell.name == "Aquaveil" then
+				equip(sets.midcast.aquaveil)
+			elseif spell.name == "Stoneskin" then
+				equip(sets.midcast.stoneskin)
+			elseif spell.name == "Phalanx" then
+				equip(sets.midcast.phalanx)
+			else
                 equip(sets.midcast.enhancing)   
             end    
         -- Enfeebling Magic --         
@@ -578,6 +622,8 @@ function midcast(spell)
                 equip(sets.midcast.dark_helix)
             elseif spellType == 'Helix' then
                 equip(sets.midcast.helix)
+			elseif spell.english == 'Impact' then	
+				equip(sets.midcast['Impact'])
             else
                 local nuke_set = NukeSet[NukeTypeIndex]
                 if (world.day_element == spell.element or world.weather_element == spell.element) and spellType ~= "Helix" then
@@ -629,6 +675,7 @@ function equip_set(status)
         local idleSet = IdleSet[IdleSetIndex]
     -- print(idleSet)
         equip(sets.idle[idleSet])
+        lockstyle()			
     end
     
     

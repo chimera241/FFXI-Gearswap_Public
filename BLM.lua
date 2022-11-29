@@ -5,7 +5,7 @@ IdleSetIndex = 1
 IdleSet = {"Refresh", "DT", "Death"}
 
 WeaponSetIndex = 1
-WeaponSet = {"Mpaca", "Marin Staff", "Any"}
+WeaponSet = {"Mpaca", "Marin Staff +1", "Any"}
 
 ObiOn = true
 
@@ -102,28 +102,61 @@ function get_sets()
     local death_cape = { name="Taranus's Cape", augments={'MP+60','Mag. Acc+20 /Mag. Dmg.+20','MP+20','"Mag.Atk.Bns."+10','Spell interruption rate down-10%'}}
     local tp_cape = { name="Taranus's Cape", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+5','"Dbl.Atk."+10','Damage taken-5%',}}
     local ws_boots = { name="Merlinic Crackows", augments={'Attack+25','Crit.hit rate+3','Weapon skill damage +10%','Mag. Acc.+16 "Mag.Atk.Bns."+16'}}
-	local occult_hands = { name="Merlinic Dastanas", augments={'Mag. Acc.+26','"Occult Acumen"+10','CHR+5',}}
-	local occult_feet = { name="Merlinic Crackows", augments={'Mag. Acc.+17','"Occult Acumen"+11',}}
-	local fc_feet = { name="Merlinic Crackows", augments={'Mag. Acc.+14 "Mag.Atk.Bns."+14','"Fast Cast"+7','Mag. Acc.+6','"Mag.Atk.Bns."+8',}}
+
+	Mhead = {}
+		Mhead.Phalanx = { name="Merlinic Hood", augments={'Attack+11','"Mag.Atk.Bns."+8','Phalanx +4','Accuracy+5 Attack+5',}}
+		Mhead.FC = { name="Merlinic Hood", augments={'"Mag.Atk.Bns."+22','"Fast Cast"+7','INT+9',}}
+	Mbody = {}	
+		Mbody.Phalanx = { name="Merlinic Jubbah", augments={'VIT+8','Accuracy+15','Phalanx +5','Accuracy+13 Attack+13','Mag. Acc.+8 "Mag.Atk.Bns."+8',}}
+	Mhands = {}
+		Mhands.Phalanx = { name="Merlinic Dastanas", augments={'Attack+21','MND+6','Phalanx +3','Mag. Acc.+4 "Mag.Atk.Bns."+4',}}
+		Mhands.Occult = { name="Merlinic Dastanas", augments={'Mag. Acc.+26','"Occult Acumen"+10','CHR+5',}}
+	Mlegs = {}	
+		Mlegs.Refresh = { name="Merlinic Shalwar", augments={'"Fast Cast"+2','Pet: "Dbl. Atk."+1','"Refresh"+2','Accuracy+15 Attack+15','Mag. Acc.+19 "Mag.Atk.Bns."+19',}}
+		Mlegs.Phalanx = { name="Merlinic Shalwar", augments={'CHR+9','Phys. dmg. taken -1%','Phalanx +2','Mag. Acc.+20 "Mag.Atk.Bns."+20',}}
+		
+	Mfeet= {}
+		Mfeet.FC = { name="Merlinic Crackows", augments={'Mag. Acc.+14 "Mag.Atk.Bns."+14','"Fast Cast"+7','Mag. Acc.+6','"Mag.Atk.Bns."+8',}}
+		Mfeet.Occult = { name="Merlinic Crackows", augments={'Mag. Acc.+17','"Occult Acumen"+11',}}
+		Mfeet.Phalanx = { name="Merlinic Crackows", augments={'"Dbl.Atk."+3','INT+8','Phalanx +2',}}
+
 
     sets.WeaponSet = {}
-    sets.WeaponSet["Mpaca's Staff"] = {main="Mpaca's Staff", sub="Enki strap"}
-    sets.WeaponSet["Marin Staff +1"] = {main="Marin Staff +1", sub="Enki strap"}
+    sets.WeaponSet["Mpaca's Staff"] = {main="Mpaca's Staff", sub="Kaja strap"}
+    sets.WeaponSet["Marin Staff +1"] = {main="Marin Staff +1", sub="Kaja strap"}
 
-    -- sets.engaged = {
-    --     head="Nyame helm",
-    --     neck="Sanctity necklace",
-    --     ear1="Telos earring",
-    --     ear2="Dignitary's earring",
-    --     body="Archmage's coat +3",
-    --     hands="Gazu bracelet +1",
-    --     ring1="Chirich Ring +1",
-    --     ring2="Chirich Ring +1",
-    --     waist="Grunfeld rope",
-    --     legs="Archmage's tonban +3",
-    --     feet="Archmage's sabots +3",
-    --     back={ name="Taranus's Cape", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','"Dbl.Atk."+10','Mag. Evasion+15'}},
-    -- }
+    sets.idle = {}
+    
+    sets.idle["DT"] = {
+        ammo="Staunch tathlum +1",
+        head="Nyame Helm",
+        neck="Loricate torque +1",
+        ear1="Etiolation earring",
+        ear2="Hearty earring",
+        body="Shamash Robe",
+        hands="Nyame Gauntlets",
+        ring1="Shneddick ring",
+        ring2="Defending ring",
+        back=magic_att_cape,
+        waist="Slipor sash",
+        legs="Nyame Flanchard",
+        feet="Archmage's sabots +2"
+    }
+
+    sets.idle["Refresh"] = set_combine(sets.idle["DT"], {
+        ammo="Staunch tathlum +1",
+        head="Befouled crown",
+        body="Jhakri Robe +2",
+        ring1="Stikini Ring +1",
+        ring2="Stikini Ring +1",
+		legs=Mlegs.Refresh
+    })
+
+    sets.idle["Death"] = deathSet
+
+    sets.kiting = {
+        ring2="Shneddick ring"
+    }
 
     sets.engaged = {
         ammo="Staunch Tathlum +1",
@@ -157,7 +190,7 @@ function get_sets()
 
    --75-77% fc (Merlinic Augments Dependent)
     sets.precast.fc = {
-		head="Merlinic Hood", --15%
+		head=Mhead.FC, --15%
 		neck="Voltsurge Torque", --fast cast 4%
 		ear1="Malignance earring", --fast cast 4%
 		ear2="Loquacious Earring", --fast cast 2%
@@ -168,10 +201,14 @@ function get_sets()
 		back=death_cape, --10%
 		waist="Embla sash", --fast cast 5%
 		legs="Agwu's Slops", --7%
-		feet=fc_feet --fast cast 12% -- Make set for FC
+		feet=Mfeet.FC --fast cast 12% -- Make set for FC
 	}
     
-
+    sets.precast['Impact'] = set_combine(sets.precast.fc, {
+        head=empty,
+        body='Twilight cloak'
+    })
+	
     sets.precast.fc.elemental = set_combine(sets.precast.fc, {
         ear2="Barkarole earring",
     })
@@ -215,18 +252,13 @@ function get_sets()
         ear1="Dedition earring",
         ear2="Crepuscular earring",
         body="Spaekona's Coat +2",
-        hands= occult_hands,
+        hands=Mhands.occult,
         ring1="Chirich Ring +1",
         ring2="Chirich Ring +1",
         back=magic_atk_cape,
         waist="Oneiros rope",
         legs="Perdition slops",
-        feet=occult_feet,
-    })
-
-    sets.precast['Impact'] = set_combine(sets.precast.fc, {
-        head=empty,
-        body='Twilight cloak'
+        feet=Mfeet.occult,
     })
 
     local deathSet = set_combine(sets.midcast.elemental["Magic Attack Bonus"], {
@@ -259,11 +291,11 @@ function get_sets()
     --MB Total: 78
     sets.midcast.elemental["Magic Burst"] = set_combine(sets.midcast.elemental["Magic Attack Bonus"], { --42 MBD, 18 MBDII
         ammo="Ghastly Tathlum +1",
-		head="Ea hat +1", --MB: 6 MB2:6
+		head="Wicce Petasos +2",  
         neck="Sorcerer's Stole +1", --MB: 6 
         ear1="Malignance earring",
         ear2="Regal earring",        
-        body="Ea houppelande +1", --MB: 9 MB2:9
+        body="Wicce Coat +2", --MB: 9 MB2:9
         hands="Agwu's Gages", --MB2: 3 
         left_ring="Metamorph ring +1",
         right_ring="Freke ring",    
@@ -311,8 +343,8 @@ function get_sets()
 
     sets.midcast['Impact'] = set_combine(sets.midcast.enfeebling, {
         head=empty,
-        ring2="Archon ring",
-        body='Twilight cloak'
+        body='Twilight cloak',
+        ring2="Archon ring"
     })
 
     sets.midcast.cure = set_combine(sets.midcast.fast_recast, {
@@ -333,6 +365,18 @@ function get_sets()
     sets.midcast.regen = set_combine(sets.midcast.fast_recast, {
         body="Telchine chasuble"
     })
+	
+	sets.midcast.phalanx = { --14
+		head = Mhead.Phalanx, --4
+		ear1="Loquac. earring",
+		ear2="Mendi. earring", --5 Cure Pot, 2 Conserve MP
+		body = Mbody.Phalanx, --5
+		hands = Mhands.Phalanx, --3
+		ring1 ="Stikini Ring +1",
+		ring2 ="Stikini Ring +1",
+		legs= Mlegs.Phalanx, --2
+		feet = Mfeet.Phalanx --2
+		}
 
     sets.midcast.drain = set_combine(sets.midcast.fast_recast, {
 		head="Pixie Hairpin +1",
@@ -371,6 +415,8 @@ function get_sets()
         legs="Telchine braconi",
         feet="Telchine pigaches"
     })
+
+----Weapon Skills----
 
     local physical_int_ws = {
         head="Archmage's petasos +3",
@@ -467,7 +513,7 @@ function get_sets()
         ear1="Etiolation earring",
         ear2="Loquacious earring",
         neck="Sanctity necklace",
-        body="Spaekona's coat +3",
+        body="Spaekona's coat +2",
         hands="Spaekona's gloves +3",
         ring1="Mephitas's ring +1",
         ring2="Metamorph ring +1",
@@ -475,40 +521,6 @@ function get_sets()
         waist="Luminary sash",
         legs="Spaekona's tonban +3",
         feet="Spaekona's sabots +3"
-    }
-
-    sets.idle = {}
-    
-
-    sets.idle["DT"] = {
-        ammo="Staunch tathlum +1",
-        head="Nyame Helm",
-        neck="Loricate torque +1",
-        ear1="Etiolation earring",
-        ear2="Hearty earring",
-        body="Shamash Robe",
-        hands="Nyame Gauntlets",
-        ring1="Shneddick ring",
-        ring2="Defending ring",
-        back=magic_att_cape,
-        waist="Slipor sash",
-        legs="Nyame Flanchard",
-        feet="Archmage's sabots +2"
-    }
-
-    sets.idle["Refresh"] = set_combine(sets.idle["DT"], {
-        ammo="Staunch tathlum +1",
-        head="Befouled crown",
-        body="Jhakri Robe +2",
-        ring1="Stikini Ring +1",
-        ring2="Stikini Ring +1",
-        legs="Assiduity pants +1"
-    })
-
-    sets.idle["Death"] = deathSet
-
-    sets.kiting = {
-        ring2="Shneddick ring"
     }
 
     coroutine.schedule(lockstyle,8)
@@ -567,7 +579,9 @@ function midcast(spell)
         elseif spell.skill == 'Enhancing Magic' then
             if string.find(spell.english, 'Regen') then
                 equip(sets.midcast.regen)
-            else
+            elseif spell.english == 'Phalanx' then
+				equip(sets.midcast.phalanx)
+			else	
                 equip(sets.midcast.enhancing_magic)   
             end    
         -- Enfeebling Magic --         
@@ -592,12 +606,12 @@ function midcast(spell)
                     equip({waist = "Hachirin-no-Obi"})
                 end
 
-                if AncientMagic[spell.egnlish] then
+                if AncientMagic[spell.english] then
                     equip(sets.midcast.elemental.AncientMagic)
                 end
 
                 if player.mp < 700 then
-                    equip({body="Spaekona's Coat +3"})
+                    equip({body="Spaekona's Coat +2"})
                 end
             end
         end
