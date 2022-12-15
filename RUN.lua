@@ -150,7 +150,7 @@ function get_sets()
 		back=Ogma.SIRD, --10%--
 		waist="Audumbla Sash", --10% 
 		legs="Eri. Leg Guards +2", --11--	
-		feet="Eri. Greaves +1" --6--
+		feet="Eri. Greaves +2" --6--
 		}   
 					
     sets.JA['Elemental Sforzo'] = {body="Futhark Coat +3"}
@@ -208,7 +208,7 @@ function get_sets()
 	sets.ws["Dimidiation"] = {
 		ammo="Knobkierrie",
 		head="Nyame Helm",
-		neck="Caro Necklace", 
+		neck="Rep. Plat. Medal",
 		ear1="Moonshade Earring",
 		ear2="Sherida Earring",
 		body="Nyame Mail",
@@ -217,7 +217,7 @@ function get_sets()
 		ring2="Niqmaddu Ring",
 		back=Ogma.TP, 
 		waist="Sailfi Belt +1",
-		legs="Lustratio Subligar +1",
+		legs="Nyame Flanchard",
 		feet="Nyame Sollerets"
 		}
 

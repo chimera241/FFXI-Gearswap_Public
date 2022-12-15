@@ -59,7 +59,7 @@ Cape= {}
         ear1="Etiolation earring",
         ear2="Hearty earring",
         body="Jhakri Robe +2",
-        hands="Nyame Gauntlets",
+        hands="Volte Gloves",
         ring1="Shneddick ring",
         ring2="Stikini ring +1",
         back=Cape_Idle,
@@ -79,6 +79,25 @@ Cape= {}
 		legs="Nyame Flanchard", --8
         feet="Bagua Sandals +3" --5 Pet Regen
     })
+
+	sets.engaged = {}
+	
+	sets.engaged['tp'] = {
+		main="Idris",
+		sub="Genmei Shield",
+		head="Nyame Helm",
+		neck="Sanctity Necklace",
+		ear1="Cessance Earring",
+		ear2="Brutal Earring",
+		body="Nyame Mail",
+		hands="Gazu Bracelets +1",
+		ring1="Chirich Ring +1",
+		ring2="Chirich Ring +1",
+		back=Cape_WSD,
+		waist="Grunfeld Rope",
+		legs="Nyame Flanchard",
+		feet="Nyame Sollerets"
+	}
 	
 	sets.ja = {}
     sets.ja['Bolster'] = {body="Bagua tunic +1"}
@@ -97,6 +116,7 @@ Cape= {}
         ear1="Malignance earring", --4%
         ear2="Loquacious Earring", --2%
         body="Agwu's Robe", --8%
+		hands="Volte Gloves",
         ring1="Prolix ring", --2%
         ring2="Kishar ring", --4%
         back=Cape_FC, --10%
@@ -159,8 +179,8 @@ Cape= {}
     })
 
     sets.midcast.cure = {
-		main="Daybreak",
-		sub="Sors Shield",
+		main="Raetic Rod +1", 
+		sub="Genmei Shield",
 		head="Vanya Hood",
 		body="Vanya Robe",
 		hands="Telchine Gloves",
@@ -212,7 +232,7 @@ Cape= {}
     sets.midcast["Stun"] = sets.midcast.elemental["magic-accuracy"]
 
     sets.midcast.elemental["magic-atk-bonus"] = {
-        main="Idris",
+        main="Bunzi's Rod",
 		sub="Ammurapi shield",
         head="Agwu's Cap",
         neck="Sanctity necklace",
@@ -229,6 +249,8 @@ Cape= {}
 		}
 
     sets.midcast.elemental["magic-burst"] = set_combine(sets.midcast.elemental["magic-atk-bonus"], { --MB47 MBII 27
+        main="Bunzi's Rod",
+		sub="Ammurapi shield",
         head="Agwu's Cap", --MB:7 MB2:7
         neck="Mizukage-no-Kubikazari", -- MB: 10
         ear2="Malignance earring", --
@@ -291,25 +313,6 @@ Cape= {}
     sets.kiting = {
         feet="Geomancy sandals +3"
     }
-	
-	sets.engaged = {}
-	
-	sets.engaged['tp'] = {
-		main="Idris",
-		sub="Genmei Shield",
-		head="Nyame Helm",
-		neck="Sanctity Necklace",
-		ear1="Cessance Earring",
-		ear2="Brutal Earring",
-		body="Nyame Mail",
-		hands="Gazu Bracelet +1",
-		ring1="Chirich Ring +1",
-		ring2="Chirich Ring +1",
-		back=Cape_WSD,
-		waist="Grunfeld Rope",
-		legs="Nyame Flanchard",
-		feet="Nyame Sollerets"
-	}
 	
     -- Weaponskill sets
     -- Default set for any weaponskill that isn't any more specifically defined

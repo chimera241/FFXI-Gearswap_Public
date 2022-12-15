@@ -1,6 +1,6 @@
 res = require('resources')
 
-Weapon_Sets = {"Empty","Aeolian Edge", "Savage Blade", "Crocea/Daybreak", "Maxentius", "Low TP"} --, , ,"Sword""Crocea/Thibron", , "Savage Blade""Aeolian Edge", "Crocea/Thibron", "Crocea/Daybreak", "Crocea/Gleti's", --"Maxentius","Low TP"}
+Weapon_Sets = {"Empty","Savage Blade", "Crocea/Daybreak", "Crocea/Gleti's"} --, ,"Aeolian Edge", "Maxentius",
 WeaponSetsIndex = 1
 
 NukeSet = {"Low Acc", "High Acc", "Magic Burst"}
@@ -89,6 +89,7 @@ Mhead = {}
 		Mhands.Occult = { name="Merlinic Dastanas", augments={'Mag. Acc.+26','"Occult Acumen"+10','CHR+5',}}
 	Mlegs = {}	
 		Mlegs.Refresh = { name="Merlinic Shalwar", augments={'"Fast Cast"+2','Pet: "Dbl. Atk."+1','"Refresh"+2','Accuracy+15 Attack+15','Mag. Acc.+19 "Mag.Atk.Bns."+19',}}
+		Mlegs.Phalanx = { name="Merlinic Shalwar", augments={'CHR+9','Phys. dmg. taken -1%','Phalanx +2','Mag. Acc.+20 "Mag.Atk.Bns."+20',}}
 	Mfeet= {}
 		Mfeet.FC = { name="Merlinic Crackows", augments={'Mag. Acc.+14 "Mag.Atk.Bns."+14','"Fast Cast"+7','Mag. Acc.+6','"Mag.Atk.Bns."+8',}}
 		Mfeet.Occult = { name="Merlinic Crackows", augments={'Mag. Acc.+17','"Occult Acumen"+11',}}
@@ -122,6 +123,7 @@ Mhead = {}
 		neck="Sibyl Scarf",
 		head="Vitiation chapeau +3",
 		body="Jhakri Robe +2",
+		hands="Volte Gloves",
 		ring1="Stikini ring +1",
 		ring2="Stikini ring +1",		
 		waist="Fucho-no-Obi",
@@ -181,7 +183,8 @@ Mhead = {}
 	sets.weapons["Low TP"] = {main= "Qutrub Knife", sub="Wind Knife", range="Kaja Bow"}
     
 	sets.engaged = {
-		ammo="Staunch Tathlum +1",
+		--ammo="Staunch Tathlum +1",
+		ammo="Coiste Bodhar",
 		head="Bunzi's Hat",
 		neck="Anu Torque",
 		ear1="Telos Earring",
@@ -234,7 +237,7 @@ Mhead = {}
 		ear1="Lethargy earring +1", --8
     	ear2="Malignance earring", --4
 		body="Viti. Tabard +3", --15
-		hands="Malignance gloves",
+		hands="Volte Gloves",
     	ring1="Kishar Ring", --4
     	ring2="Prolix Ring", --5
     	waist="Embla Sash", --2
@@ -251,8 +254,8 @@ Mhead = {}
     sets.midcast = {}
     
     sets.midcast.cure = {
-		main="Daybreak",
-		subs="Sors Shield",
+		main="Daybreak", 
+		sub="Genmei Shield",
 		head="Vanya Hood",
 		body="Kaykaus Bliaut +1",
 		ear1="Mendi. Earring",
@@ -410,8 +413,43 @@ Mhead = {}
 		feet="Vitiation Boots +3" --43 MACC, 10 Pot, 16 Skill--
     }
 	
+	sets.midcast.enfeebling.DurMACC = { ---481 MACC, 45% Duration, 50 Skill, 20 Potency---   
+		main="Contemplator +1", --50 MACC, 255 EMACC Skill--
+		sub="Enki Strap", --38 MACC--
+		range="Ullr", --35 MACC--	
+		head="Vitiation Chapeau +3", --45 MACC--
+		neck="Duelist's Torque +2", --30 MACC, Potency 10, Duration 25--
+		ear1="Snotra Earring", --10 MACC--
+		ear2="Regal Earring", --15 MACC Set Bonus--
+		body="Lethargy Sayon +2", --54 MACC, 16 Potency---
+		hands="Regal Cuffs", --45 MACC, 20% Duration---
+		ring1="Kishar ring", --8 MACC--
+		ring2="Stikini ring +1", --8 MACC--
+		waist="Obstinate Sash", --10 MACC--
+		back=Cape_Int, --20 MACC--
+		legs="Chironic Hose", --54 MACC, Immuno +1, 13 Skill--
+		feet="Vitiation Boots +3" --43 MACC, 10 Pot, 16 Skill--
+    }
+	
+	sets.midcast.enfeebling.PotMACC = { ---481 MACC, 45% Duration, 50 Skill, 20 Potency---   
+		main="Crocea Mors", --50 MACC, 255 Enf Skill--
+		sub="Ammurapi Shield", --38 MACC--
+		ammon="Regal Gem", --35 MACC--	
+		head="Vitiation Chapeau +3", --45 MACC--
+		neck="Duelist's Torque +2", --30 MACC, Potency 10, Duration 25--
+		ear1="Snotra Earring", --10 MACC--
+		ear2="Regal Earring", --15 MACC Set Bonus--
+		body="Lethargy Sayon +2", --54 MACC, 16 Potency---
+		hands="Kaykaus Cuffs +1", 
+		ring1="Kishar Ring", --8 MACC--
+		ring2="Stikini ring +1", --8 MACC--
+		waist="Obstinate Sash", --10 MACC--
+		back=Cape_Int, --20 MACC--
+		legs="Chironic Hose", --54 MACC, Immuno +1, 13 Skill--
+		feet="Vitiation Boots +3" --43 MACC, 10 Pot, 16 Skill--
+    }	
 	sets.midcast.enfeebling.Potency = { --410 MACC, 55% Duration, 55 Skill, 44 Potency
-		main="Contemplator +1", --50 MACC, 255 Enf Skill--
+		main="Contemplator +1", --50 MACC, 255 EMACC Skill--
 		sub="Enki Strap", --38 MACC--
 		ammo="Regal Gem", --15 MACC, 10 Potency--
 		head="Vitiation chapeau +3", --37 MACC, 26 Skill--
@@ -420,17 +458,35 @@ Mhead = {}
 		ear2="Regal Earring", --15 MACC Set Bonus--
 		body="Lethargy Sayon +2", --54 MACC, 16 Potency---
 		hands="Regal Cuffs", --45 MACC, 20% Duration---
-		ring1="Stikini ring +1", --8 MACC--
+		ring1="Metamorph ring +1", --8 MACC--
 		ring2="Stikini ring +1", --8 MACC--
 		waist="Obstinate Sash", --10 MACC--
 		back=Cape_Int, --20 MACC--
 		legs="Chironic Hose", --54 MACC, Immuno +1, 13 Skill--
 		feet="Vitiation Boots +3" --43 MACC, 10 Pot, 16 Skill--
     }
-
+	
+	sets.midcast.enfeebling.skill = { --410 MACC, 55% Duration, 55 Skill, 44 Potency
+		main="Contemplator +1", --50 MACC, 255 EMACC Skill--
+		sub="Enki Strap", --38 MACC--
+		ammo="Regal Gem", --15 MACC, 10 Potency--
+		head="Vitiation chapeau +3", --37 MACC, 26 Skill--
+		neck="Duelist's Torque +2", --30 MACC, Potency 10, 25% Duration--
+		ear1="Snotra Earring", --10 MACC--
+		ear2="Regal Earring", --15 MACC Set Bonus--
+		body="Lethargy Sayon +2", --54 MACC, 16 Potency---
+		hands="Kaykaus Cuffs +1", 
+		ring1="Stikini ring +1", --8 MACC--
+		ring2="Stikini ring +1", --8 MACC--
+		waist="Obstinate Sash", --10 MACC--
+		back=Cape_Int, --20 MACC--
+		legs="Psycloth Lappas", 
+		feet="Vitiation Boots +3" --43 MACC, 10 Pot, 16 Skill--
+	}	
+		
 	sets.midcast.enfeebling.duration = { --340 MACC, 20 Potency, 85% Duration--
-		main="Contemplator +1", --50 MACC, 255 Enf Skill--
-		sub="Kaja Grip", --38 MACC--
+		main="Contemplator +1", --50 MACC, 255 MACC Skill--
+		sub="Enki Strap", --38 MACC--
 		ammo="Regal Gem", --15 MACC, 10 Potency--
 		head="Atro. Chapeau +2", --45 MACC--
 		neck="Duelist's Torque +2", --30 MACC, Potency 10, 25% Duration--
@@ -447,10 +503,10 @@ Mhead = {}
     }
 
 	sets.midcast.enfeebling.hybrid = { --415 MACC, 34 Potency, 29 Skill, 65% Duration--
-		main="Crocea Mors", --50 MACC, 255 Enf Skill--
+		main="Crocea Mors", --50 MACC, 255 MACC Skill--
 		sub="Ammurapi Shield", --38 MACC--
 		ammo="Regal Gem", --15 MACC, 10 Potency--
-		head="Atro. Chapeau +2", --45 MACC--
+		head="Vitiation Chapeau +3", --45 MACC--
 		neck="Duelist's Torque +2", --30 MACC, Potency 10, 25% Duration--
 		ear1="Snotra Earring", --10 MACC--
 		ear2="Regal Earring", --15 MACC Set Bonus--
@@ -594,7 +650,8 @@ Mhead = {}
         
 	sets.ws["Sanguine Blade"] = set_combine(sets.ws.magic, {
         head="Pixie Hairpin +1",
-        back=Cape_WSD
+        back=Cape_WSD,
+		waist = "Hachirin-no-Obi"
     })
 
     sets.ws["Seraph Blade"] = set_combine(sets.ws.magic, {
@@ -661,17 +718,20 @@ Mhead = {}
 	
 -----Automatic Assigning Enfeebling/Enhancing Magic Sets-----
  -----Enfeebling------
- -----MACC------
- sets.midcast["Sleep"] = sets.midcast.enfeebling.MACC
- sets.midcast["Sleepga"] = sets.midcast.enfeebling.MACC
- sets.midcast["Sleep II"] = sets.midcast.enfeebling.MACC
+ -----Pure MACC------
  sets.midcast["Frazzle II"] = sets.midcast.enfeebling.MACC
  sets.midcast["Dispel"] = sets.midcast.enfeebling.MACC 
  sets.midcast["Dispelga"] = sets.midcast.enfeebling.MACC 
- sets.midcast["Stun"] = sets.midcast.enfeebling.MACC 
- sets.midcast["Gravity"] = sets.midcast.enfeebling.MACC
+ -----MACC + Duration -----
+ sets.midcast["Stun"] = sets.midcast.enfeebling.M
+ sets.midcast["Sleep"] = sets.midcast.enfeebling.DurMACC
+ sets.midcast["Sleepga"] = sets.midcast.enfeebling.DurMACC
+ sets.midcast["Sleep II"] = sets.midcast.enfeebling.DurMACC 
  sets.midcast["Bind"] = sets.midcast.enfeebling.MACC
  sets.midcast["Break"] = sets.midcast.enfeebling.MACC
+ -----Dur + MACC-----
+ sets.midcast["Gravity"] = sets.midcast.enfeebling.PotMACC
+ sets.midcast["Gravity II"] = sets.midcast.enfeebling.PotMACC
  -----Potency-----
  sets.midcast["Slow"] = sets.midcast.enfeebling.Potency
  sets.midcast["Slow II"] = sets.midcast.enfeebling.Potency
@@ -684,12 +744,12 @@ Mhead = {}
  sets.midcast["Blind"] = sets.midcast.enfeebling.Potency
  sets.midcast["Blind II"] = sets.midcast.enfeebling.Potency
  -----Hybrid-----
- sets.midcast["Distract III"] = sets.midcast.enfeebling.Hybrid
- sets.midcast["Frazzle III"] = sets.midcast.enfeebling.Hybrid
  sets.midcast["Silence"] = sets.midcast.enfeebling.Hybrid
  -----Skill-----
+ sets.midcast["Distract III"] = sets.midcast.enfeebling.skill
+ sets.midcast["Frazzle III"] = sets.midcast.enfeebling.skill
+ sets.midcast["Poison II"] = sets.midcast.enfeebling.skill
  sets.midcast["Dia III"] = sets.midcast.enfeebling.duration
- sets.midcast["Poison II"] = sets.midcast.enfeebling.duration
  -----Emnity-----
  sets.midcast["Flash"] = sets.midcast.emnity
  

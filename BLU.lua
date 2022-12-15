@@ -44,11 +44,12 @@ function get_sets()
 
 		-- Weapon Sets --
 	
-	Weapon_Sets = {"Tizona", "Savage", "Maxentius/Thibron", "Nuking"} ----"Naegling/Sakpata",  , "OmenDef"
+	Weapon_Sets = {"Tizona", "Tizona/Sakpata", "Nuking", "Maxentius/Thibron"} ----"Savage", , "Nuking""Naegling/Sakpata",  , "OmenDef"
 	WeaponSetsIndex = 1	
 
 	sets.weapons = {}
 	sets.weapons["Tizona"] = {main = "Tizona", sub = "Thibron"}
+	sets.weapons["Tizona/Sakpata"] = {main = "Tizona", sub = "Sakpata's Sword"}
 	sets.weapons["Savage"] = {main = "Naegling", sub = "Thibron"}
 	sets.weapons["Naegling/Sakpata"]  = {main = "Naegling", sub = "Sakpata's Sword"}
 	sets.weapons["Maxentius/Thibron"] = {main = "Maxentius", sub = "Thibron"}
@@ -524,7 +525,7 @@ function precast(spell)
 		if spell.skill == 'Blue Magic' then
 			if player.status == 'Idle' and idle_ind == 3 and spell.english == "Dream Flower" then
 				equip(set_combine(sets.idle.Eva, {ring1 = "Kishar Ring", ring2 = "Defending Ring"}))
-			else				
+			else
 				equip(sets.precast.FC.Blue)
 			end
 		else

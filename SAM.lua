@@ -29,6 +29,7 @@ Cape = {}
 	sets.Idle = { 
 		sub="Utu Grip",
 		ammo="Staunch Tathlum +1",
+		--ammo="Horn Arrow",
 		head="Nyame Helm",
 		neck="Loricate Torque +1",
 		body="Kasuga Domaru +2",
@@ -41,6 +42,12 @@ Cape = {}
 		ear1="Cessance Earring",
 		ear2="Odnowa Earring +1",
 		back=Cape_TP
+		}
+
+
+	sets.Precast = {}
+	sets.Precast['Ranged Attack'] = { 
+		ammo="Horn Arrow"
 		}
 
 	--Weapons
@@ -58,6 +65,7 @@ Cape = {}
 	sets.tp["TP"] = {    
 		sub="Utu Grip",
 		ammo="Coiste Bodhar",
+		--ammo="Horn Arrow",
 		head="Flam. Zucchetto +2", --
 		neck="Sam. Nodowa +2",		
 		ear1="Telos Earring",
@@ -125,12 +133,12 @@ Cape = {}
 		ear1="Thrud Earring",
 		ear2={ name="Moonshade Earring", augments={'Accuracy+4','TP Bonus +250',}},   
 		body="Nyame Mail",
-		hands="Nyame Gauntlets",
+		hands="Kasuga Kote +3",
 		ring1="Epaminondas's Ring",
 		ring2="Regal Ring",
 		back=Cape_ws,
 		waist="Sailfi Belt +1",
-		legs="Wakido Haidate +3",
+		legs="Nyame Flanchard",
 		feet="Nyame Sollerets"
 		}
 
@@ -138,7 +146,6 @@ Cape = {}
 		head="Nyame Helm",
 		ear1="Friomisi Earring",
 		back=Cape_Magicws,
-		waist="Skrymir Cord",
 		legs="Nyame Flanchard"
 		})	
 			
@@ -195,6 +202,8 @@ function precast(spell)
         if sets.ja[spell.name] then
             equip(sets.ja[spell.name])
         end
+    elseif spell.action_type == 'Ranged Attack' then
+        equip(sets.Precast['Ranged Attack'])
     end
 end
 

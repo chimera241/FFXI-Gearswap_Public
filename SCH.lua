@@ -1,5 +1,5 @@
 NukeTypeIndex = 1
-NukeSet = {"Magic Attack Bonus","Magic Burst"} ----, "Vagary Low Dmg", "Vagary"
+NukeSet = {"Magic Attack Bonus","Magic Burst", "Occult Acumen"} ----, "Vagary Low Dmg", "Vagary"
 
 IdleSetIndex = 1
 IdleSet = {"Refresh", "DT"}
@@ -11,7 +11,7 @@ RegenSetIndex = 1
 RegenSet = {"Potency", "Duration"}
 
 WeaponSetIndex = 1
-WeaponSet = {"None", "Tupsimati", "Mpaca's Staff", "Marin Staff +1"}
+WeaponSet = {"Any", "Tupsimati", "Mpaca's Staff", "Marin Staff +1"}
 
 Kiting = false
 
@@ -42,9 +42,16 @@ function self_command(command)
         add_to_chat(122, 'Nuke Set: ' .. nuke_set)
     elseif command == "CycleWeaponSet" then
         WeaponSetIndex = WeaponSetIndex % #WeaponSet + 1
-        local weapon_set = WeaponSet[WeaponSetIndex]
 
-        equip_set(player.status)
+        local weapon_set = WeaponSet[WeaponSetIndex]
+        if weapon_set == 'Any' then
+            enable('main', 'sub')
+        else
+            enable('main', 'sub')
+            equip(sets.WeaponSet[weapon_set])
+            disable('main', 'sub')
+        end
+
         add_to_chat(122, 'Weapon Set: ' .. weapon_set)
     elseif command == 'CycleIdleSet' then
         IdleSetIndex = IdleSetIndex % #IdleSet + 1
@@ -114,22 +121,21 @@ function get_sets()
 		Mfeet.Phalanx = { name="Merlinic Crackows", augments={'"Dbl.Atk."+3','INT+8','Phalanx +2',}}
 
     sets.WeaponSet = {}
-    sets.WeaponSet["None"] = {}
-    sets.WeaponSet["Tupsimati"] = {main="Tupsimati", sub="Enki strap"}
-    sets.WeaponSet["Mpaca's Staff"] = {main="Mpaca's Staff", sub="Enki strap"}
-    sets.WeaponSet["Marin Staff +1"] = {main="Marin Staff +1", sub="Enki Strap"}
+    sets.WeaponSet["Any"] = {}
+    sets.WeaponSet["Tupsimati"] = {main="Tupsimati", sub="Khonsu"}
+    sets.WeaponSet["Mpaca's Staff"] = {main="Mpaca's Staff", sub="Khonsu"}
+    sets.WeaponSet["Marin Staff +1"] = {main="Marin Staff +1", sub="Khonsu"}
 
     sets.idle = {}
 	
-	sets.idle["DT"] = {
-		main="Malignance Pole",
-		sub="Kaja Grip",
+	sets.idle["DT"] = { 	
+		sub="Khonsu",
 		ammo="Staunch Tathlum +1",
 		head="Arbatel Bonnet +2",
 		neck="Loricate Torque +1",
 		ear1="Etiolation earring",
 		ear2="Odnowa earring +1",
-		body="Nyame Mail",
+		body="Shamash Robe",
 		hands="Nyame Gauntlets",
 		ring1="Shneddick ring",
 		ring2="Defending Ring",
@@ -141,10 +147,12 @@ function get_sets()
 	
     sets.idle["Refresh"] = set_combine(sets.idle["DT"], {
 		main="Mpaca's Staff",
+		sub="Khonsu",
 		ammo="Homiliary",
 		head="Befouled Crown",
 		neck="Sibyl Scarf",
 		body="Jhakri Robe +2",
+		hands="Volte Gloves",
 		ring1="Stikini Ring +1",
 		ring2="Stikini Ring +1",
 		waist="Fucho-no-obi",
@@ -170,7 +178,7 @@ function get_sets()
         ear1="",
         ear2="Dignitary's earring",
         body="Jhakri robe +2",
-        hands="Gazu Bracelet's",
+        hands="Gazu Bracelets +1",
         ring1="Chirich Ring +1",
         ring2="Chirich Ring +1",
         waist="Eschan stone",
@@ -191,7 +199,7 @@ function get_sets()
     sets.buff['Parsimony'] = {legs="Arbatel Pants +1"}
     sets.buff['Celerity'] = {feet="Pedagogy Loafers +1"}
     sets.buff['Alacrity'] = {feet="Pedagogy Loafers +1"}
-    sets.buff['Klimaform'] = {feet="Arbatel Loafers +2"}	
+    sets.buff['Klimaform'] = {feet="Arbatel Loafers +3"}	
     -- Ebulience set empy now as we get better damage out of a good Merlinic head
     sets.buff['Ebullience'] = {} -- I left it there still if it becomes needed so the SCH.lua file won't need modification should you want to use this set
 
@@ -255,8 +263,8 @@ function get_sets()
 		
     sets.midcast.elemental = {}
     sets.midcast.elemental["Magic Attack Bonus"] = {
-		main="Bunzi's Rod",
-		sub="Ammurapi Shield",
+	--	main="Bunzi's Rod",
+	--	sub="Ammurapi Shield",
 		ammo="Pemphredo tathlum",
 		head="Peda. M.board +3",
 		neck="Sanctity Necklace",
@@ -273,8 +281,9 @@ function get_sets()
     }
 	
     sets.midcast.elemental["Magic Burst"] = set_combine(sets.midcast.elemental["Magic Attack Bonus"], { --MBD 49, MBDII 11, MAB 287, MACC 190
-		main="Bunzi's Rod", --MBD 10, MAB35, MACC 40 + Augs Int 15
-		sub="Ammurapi Shield", --MAB 38, MACC 38
+	--	main="Bunzi's Rod", --MBD 10, MAB35, MACC 40 + Augs Int 15
+	--	sub="Ammurapi Shield", --MAB 38, MACC 38
+		sub="Khonsu",
 		head="Pedagogy Mortarboard +3", --MDBII 4, MAB 49, MACC 37, MB Acc +15 Int 39
         neck="Argute Stole +1", --MBD 7 (upgrade) MACC 25
 		ear1="Barkarole earring",
@@ -286,13 +295,30 @@ function get_sets()
 		back=nuke_cape,
         waist="Acuity Belt +1", --MACC 15, INT 16		
 		legs="Agwu's Slops", -- MBD 9, MAB 35, MACC 40, Int 49 + Aug
-        feet="Arbatel Loafers +2" -- MBDII 4, MAB 45, MACC 50, Int 29, Klimaform +20, Elemental Skill +28
+        feet="Arbatel Loafers +3" -- MBDII 4, MAB 45, MACC 50, Int 29, Klimaform +20, Elemental Skill +28
+    })
+
+
+    sets.midcast.elemental["Occult Acumen"] = set_combine(sets.midcast.elemental["Magic Attack Bonus"], { --50 Tp/MP Base
+        ammo="Seraphic Ampulla", --7 Occult
+        head="Mallquis Chapeau +2", --11 Occult
+        neck="Combatant's torque",
+        ear1="Dedition earring",
+        ear2="Crepuscular earring", --5 Store TP
+        body="Spaekona's Coat +2",
+        hands=Mhands.occult, --10
+        ring1="Chirich Ring +1", --6 Store TP
+        ring2="Crepuscular Ring", --6 Store TP
+        back=magic_atk_cape,
+        waist="Oneiros rope",  --20 TP/MP
+        legs="Perdition slops", --30 Occult
+        feet=Mfeet.occult, --11 Occult -----139 TP/100 MP
     })
 	
     -- Make sure you have a non weather obi in this set. Helix get bonus naturally no need Obi.	
     sets.midcast.helix = set_combine(sets.midcast.elemental["Magic Burst"], {
-		main="Bunzi's Rod",
-		sub="Culminus",        
+	--	main="Bunzi's Rod",
+	--	sub="Culminus",        
 		head="Agwu's Cap",
 		body="Agwu's Robe",	
 		ear1="Crematio Earring",
@@ -300,7 +326,7 @@ function get_sets()
 		ring2="Metamorph Ring +1",
 		waist="Acuity Belt +1",
 		legs="Agwu's Slops",
-		feet="Arbatel Loafers +2"
+		feet="Arbatel Loafers +3"
     })	
 	
     sets.midcast.elemental["Vagary Low Dmg"] = {
@@ -322,7 +348,7 @@ function get_sets()
 	
     sets.midcast.elemental["Vagary"] = {
 		main="Tupsimati",
-		sub="Enki Strap",
+		sub="Khonsu",
 		ammo="Incantor Stone",
 		head="Peda. M.board +3",
 		neck="Voltsurge Torque",
@@ -374,8 +400,8 @@ function get_sets()
     })
 
     sets.midcast.cure = set_combine(sets.precast.fc, { --74 Cure Pot, 34 Con MP, 4% Cure Pot II
-		main="Chatoyant Staff", --10% Cure Pot
-		sub="Enki Strap",
+		main="Raetic Rod +1", 
+		sub="Genmei Shield",
 		ammo="Pemphredo Tathlum", -- 4 Con MP
 		head="Vanya Hood", --10 Cure Pot, 6 Con MP
 		neck="Nodens Gorget", --5% Cure Pot
@@ -405,6 +431,7 @@ function get_sets()
 
     sets.midcast.enhancement_duration = {
 		main="Musa",
+		sub="Kaja Grip",
 		head="Telchine cap",
 		body="Pedagogy Gown +3",
 		hands="Telchine Gloves",
@@ -484,9 +511,9 @@ function get_sets()
 		feet=Mfeet.Phalanx
 	})	
 	
-
     sets.ws = {}
     sets.ws["Shattersoul"] = {}
+	
     sets.ws["Myrkr"] = {
         ammo="Hydrocera",
         head="Peda. M.Board +3",
@@ -500,7 +527,23 @@ function get_sets()
         ring2="",
         waist="Luminary sash",
         legs="Amalric Slops +1",
-        feet="Arbatel Loafers +1"
+        feet="Arbatel Loafers +3"
+    }
+	
+    sets.ws["Cataclysm"] = {
+        ammo="Hydrocera",
+        head="Pixie Hairpin +1",
+        neck="Argute Stole +1",
+        ear1="Regal earring",
+        ear2="Malignance earring",
+		body="Nyame Mail",
+        hands="Nyame Gauntlets",
+        ring1="Prolix ring",
+        ring2="Freke Ring",
+		back=nuke_cape,
+        waist="Luminary sash",
+        legs="Amalric Slops +1",
+        feet="Nyame Sollerets"
     }
 
 end
@@ -677,12 +720,12 @@ function equip_set(status)
         equip(sets.idle[idleSet])
         lockstyle()			
     end
+		
+    local weapon_set_mode = WeaponSet[WeaponSetIndex]
+    if weapon_set_mode ~= "Any" then
+        equip(sets.WeaponSet[weapon_set_mode])
+    end
     
-    
-    local weapon_set = WeaponSet[WeaponSetIndex]
-    equip(sets.WeaponSet[weapon_set])
-
-
     if Kiting then
         equip(set_combine(set_to_equip, sets.idle["Kiting"]))
     end

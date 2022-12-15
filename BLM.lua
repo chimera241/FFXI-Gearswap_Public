@@ -5,7 +5,7 @@ IdleSetIndex = 1
 IdleSet = {"Refresh", "DT", "Death"}
 
 WeaponSetIndex = 1
-WeaponSet = {"Mpaca", "Marin Staff +1", "Any"}
+WeaponSet = {"Mpaca's Staff", "Marin Staff +1", "Any"}
 
 ObiOn = true
 
@@ -114,7 +114,6 @@ function get_sets()
 	Mlegs = {}	
 		Mlegs.Refresh = { name="Merlinic Shalwar", augments={'"Fast Cast"+2','Pet: "Dbl. Atk."+1','"Refresh"+2','Accuracy+15 Attack+15','Mag. Acc.+19 "Mag.Atk.Bns."+19',}}
 		Mlegs.Phalanx = { name="Merlinic Shalwar", augments={'CHR+9','Phys. dmg. taken -1%','Phalanx +2','Mag. Acc.+20 "Mag.Atk.Bns."+20',}}
-		
 	Mfeet= {}
 		Mfeet.FC = { name="Merlinic Crackows", augments={'Mag. Acc.+14 "Mag.Atk.Bns."+14','"Fast Cast"+7','Mag. Acc.+6','"Mag.Atk.Bns."+8',}}
 		Mfeet.Occult = { name="Merlinic Crackows", augments={'Mag. Acc.+17','"Occult Acumen"+11',}}
@@ -122,8 +121,8 @@ function get_sets()
 
 
     sets.WeaponSet = {}
-    sets.WeaponSet["Mpaca's Staff"] = {main="Mpaca's Staff", sub="Kaja strap"}
-    sets.WeaponSet["Marin Staff +1"] = {main="Marin Staff +1", sub="Kaja strap"}
+    sets.WeaponSet["Mpaca's Staff"] = {main="Mpaca's Staff", sub="Khonsu"}
+    sets.WeaponSet["Marin Staff +1"] = {main="Marin Staff +1", sub="Khonsu"}
 
     sets.idle = {}
     
@@ -146,7 +145,7 @@ function get_sets()
     sets.idle["Refresh"] = set_combine(sets.idle["DT"], {
         ammo="Staunch tathlum +1",
         head="Befouled crown",
-        body="Jhakri Robe +2",
+		hands="Volte Gloves",
         ring1="Stikini Ring +1",
         ring2="Stikini Ring +1",
 		legs=Mlegs.Refresh
@@ -165,7 +164,7 @@ function get_sets()
         ear1="Telos earring",
         ear2="Dignitary's earring",
         body="Nyame mail",
-        hands="Gazu bracelet +1",
+        hands="Gazu bracelets +1",
         ring1="Chirich Ring +1",
         ring2="Chirich Ring +1",
         back=tp_cape,
@@ -231,7 +230,7 @@ function get_sets()
     sets.midcast.elemental = {}
     sets.midcast.elemental["Magic Attack Bonus"] = {
         ammo="Pemphredo tathlum",
-        head="Jhakri Coronal +2",
+        head="Agwu's Cap",
         body="Amalric Doublet +1",
         hands="Amalric Gages +1",
         legs="Archmage's Tonban +3",
@@ -246,19 +245,19 @@ function get_sets()
     }
 
     sets.midcast.elemental["Occult Acumen"] = set_combine(sets.midcast.elemental["Magic Attack Bonus"], {
-        ammo="Seraphic ampulla",
-        head="Mallquis chapeau +2",
+        ammo="Seraphic Ampulla", --7 Occult
+        head="Mallquis Chapeau +2", --11 Occult
         neck="Combatant's torque",
         ear1="Dedition earring",
-        ear2="Crepuscular earring",
+        ear2="Crepuscular earring", --5 Store TP
         body="Spaekona's Coat +2",
-        hands=Mhands.occult,
-        ring1="Chirich Ring +1",
-        ring2="Chirich Ring +1",
+        hands=Mhands.occult, --10
+        ring1="Chirich Ring +1", --6 Store TP
+        ring2="Crepuscular Ring", --6 Store TP
         back=magic_atk_cape,
-        waist="Oneiros rope",
-        legs="Perdition slops",
-        feet=Mfeet.occult,
+        waist="Oneiros rope",  --20 TP/MP
+        legs="Perdition slops", --30 Occult
+        feet=Mfeet.occult, --11 Occult -----139 TP/100 MP
     })
 
     local deathSet = set_combine(sets.midcast.elemental["Magic Attack Bonus"], {
@@ -295,13 +294,13 @@ function get_sets()
         neck="Sorcerer's Stole +1", --MB: 6 
         ear1="Malignance earring",
         ear2="Regal earring",        
-        body="Wicce Coat +2", --MB: 9 MB2:9
+        body="Wicce Coat +3", --MB: 9 MB2:9
         hands="Agwu's Gages", --MB2: 3 
         left_ring="Metamorph ring +1",
         right_ring="Freke ring",    
         back=magic_atk_cape, --MB 5 
         waist="Acuity belt +1",
-		legs="Wicce Chausses +2", --MB: 10
+		legs="Wicce Chausses +3", --MB: 15
         feet="Agwu's Pigaches" --MB: 6
     })
 
@@ -311,34 +310,34 @@ function get_sets()
 
     sets.midcast.elemental.debuff = {
         ammo="Pemphredo tathlum",
-        head="Spae. Petasos +3",
-        body="Spaekona's Coat +2",
-        hands="Spae. Gloves +2",
-        legs="Arch. Tonban +3",
-        feet="Arch. Sabots +3",
+        head="Spae. Petasos +2",
         neck="Src. Stole +1",
-        waist="Acuity belt +1",
         left_ear="Regal Earring",
         right_ear="Malignance earring",
+        body="Spaekona's Coat +2",
+        hands="Spae. Gloves +2",
         left_ring="Freke Ring",
         right_ring="Metamorph ring +1",
-        back=magic_atk_cape
+        back=magic_atk_cape,
+        waist="Acuity belt +1",
+        legs="Arch. Tonban +3",
+        feet="Arch. Sabots +3"
     }
 
     sets.midcast.enfeebling = set_combine(sets.midcast.fast_recast, {
         ammo="Pemphredo tathlum",
-        head = "Spaekona's petasos +3",
+        head = "Spaekona's petasos +2",
         neck = "Sorcerer's stole +1",
         left_ear = "Regal earring",
         right_ear="Malignance earring",
         body = "Spaekona's coat +2",
-        hands= "Spaekona's gloves +2",
+        hands= "Regal Cuffs",
         ring1="Stikini Ring +1",
-        ring2="Kishar Ring",
+        ring2="Metamorph Ring +1",
         back=magic_int_ws,
         waist="Acuity Belt +1",
-        legs="Spaekona's tonban +3",
-        feet="Spaekona's sabots +3"
+        legs="Spaekona's tonban +2",
+        feet="Spaekona's sabots +2"
     })
 
     sets.midcast['Impact'] = set_combine(sets.midcast.enfeebling, {
@@ -348,6 +347,8 @@ function get_sets()
     })
 
     sets.midcast.cure = set_combine(sets.midcast.fast_recast, {
+		main="Raetic Rod +1", 
+		sub="Genmei Shield",
 		head="Vanya Hood",
 		neck="Aife's medal",
 		ear1="Loquac. earring",
@@ -386,7 +387,7 @@ function get_sets()
 		ring1="Stikini Ring +1",
 		ring2="Evanescence Ring",
 		waist="Fucho-no-obi",
-		legs="Chironic Hose",
+        legs="Spaekona's tonban +2",
 		feet="Agwu's Pigaches"
     })
 
@@ -398,7 +399,7 @@ function get_sets()
 		ring1="Stikini Ring +1",
 		ring2="Evanescence Ring",
 		waist="Fucho-no-obi",
-		legs="Chironic Hose",
+        legs="Spaekona's tonban +2",
 		feet="Agwu's Pigaches"
     })
 
@@ -490,15 +491,15 @@ function get_sets()
     -- STR 30% INT 30% | Magical
     sets.ws["Cataclysm"] = {
         head="Pixie hairpin +1",
-        neck="Sorcerer's stole +2",
+        neck="Sorcerer's stole +1",
         ear1="Regal earring",
         ear2="Malignance earring",
         body="Nyame Mail",
-        hands="Jhakri cuffs +2",
+        hands="Nyame Gauntlets",
 --      ring1="Archon ring",
         ring2="Freke ring",
         back=magic_int_ws,
-        waist="Orpheus's sash",
+        ---waist="Orpheus's sash",
         legs="Archmage's tonban +3",
         feet="Nyame Sollerets"
 		}
