@@ -13,7 +13,10 @@ EatTp = false
 
 Kiting = false
 
+AFBodyOn = false
+
 send_command('bind f9 gs c CycleNukeSet')
+send_command('bind @f9 gs c ToggleAFBody')
 send_command('bind ^f9 gs c CycleWeaponSet')
 send_command('bind f10 gs c CycleIdleSet')
 send_command('bind f11 gs c EatTp')
@@ -32,6 +35,19 @@ function file_unload()
 
     enable('main', 'sub')
 end
+
+function help()
+    add_to_chat(122, 'Keyboard Bindings:')
+    add_to_chat(122, 'F9: Cycle Nuke Sets')
+    add_to_chat(122, 'Win + F9: Lock AF Body and Burst set for all nukes')
+    add_to_chat(122, 'Ctrl + F9: Cycle Weapon (Any > Mpacas Staff > Marin Staff +1)')
+    add_to_chat(122, 'F10: Cycle Idle Sets (Refresh > DT > Death)')
+    add_to_chat(122, 'F11: Eat TP Mode - Not functioning')
+    add_to_chat(122, 'Ctrl + F11: Toggle Obi - Not functioning until I rebuy my OShash!')
+    add_to_chat(122, 'Ctrl + k: Toggle kiting')
+end
+
+help()
 
 function self_command(command)
     -- print(command)
@@ -89,6 +105,14 @@ function self_command(command)
             send_command('@input /echo ----- Obi On -----')
         else
             send_command('@input /echo ----- Obi Off -----')
+        end
+        equip_set(player.status)
+    elseif command == 'ToggleAFBody' then
+        AFBodyOn = not AFBodyOn
+        if AFBodyOn then
+            send_command('@input /echo ----- AF Body Locked On -----')
+        else
+            send_command('@input /echo ----- Body Slot Unlocked Off -----')
         end
         equip_set(player.status)
     end
@@ -303,7 +327,11 @@ function get_sets()
 		legs="Wicce Chausses +3", --MB: 15
         feet="Agwu's Pigaches" --MB: 6
     })
-
+	
+	sets.midcast.elemental.FreeBurst = set_combine(sets.midcast.elemental["Magic Burst"], {
+		body="Spaekona's Coat +2"
+	})
+		
     sets.midcast.elemental.AncientMagic = set_combine(sets.midcast.elemental["Magic Attack Bonus"], {
          head = "Archmage's petasos +3"
     })
@@ -605,7 +633,10 @@ function midcast(spell)
                     equip( set_combine(sets.midcast.elemental[nuke_set], {waist = "Orpheus's sash"}))                                
                 elseif (world.day_element == spell.element or world.weather_element == spell.element) and ObiOn then
                     equip({waist = "Hachirin-no-Obi"})
-                end
+                elseif AFBodyOn then
+					equip(sets.midcast.elemental.FreeBurst)
+				end
+			
 
                 if AncientMagic[spell.english] then
                     equip(sets.midcast.elemental.AncientMagic)
