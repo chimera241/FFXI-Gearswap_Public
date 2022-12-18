@@ -19,7 +19,7 @@ send_command('bind f9 gs c CycleNukeSet')
 send_command('bind @f9 gs c ToggleAFBody')
 send_command('bind ^f9 gs c CycleWeaponSet')
 send_command('bind f10 gs c CycleIdleSet')
-send_command('bind f11 gs c EatTp')
+send_command('bind @f11 gs c EatTp')
 send_command('bind ^f11 gs c ToggleObi')
 send_command('bind f12 gs c RefreshSet')
 send_command('bind ^k gs c toggle kiting')
@@ -27,8 +27,9 @@ send_command('bind ^k gs c toggle kiting')
 function file_unload()
     send_command('unbind f9')
     send_command('unbind ^f9')
+    send_command('unbind @f9')
     send_command('unbind f10')
-    send_command('unbind f11')
+    send_command('unbind @f11')
     send_command('unbind ^f11')
     send_command('unbind f12')
     send_command('unbind ^k')
@@ -42,7 +43,7 @@ function help()
     add_to_chat(122, 'Win + F9: Lock AF Body and Burst set for all nukes')
     add_to_chat(122, 'Ctrl + F9: Cycle Weapon (Any > Mpacas Staff > Marin Staff +1)')
     add_to_chat(122, 'F10: Cycle Idle Sets (Refresh > DT > Death)')
-    add_to_chat(122, 'F11: Eat TP Mode - Not functioning')
+    add_to_chat(122, 'Win + F11: Eat TP Mode - Not functioning')
     add_to_chat(122, 'Ctrl + F11: Toggle Obi - Not functioning until I rebuy my OShash!')
     add_to_chat(122, 'Ctrl + k: Toggle kiting')
 end
@@ -119,14 +120,12 @@ function self_command(command)
 end
 
 function get_sets()
-
-    local magic_atk_cape = { name="Taranus's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','"Mag.Atk.Bns."+10','Damage taken-5%',}}
-    local idle_cape = { name="Taranus's Cape", augments={'VIT+20','Eva.+20 /Mag. Eva.+20','Mag. Evasion+10','Phys. dmg. taken-10%'}}
-    local magic_int_ws = { name="Taranus's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','Weapon skill damage +10%','Damage taken-5%',}}
-    local death_cape = { name="Taranus's Cape", augments={'MP+60','Mag. Acc+20 /Mag. Dmg.+20','MP+20','"Mag.Atk.Bns."+10','Spell interruption rate down-10%'}}
-    local tp_cape = { name="Taranus's Cape", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+5','"Dbl.Atk."+10','Damage taken-5%',}}
-    local ws_boots = { name="Merlinic Crackows", augments={'Attack+25','Crit.hit rate+3','Weapon skill damage +10%','Mag. Acc.+16 "Mag.Atk.Bns."+16'}}
-
+	Cape = {}
+		Cape.TP = { name="Taranus's Cape", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+5','"Dbl.Atk."+10','Damage taken-5%',}}
+		Cape.Nuke = { name="Taranus's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','"Mag.Atk.Bns."+10','Damage taken-5%',}}
+		Cape.WSD = { name="Taranus's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','Weapon skill damage +10%','Damage taken-5%',}}
+		Cape.Death = { name="Taranus's Cape", augments={'MP+60','Mag. Acc+20 /Mag. Dmg.+20','MP+20','"Fast Cast"+10','Damage taken-5%',}}
+		
 	Mhead = {}
 		Mhead.Phalanx = { name="Merlinic Hood", augments={'Attack+11','"Mag.Atk.Bns."+8','Phalanx +4','Accuracy+5 Attack+5',}}
 		Mhead.FC = { name="Merlinic Hood", augments={'"Mag.Atk.Bns."+22','"Fast Cast"+7','INT+9',}}
@@ -160,7 +159,7 @@ function get_sets()
         hands="Nyame Gauntlets",
         ring1="Shneddick ring",
         ring2="Defending ring",
-        back=magic_att_cape,
+        back=Cape.TP,
         waist="Slipor sash",
         legs="Nyame Flanchard",
         feet="Archmage's sabots +2"
@@ -191,7 +190,7 @@ function get_sets()
         hands="Gazu bracelets +1",
         ring1="Chirich Ring +1",
         ring2="Chirich Ring +1",
-        back=tp_cape,
+        back=Cape.TP,
         waist="Grunfeld rope",
         legs="Archmage's tonban +3",
         feet="Nyame sollerets"
@@ -205,7 +204,7 @@ function get_sets()
 	sets.precast.ja = {}
     sets.precast.ja['Manafont'] = { body = "Archmage's coat +3"}
     sets.precast.ja['Elemental Seal'] = {}
-    sets.precast.ja['Mana Wall'] = { main="Archmage's staff", feet = "Wicce sabots +1" }
+    sets.precast.ja['Mana Wall'] = { main="Archmage's staff", feet = "Wicce sabots +2" }
     sets.precast.ja['Enmity Douse'] = {}
     sets.precast.ja['Manawell'] = {}
     sets.precast.ja['Subtle Sorcery'] = {}
@@ -221,7 +220,7 @@ function get_sets()
 		hands="Agwu's gages", --fast cast 6%
 		ring1="Kishar ring", --fast cast 4%
 		ring2="Prolix Ring", --fast cast 2%
-		back=death_cape, --10%
+		back=Cape.Death, --10%
 		waist="Embla sash", --fast cast 5%
 		legs="Agwu's Slops", --7%
 		feet=Mfeet.FC --fast cast 12% -- Make set for FC
@@ -255,17 +254,17 @@ function get_sets()
     sets.midcast.elemental["Magic Attack Bonus"] = {
         ammo="Pemphredo tathlum",
         head="Agwu's Cap",
-        body="Amalric Doublet +1",
-        hands="Amalric Gages +1",
-        legs="Archmage's Tonban +3",
-        feet="Agwu's Pigaches",
         neck="Sibyl Scarf",
-        waist="Acuity belt +1",
         ear1="Malignance earring",
-        ear2="Regal earring",        
-        left_ring="Metamorph ring +1",
-        right_ring="Freke ring",        
-        back=magic_atk_cape,
+        ear2="Regal earring", 
+        body="Amalric Doublet +1",
+        hands="Amalric Gages +1",       
+        ring1="Metamorph ring +1",
+        ring2="Freke ring",       
+        back=Cape.Nuke,
+        waist="Acuity belt +1", 
+        legs="Archmage's Tonban +3",
+        feet="Agwu's Pigaches"
     }
 
     sets.midcast.elemental["Occult Acumen"] = set_combine(sets.midcast.elemental["Magic Attack Bonus"], {
@@ -278,7 +277,6 @@ function get_sets()
         hands=Mhands.occult, --10
         ring1="Chirich Ring +1", --6 Store TP
         ring2="Crepuscular Ring", --6 Store TP
-        back=magic_atk_cape,
         waist="Oneiros rope",  --20 TP/MP
         legs="Perdition slops", --30 Occult
         feet=Mfeet.occult, --11 Occult -----139 TP/100 MP
@@ -295,7 +293,7 @@ function get_sets()
 		hands="Agwu's Gages",
 		ring1="Mephitas's Ring +1", 
 		ring2="Archon ring",
-		back=death_cape,
+		back=Cape.Death,
 		waist="Acuity Belt +1",
 		legs="Amalric Slops +1",
 		feet="Amalric Nails +1"
@@ -322,7 +320,7 @@ function get_sets()
         hands="Agwu's Gages", --MB2: 3 
         left_ring="Metamorph ring +1",
         right_ring="Freke ring",    
-        back=magic_atk_cape, --MB 5 
+        back=Cape.Nuke, --MB 5 
         waist="Acuity belt +1",
 		legs="Wicce Chausses +3", --MB: 15
         feet="Agwu's Pigaches" --MB: 6
@@ -346,7 +344,7 @@ function get_sets()
         hands="Spae. Gloves +2",
         left_ring="Freke Ring",
         right_ring="Metamorph ring +1",
-        back=magic_atk_cape,
+        back=Cape.Nuke,
         waist="Acuity belt +1",
         legs="Arch. Tonban +3",
         feet="Arch. Sabots +3"
@@ -362,7 +360,7 @@ function get_sets()
         hands= "Regal Cuffs",
         ring1="Stikini Ring +1",
         ring2="Metamorph Ring +1",
-        back=magic_int_ws,
+        back=Cape.WSD,
         waist="Acuity Belt +1",
         legs="Spaekona's tonban +2",
         feet="Spaekona's sabots +2"
@@ -456,7 +454,7 @@ function get_sets()
         hands="Jhakri cuffs +2",
         ring1="Metamorph ring +1",
         ring2="Freke ring",
-        back=magic_int_ws,
+        back=Cape.WSD,
         waist="Fotia belt",
         legs="Archmage's tonban +3",
         feet=ws_boots
@@ -471,7 +469,7 @@ function get_sets()
         hands="Jhakri cuffs +2",
         ring1="Metamorph ring +1",
         ring2="Freke ring",
-        back=magic_int_ws,
+        back=Cape.WSD,
         waist="Acuity Belt +1",
         legs="Archmage's tonban +3",
         feet="Nyame Sollerets"
@@ -518,18 +516,18 @@ function get_sets()
 
     -- STR 30% INT 30% | Magical
     sets.ws["Cataclysm"] = {
-        head="Pixie hairpin +1",
-        neck="Sorcerer's stole +1",
-        ear1="Regal earring",
-        ear2="Malignance earring",
-        body="Nyame Mail",
-        hands="Nyame Gauntlets",
---      ring1="Archon ring",
-        ring2="Freke ring",
-        back=magic_int_ws,
-        ---waist="Orpheus's sash",
-        legs="Archmage's tonban +3",
-        feet="Nyame Sollerets"
+		head="Pixie hairpin +1",
+		neck="Sorcerer's stole +1",
+		ear1="Regal earring",
+		ear2="Malignance earring",
+		body="Nyame Mail",
+		hands="Nyame Gauntlets",
+		---ring1="Archon ring",
+		ring2="Freke ring",
+		back=Cape.WSD,
+		---waist="Orpheus's sash",
+		legs="Archmage's tonban +3",
+		feet="Nyame Sollerets"
 		}
 
     -- INT 80%  | Magical
@@ -537,19 +535,19 @@ function get_sets()
 
     -- MAX MP
     sets.ws["Myrkr"] = {
-        ammo="Hydrocera",
-        head="Pixie Hairpin +1",
-        ear1="Etiolation earring",
-        ear2="Loquacious earring",
-        neck="Sanctity necklace",
-        body="Spaekona's coat +2",
-        hands="Spaekona's gloves +3",
-        ring1="Mephitas's ring +1",
-        ring2="Metamorph ring +1",
-        back=death_cape,
-        waist="Luminary sash",
-        legs="Spaekona's tonban +3",
-        feet="Spaekona's sabots +3"
+		ammo="Hydrocera",
+		head="Amalric Coif +1",
+		ear1="Etiolation earring",
+		ear2="Loquacious earring",
+		neck="Sanctity necklace",
+		body="Spaekona's coat +2",
+		hands="Spaekona's gloves +3",
+		ring1="Mephitas's ring +1",
+		ring2="Metamorph ring +1",
+		back=Cape.Death,
+		waist="Luminary sash",
+		legs="Spaekona's tonban +2",
+		feet="Spaekona's sabots +2"
     }
 
     coroutine.schedule(lockstyle,8)

@@ -15,13 +15,20 @@ WeaponSet = {"Any", "Tupsimati", "Mpaca's Staff", "Marin Staff +1"}
 
 Kiting = false
 
+EatTp = false
+
+
 send_command('bind f9 gs c CycleNukeSet')
 send_command('bind ^f9 gs c CycleWeaponSet')
 send_command('bind f10 gs c CycleRegenSet')
 send_command('bind f11 gs c CycleIdleSet')
 send_command('bind ^f11 gs c CycleEngagedSet')
+send_command('bind @f11 gs c EatTp')
 send_command('bind f12 gs c RefreshSet')
 send_command('bind ^k gs c toggle kiting')
+send_command('bind !h input /item "Holy Water" <me>')
+
+
 
 function file_unload()
     send_command('unbind f9')
@@ -31,7 +38,23 @@ function file_unload()
     send_command('unbind ^f11')
     send_command('unbind f12')
     send_command('unbind ^k')
+    send_command('unbind !h')
 end
+
+function help()
+    add_to_chat(122, 'Keyboard Bindings:')
+    add_to_chat(122, 'F9: Cycle Nuke Sets')
+    ---add_to_chat(122, 'Win + F9: Lock AF Body and Burst set for all nukes')
+    add_to_chat(122, 'Ctrl + F9: Cycle Weapon (Any > Tupsimati > Mpacas Staff > Marin Staff +1)')
+    add_to_chat(122, 'F10: Cycle Regen Sets (Duration > Potency)')
+    add_to_chat(122, 'F11: Cycle Idle Sets (Refresh > DT )')
+    add_to_chat(122, 'Ctrl + F11: Cycle Engaged Sets (Accuracy > Default)')
+    add_to_chat(122, 'Win + F11: Eat TP Mode')
+    ---add_to_chat(122, 'Ctrl + F11: Toggle Obi - Not functioning until I rebuy my OShash!')
+    add_to_chat(122, 'Ctrl + k: Toggle kiting')
+end
+
+help()
 
 function self_command(command)
     -- print(command)
@@ -88,6 +111,14 @@ function self_command(command)
             send_command('@input /echo ----- Kiting Set Off -----')
         end
         equip_set(player.status)
+    elseif command == 'EatTp' then
+        EatTp = not EatTp
+        if EatTp then
+            send_command('@input /echo ----- Eat Tp On -----')
+        else
+            send_command('@input /echo ----- Eat Tp Off -----')
+        end
+        equip_set(player.status)
     end
 end
 
@@ -129,6 +160,7 @@ function get_sets()
     sets.idle = {}
 	
 	sets.idle["DT"] = { 	
+		main="Malignance Pole", 
 		sub="Khonsu",
 		ammo="Staunch Tathlum +1",
 		head="Arbatel Bonnet +2",
@@ -151,7 +183,7 @@ function get_sets()
 		ammo="Homiliary",
 		head="Befouled Crown",
 		neck="Sibyl Scarf",
-		body="Jhakri Robe +2",
+		body="Shamash Robe",
 		hands="Volte Gloves",
 		ring1="Stikini Ring +1",
 		ring2="Stikini Ring +1",
@@ -201,7 +233,7 @@ function get_sets()
     sets.buff['Alacrity'] = {feet="Pedagogy Loafers +1"}
     sets.buff['Klimaform'] = {feet="Arbatel Loafers +3"}	
     -- Ebulience set empy now as we get better damage out of a good Merlinic head
-    sets.buff['Ebullience'] = {} -- I left it there still if it becomes needed so the SCH.lua file won't need modification should you want to use this set
+    sets.buff['Ebullience'] = {head="Arbatel bonnet +2"} -- I left it there still if it becomes needed so the SCH.lua file won't need modification should you want to use this set
 
 
     -- When spell school is aligned with grimoire, swap relevent pieces -- Can also use Arbatel +1 set here if you value 1% quickcast procs per piece. (2+ pieces)  
@@ -212,9 +244,11 @@ function get_sets()
 		feet="Academic's loafers +3",
     }
     sets.precast = {}
-    sets.precast.fc = {    --71% fc
+    sets.precast.fc = {    --88% fc
+		main="Musa", --9% FC
+		sub="Khonsu", --4% Haste
 		ammo="Incantor stone", --fast cast 2%
-		head="Pedagogy Mortarboard +3", --fast cast 13%
+		head="Amalric Coif +1", --fast cast 13%
 		neck="Voltsurge Torque", --fast cast 4%
 		ear1="Loquacious Earring", --fast cast 2%
 		ear2="Malignance earring", --fast cast 4%
@@ -224,7 +258,7 @@ function get_sets()
 		ring2="Prolix Ring", --fast cast 5%
 		back=idle_cape, --fast cast 10%
 		waist="Embla Sash", --fast cast 2%
-		legs="Artsieq Hose", --fast cast 5%
+		legs="Agwu's Slops", --fast cast 7%
 		feet=Mfeet.FC --fast cast 12%
     }
 
@@ -263,8 +297,8 @@ function get_sets()
 		
     sets.midcast.elemental = {}
     sets.midcast.elemental["Magic Attack Bonus"] = {
-	--	main="Bunzi's Rod",
-	--	sub="Ammurapi Shield",
+		main="Bunzi's Rod",
+		sub="Ammurapi Shield",
 		ammo="Pemphredo tathlum",
 		head="Peda. M.board +3",
 		neck="Sanctity Necklace",
@@ -281,8 +315,7 @@ function get_sets()
     }
 	
     sets.midcast.elemental["Magic Burst"] = set_combine(sets.midcast.elemental["Magic Attack Bonus"], { --MBD 49, MBDII 11, MAB 287, MACC 190
-	--	main="Bunzi's Rod", --MBD 10, MAB35, MACC 40 + Augs Int 15
-	--	sub="Ammurapi Shield", --MAB 38, MACC 38
+		main="Tupsimati", --MBD 10, MAB35, MACC 40 + Augs Int 15
 		sub="Khonsu",
 		head="Pedagogy Mortarboard +3", --MDBII 4, MAB 49, MACC 37, MB Acc +15 Int 39
         neck="Argute Stole +1", --MBD 7 (upgrade) MACC 25
@@ -317,14 +350,11 @@ function get_sets()
 	
     -- Make sure you have a non weather obi in this set. Helix get bonus naturally no need Obi.	
     sets.midcast.helix = set_combine(sets.midcast.elemental["Magic Burst"], {
-	--	main="Bunzi's Rod",
-	--	sub="Culminus",        
-		head="Agwu's Cap",
+		main="Bunzi's Rod",
+		sub="Culminus",      
 		body="Agwu's Robe",	
 		ear1="Crematio Earring",
 		ear2="Malignance Earring",
-		ring2="Metamorph Ring +1",
-		waist="Acuity Belt +1",
 		legs="Agwu's Slops",
 		feet="Arbatel Loafers +3"
     })	
@@ -363,19 +393,10 @@ function get_sets()
 		legs="Telchine Braconi",
 		feet=MFeet_Drain
     }
-
-    sets.midcast['Impact'] = set_combine(sets.midcast.enfeebling, {
-        head=empty,
-        ring2="Archon ring",
-        body='Twilight cloak'
-    })
-	
-    -- Make sure you have a non weather obi in this set. Helix get bonus naturally no need Obi.	
-    sets.midcast.dark_helix = set_combine(sets.midcast.helix, {
-		head="Pixie Hairpin +1"
-	})
     
     sets.midcast.enfeebling = set_combine(sets.precast.fc, {
+		main="Contemplator +1", 
+		sub="Khonsu",
 		ammo="Hydrocera",
 		head="Academic's Mortar. +2",
 		neck="Argute Stole +1",
@@ -386,7 +407,7 @@ function get_sets()
 		ring1="Kishar Ring",
 		ring2="Stikini Ring +1",
 		back=nuke_cape,
-		waist="Luminary sash",
+		waist="Obstinate Sash",
 		legs=chir_macc,
 		feet="Academic's Loafers +3"
     })
@@ -398,6 +419,18 @@ function get_sets()
     sets.midcast.mnd_enfeebling = set_combine(sets.midcast.enfeebling, {
         back=idle_cape
     })
+	
+    sets.midcast['Impact'] = set_combine(sets.midcast.enfeebling, {
+        head=empty,
+        body='Twilight cloak',
+        ring1="Archon ring"
+    })
+	
+    -- Make sure you have a non weather obi in this set. Helix get bonus naturally no need Obi.	
+    sets.midcast.dark_helix = set_combine(sets.midcast.helix, {
+		head="Pixie Hairpin +1"
+	})
+
 
     sets.midcast.cure = set_combine(sets.precast.fc, { --74 Cure Pot, 34 Con MP, 4% Cure Pot II
 		main="Raetic Rod +1", 
@@ -457,13 +490,13 @@ function get_sets()
     sets.midcast.drain_aspir = set_combine(sets.precast.fc, {
 		head="Pixie Hairpin +1",
 		neck="Erra pendant",
-		legs="Chironic Hose",
-		feet=MFeet_Drain,
-		ring1="Stikini Ring +1",
-		ring2="Evanescence Ring",
 		ear1="Hirudinea Earring",
 		ear2="Malignance earring",
-		waist="Fucho-no-obi"
+		ring1="Stikini Ring +1",
+		ring2="Evanescence Ring",
+		waist="Fucho-no-obi",
+		legs="Chironic Hose",
+		feet=MFeet_Drain
     })
 
     sets.midcast.healing = set_combine(sets.precast.fc, {
@@ -516,15 +549,14 @@ function get_sets()
 	
     sets.ws["Myrkr"] = {
         ammo="Hydrocera",
-        head="Peda. M.Board +3",
-		body="Acad. Gown +3",
+        head="Amalric Coif +1",
+        neck="Sanctity necklace",
         ear1="Loquacious earring",
         ear2="Etiolation earring",
-        neck="Sanctity necklace",
-        body="Pedagogy gown",
+		body="Acad. Gown +3",
         hands="Kaykaus cuffs",
         ring1="Prolix ring",
-        ring2="",
+        ring2="Mephitas's Ring +1",
         waist="Luminary sash",
         legs="Amalric Slops +1",
         feet="Arbatel Loafers +3"
@@ -542,11 +574,18 @@ function get_sets()
         ring2="Freke Ring",
 		back=nuke_cape,
         waist="Luminary sash",
-        legs="Amalric Slops +1",
+        legs="Nyame Flanchard",
         feet="Nyame Sollerets"
     }
 
 end
+
+	sets.utility = {}
+	sets.utility.doom = {
+		neck="Nicander's Necklace",
+		ring1="Purity Ring",
+		waist="Gishbubar Sash"
+	}
 
 -------------------------------------------------------------------------------------------------------------------
 -- Spell mappings allow defining a general category or description that each of sets of related
@@ -572,6 +611,8 @@ spell_maps = {
 }
 
 ---- .::Precast Functions::. ---->
+
+
 function precast(spell)
     -- print_set(spell)
     local spellType = spell_maps[spell.name]
@@ -728,6 +769,10 @@ function equip_set(status)
     
     if Kiting then
         equip(set_combine(set_to_equip, sets.idle["Kiting"]))
+    end
+
+    if EatTp then
+        equip({neck='Chrysopoeia torque'})
     end
 end
 
