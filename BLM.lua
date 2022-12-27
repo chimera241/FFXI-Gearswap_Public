@@ -1,11 +1,14 @@
-NukeTypeIndex = 1
-NukeSet = {"Magic Attack Bonus","Magic Burst","Occult Acumen"}
-
 IdleSetIndex = 1
 IdleSet = {"Refresh", "DT", "Death"}
 
 WeaponSetIndex = 1
 WeaponSet = {"Mpaca's Staff", "Marin Staff +1", "Any"}
+
+burstmode = true
+
+MACCmode = true
+
+occultmode = true
 
 ObiOn = true
 
@@ -15,13 +18,14 @@ Kiting = false
 
 AFBodyOn = false
 
-send_command('bind f9 gs c CycleNukeSet')
+send_command('bind f9 gs c Toggleburstmode')
+send_command('bind !f9 gs c Toggleoccultmode')
 send_command('bind @f9 gs c ToggleAFBody')
 send_command('bind ^f9 gs c CycleWeaponSet')
-send_command('bind f10 gs c CycleIdleSet')
+send_command('bind f11 gs c CycleIdleSet')
 send_command('bind @f11 gs c EatTp')
-send_command('bind ^f11 gs c ToggleObi')
-send_command('bind f12 gs c RefreshSet')
+send_command('bind ^f11 gs c ToggleMACCmode')
+send_command('bind !f11 gs c ToggleObi')
 send_command('bind ^k gs c toggle kiting')
 
 function file_unload()
@@ -37,27 +41,26 @@ function file_unload()
     enable('main', 'sub')
 end
 
+--- ^ Ctrl, ! Alt, @ Win, ~ Shift---
+
 function help()
-    add_to_chat(122, 'Keyboard Bindings:')
-    add_to_chat(122, 'F9: Cycle Nuke Sets')
-    add_to_chat(122, 'Win + F9: Lock AF Body and Burst set for all nukes')
-    add_to_chat(122, 'Ctrl + F9: Cycle Weapon (Any > Mpacas Staff > Marin Staff +1)')
-    add_to_chat(122, 'F10: Cycle Idle Sets (Refresh > DT > Death)')
-    add_to_chat(122, 'Win + F11: Eat TP Mode - Not functioning')
-    add_to_chat(122, 'Ctrl + F11: Toggle Obi - Not functioning until I rebuy my OShash!')
-    add_to_chat(122, 'Ctrl + k: Toggle kiting')
+	add_to_chat(122, 'Keyboard Bindings:')
+	add_to_chat(122, 'F9: Burst Mode Toggle - default on')
+	add_to_chat(122, 'Ctrl + F9: Cycle Weapon (Any > Mpacas Staff > Marin Staff +1)')
+	add_to_chat(122, 'Alt + F9: Occult Acumen Mode - Default on')
+	add_to_chat(122, 'Win + F9: Lock AF Body and Burst set for all nukes - default off')
+	add_to_chat(122, 'F11: Cycle Idle Sets (Refresh > DT > Death)')
+	add_to_chat(122, 'Win + F11: Eat TP Mode')
+	add_to_chat(122, 'Ctrl + F11: Burst MACC Mode - default on')
+	add_to_chat(122, 'Alt + F11: Toggle Obi - Not functioning until I rebuy my OShash!')
+	add_to_chat(122, 'Ctrl + k: Toggle kiting')
 end
 
 help()
 
 function self_command(command)
     -- print(command)
-    if command == 'CycleNukeSet' then
-        NukeTypeIndex = NukeTypeIndex % #NukeSet + 1
-
-        local nuke_set = NukeSet[NukeTypeIndex]
-        add_to_chat(122, 'Nuke Set: ' .. nuke_set)
-    elseif command == "CycleWeaponSet" then
+	if command == "CycleWeaponSet" then
         WeaponSetIndex = WeaponSetIndex % #WeaponSet + 1
 
         local weapon_set = WeaponSet[WeaponSetIndex]
@@ -75,15 +78,6 @@ function self_command(command)
 
         local idle_set = IdleSet[IdleSetIndex]
         add_to_chat(122, 'Idle Set: ' .. idle_set)
-        equip_set(player.status)
-    elseif command == 'RefreshSet' then
-
-        local nuke_set = NukeSet[NukeTypeIndex]
-        local idle_set = IdleSet[IdleSetIndex]
-
-        equip_set(player.status)
-        add_to_chat(122, 'Nuke Set: ' .. nuke_set .. ' Idle Set: ' .. idle_set)
-        lockstyle()
     elseif command == 'toggle kiting' then
         Kiting = not Kiting
         if Kiting then
@@ -114,6 +108,30 @@ function self_command(command)
             send_command('@input /echo ----- AF Body Locked On -----')
         else
             send_command('@input /echo ----- Body Slot Unlocked Off -----')
+        end
+        equip_set(player.status)
+    elseif command == 'Toggleburstmode' then
+        burstmode = not burstmode
+        if burstmode then
+            send_command('@input /echo ----- Magic Burst Mode On -----')
+        else
+            send_command('@input /echo ----- Magic Burst Mode Off -----')
+        end
+        equip_set(player.status)
+    elseif command == 'ToggleMACCmode' then
+        MACCmode = not MACCmode
+        if MACCmode then
+            send_command('@input /echo ----- High MACC mode -----')
+        else
+            send_command('@input /echo ----- Normal MACC mode -----')
+        end
+        equip_set(player.status)
+    elseif command == 'Toggleoccultmode' then
+        occultmode = not occultmode
+        if occultmode then
+            send_command('@input /echo ----- Occult Acumen on (if not in burst mode) -----')
+        else
+            send_command('@input /echo ----- Occult Acumen Off -----')
         end
         equip_set(player.status)
     end
@@ -159,7 +177,7 @@ function get_sets()
         hands="Nyame Gauntlets",
         ring1="Shneddick ring",
         ring2="Defending ring",
-        back=Cape.TP,
+        back=Cape.Death,
         waist="Slipor sash",
         legs="Nyame Flanchard",
         feet="Archmage's sabots +2"
@@ -210,7 +228,7 @@ function get_sets()
     sets.precast.ja['Subtle Sorcery'] = {}
     sets.precast.ja['Cascade'] = {}
 
-   --75-77% fc (Merlinic Augments Dependent)
+   --79% fc (Merlinic Augments Dependent)
     sets.precast.fc = {
 		head=Mhead.FC, --15%
 		neck="Voltsurge Torque", --fast cast 4%
@@ -223,7 +241,7 @@ function get_sets()
 		back=Cape.Death, --10%
 		waist="Embla sash", --fast cast 5%
 		legs="Agwu's Slops", --7%
-		feet=Mfeet.FC --fast cast 12% -- Make set for FC
+		feet=Mfeet.FC --fast cast 12%
 	}
     
     sets.precast['Impact'] = set_combine(sets.precast.fc, {
@@ -312,7 +330,7 @@ function get_sets()
     --MB Total: 78
     sets.midcast.elemental["Magic Burst"] = set_combine(sets.midcast.elemental["Magic Attack Bonus"], { --42 MBD, 18 MBDII
         ammo="Ghastly Tathlum +1",
-		head="Wicce Petasos +2",  
+		head="Agwu's Cap",  
         neck="Sorcerer's Stole +1", --MB: 6 
         ear1="Malignance earring",
         ear2="Regal earring",        
@@ -324,6 +342,10 @@ function get_sets()
         waist="Acuity belt +1",
 		legs="Wicce Chausses +3", --MB: 15
         feet="Agwu's Pigaches" --MB: 6
+    })
+
+    sets.midcast.elemental["MACC Burst"] = set_combine(sets.midcast.elemental["Magic Burst"], { --42 MBD, 18 MBDII
+		head="Wicce Petasos +2"
     })
 	
 	sets.midcast.elemental.FreeBurst = set_combine(sets.midcast.elemental["Magic Burst"], {
@@ -369,7 +391,8 @@ function get_sets()
     sets.midcast['Impact'] = set_combine(sets.midcast.enfeebling, {
         head=empty,
         body='Twilight cloak',
-        ring2="Archon ring"
+        ring2="Archon ring",
+		feet="Archmage's Sabots +3"
     })
 
     sets.midcast.cure = set_combine(sets.midcast.fast_recast, {
@@ -623,28 +646,33 @@ function midcast(spell)
             if ElementalDebuffs[spell.english] then
                 equip(sets.midcast.elemental.debuff)
             else
-                local nuke_set = NukeSet[NukeTypeIndex]
-                equip(sets.midcast.elemental[nuke_set])
-
-                local distance = windower.ffxi.get_mob_by_index(spell.target.index).distance:sqrt()
-                if distance < 5 and ObiOn then
-                    equip( set_combine(sets.midcast.elemental[nuke_set], {waist = "Orpheus's sash"}))                                
-                elseif (world.day_element == spell.element or world.weather_element == spell.element) and ObiOn then
-                    equip({waist = "Hachirin-no-Obi"})
-                elseif AFBodyOn then
-					equip(sets.midcast.elemental.FreeBurst)
+                if burstmode then
+					if MACCmode then 
+						equip(sets.midcast.elemental["MACC Burst"])
+						else 
+						equip(sets.midcast.elemental["Magic Burst"])
+						end
+					elseif not burstmode then
+						if occultmode then
+						equip(sets.midcast.elemental["Occult Acumen"])
+						else
+						 equip(sets.midcast.elemental["Magic Attack Bonus"])
+						end	
 				end
-			
-
                 if AncientMagic[spell.english] then
                     equip(sets.midcast.elemental.AncientMagic)
                 end
-
-                if player.mp < 700 then
+                if player.mp < 400 then
                     equip({body="Spaekona's Coat +2"})
                 end
             end
+		if (world.day_element == spell.element or world.weather_element == spell.element) and ObiOn then
+				equip({waist = "Hachirin-no-Obi"})
+			end
+		if AFBodyOn then
+			equip(sets.midcast.elemental.FreeBurst)
         end
+		end
     end
 end
 
