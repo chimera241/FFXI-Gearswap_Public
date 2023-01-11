@@ -31,7 +31,7 @@ send_command('bind ^k gs c toggle kiting')
 function file_unload()
     send_command('unbind f9')
     send_command('unbind ^f9')
-    send_command('unbind @f9')
+    send_command('unbind ~f9')
     send_command('unbind f10')
     send_command('unbind @f11')
     send_command('unbind ^f11')
@@ -143,6 +143,7 @@ function get_sets()
 		Cape.Nuke = { name="Taranus's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','"Mag.Atk.Bns."+10','Damage taken-5%',}}
 		Cape.WSD = { name="Taranus's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','Weapon skill damage +10%','Damage taken-5%',}}
 		Cape.Death = { name="Taranus's Cape", augments={'MP+60','Mag. Acc+20 /Mag. Dmg.+20','MP+20','"Fast Cast"+10','Damage taken-5%',}}
+		Cape.Occult = { name="Taranus's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','"Store TP"+10','Damage taken-5%',}}
 		
 	Mhead = {}
 		Mhead.Phalanx = { name="Merlinic Hood", augments={'Attack+11','"Mag.Atk.Bns."+8','Phalanx +4','Accuracy+5 Attack+5',}}
@@ -175,7 +176,7 @@ function get_sets()
         ear2="Hearty earring",
         body="Shamash Robe",
         hands="Nyame Gauntlets",
-        ring1="Shneddick ring",
+        ring1="Shneddick Ring +1",
         ring2="Defending ring",
         back=Cape.Death,
         waist="Slipor sash",
@@ -195,7 +196,7 @@ function get_sets()
     sets.idle["Death"] = deathSet
 
     sets.kiting = {
-        ring2="Shneddick ring"
+        ring2="Shneddick Ring +1"
     }
 
     sets.engaged = {
@@ -289,12 +290,13 @@ function get_sets()
         ammo="Seraphic Ampulla", --7 Occult
         head="Mallquis Chapeau +2", --11 Occult
         neck="Combatant's torque",
-        ear1="Dedition earring",
+        ear1="Dedition earring", --8 Store TP
         ear2="Crepuscular earring", --5 Store TP
         body="Spaekona's Coat +2",
         hands=Mhands.occult, --10
         ring1="Chirich Ring +1", --6 Store TP
         ring2="Crepuscular Ring", --6 Store TP
+		back=Cape.Occult,
         waist="Oneiros rope",  --20 TP/MP
         legs="Perdition slops", --30 Occult
         feet=Mfeet.occult, --11 Occult -----139 TP/100 MP
@@ -329,7 +331,9 @@ function get_sets()
     --MB2 Total: 34
     --MB Total: 78
     sets.midcast.elemental["Magic Burst"] = set_combine(sets.midcast.elemental["Magic Attack Bonus"], { --42 MBD, 18 MBDII
-        ammo="Ghastly Tathlum +1",
+		main="Bunzi's Rod",
+		sub="Ammurapi Shield",
+		ammo="Ghastly Tathlum +1",
 		head="Agwu's Cap",  
         neck="Sorcerer's Stole +1", --MB: 6 
         ear1="Malignance earring",
@@ -348,7 +352,9 @@ function get_sets()
 		head="Wicce Petasos +2"
     })
 	
-	sets.midcast.elemental.FreeBurst = set_combine(sets.midcast.elemental["Magic Burst"], {
+	sets.midcast.elemental.FreeBurst = set_combine(sets.midcast.elemental["MACC Burst"], {
+		main="Bunzi's Rod",
+		sub="Ammurapi Shield",
 		body="Spaekona's Coat +2"
 	})
 		
@@ -373,6 +379,8 @@ function get_sets()
     }
 
     sets.midcast.enfeebling = set_combine(sets.midcast.fast_recast, {
+		main="Contemplator +1",
+		sub="Khonsu",
         ammo="Pemphredo tathlum",
         head = "Spaekona's petasos +2",
         neck = "Sorcerer's stole +1",
@@ -658,7 +666,7 @@ function midcast(spell)
 						else
 						 equip(sets.midcast.elemental["Magic Attack Bonus"])
 						end	
-				end
+					end
                 if AncientMagic[spell.english] then
                     equip(sets.midcast.elemental.AncientMagic)
                 end

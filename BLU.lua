@@ -85,7 +85,7 @@ function get_sets()
 			ear2="Hearty Earring",
 			body="Shamash Robe",--9% DT, 102 Eva, 139 MEva
 			ring1="Defending Ring",
-			ring2="Shneddick Ring +1", --10% DT
+			ring2="Shneddick Ring +1 +1", --10% DT
 			waist="Flume Belt", --3% PDT
 			legs="Hashishin Tayt +2", --18% move sp
 			feet="Hashishin Basmak +2" --8% DT, 150 MEva
@@ -99,7 +99,7 @@ function get_sets()
 			body="Nyame Mail", --9% DT, 102 Eva, 139 MEva
 			hands="Nyame Gauntlets",
 			ring1="Ilabrat Ring",
-			ring2="Shneddick Ring",
+			ring2="Shneddick Ring +1",
 			back=cape_eva,
 			waist="Kasiri Belt",
 			legs="Nyame Flanchard", --18% move sp

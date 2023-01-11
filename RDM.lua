@@ -89,7 +89,6 @@ Mhead = {}
 		Mhands.Occult = { name="Merlinic Dastanas", augments={'Mag. Acc.+26','"Occult Acumen"+10','CHR+5',}}
 	Mlegs = {}	
 		Mlegs.Refresh = { name="Merlinic Shalwar", augments={'"Fast Cast"+2','Pet: "Dbl. Atk."+1','"Refresh"+2','Accuracy+15 Attack+15','Mag. Acc.+19 "Mag.Atk.Bns."+19',}}
-		Mlegs.Phalanx = { name="Merlinic Shalwar", augments={'CHR+9','Phys. dmg. taken -1%','Phalanx +2','Mag. Acc.+20 "Mag.Atk.Bns."+20',}}
 	Mfeet= {}
 		Mfeet.FC = { name="Merlinic Crackows", augments={'Mag. Acc.+14 "Mag.Atk.Bns."+14','"Fast Cast"+7','Mag. Acc.+6','"Mag.Atk.Bns."+8',}}
 		Mfeet.Occult = { name="Merlinic Crackows", augments={'Mag. Acc.+17','"Occult Acumen"+11',}}
@@ -108,7 +107,7 @@ Mhead = {}
 		ear2="Sanare earring",
 		body="Lethargy Sayon +2",
 		hands="Malignance Gloves",
-		ring1="Shneddick Ring",
+		ring1="Shneddick Ring +1",
 		ring2="Defending ring",
 		back=Cape_Int,
 		waist="Flume Belt",
@@ -132,7 +131,7 @@ Mhead = {}
 		})
 
     sets.kite = {
-		ring1="Shneddick Ring"
+		ring1="Shneddick Ring +1"
 		}
 
     sets.ja = {}
@@ -198,11 +197,20 @@ Mhead = {}
 		feet="Malignance Boots",
 		back=Cape_TP
     }
-
+	
+	sets.engaged.th = {
+		ammo="Perfect Lucky Egg",
+		hands="Herculean Gloves",
+		waist="Chaac Belt"
+	}
+	
     sets.engaged["Low Acc"] = set_combine( sets.engaged, {
     })
 
     sets.engaged["High Acc"] = set_combine( sets.engaged, {
+		ammo="Perfect Lucky Egg",
+		waist="Chaac Belt",
+		feet="Volte Boots"
 	})
 
     sets.engaged.enspell ={       
@@ -229,7 +237,7 @@ Mhead = {}
     sets.engaged.sw["Low Acc"].enspell = set_combine(sets.engaged.sw["Low Acc"], sets.engaged.enspell)
     sets.engaged.sw["High Acc"].enspell = set_combine(sets.engaged.sw["High Acc"], sets.engaged.enspell)
 
-    sets.engaged.sw["Damage Taken"] = sets.engaged
+    sets.engaged.sw["Damage Taken"] = sets.engaged.th
 
     sets.fc = {   
 		head="Atro. Chapeau +2", --14
@@ -924,7 +932,7 @@ function SetGearToState(state)
                                            ['Dark']={"Enblizzard", "Enblizzard II"}}
             if IsDualWield() then
                 if EnspellActive and IsEnspellActive() then
-                    equip(sets.engaged.dw[accuracyMode].enspell)
+                    equip(sets.engaged.enspell)
 
                     local buffToCheckForObiForDay = enspellWeatherMapping[world.day_element] or {"", ""}
                     local buffToCheckForObiForWeather = enspellWeatherMapping[world.weather_element] or {"", ""}

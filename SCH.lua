@@ -13,14 +13,23 @@ RegenSet = {"Potency", "Duration"}
 WeaponSetIndex = 1
 WeaponSet = {"Any", "Tupsimati", "Mpaca's Staff", "Marin Staff +1"}
 
+burstmode = true
+
+MACCmode = true
+
+occultmode = true
+
 Kiting = false
 
 EatTp = false
 
+AFBodyOn = false
 
-send_command('bind f9 gs c CycleNukeSet')
+send_command('bind f9 gs c Toggleburstmode')
+send_command('bind !f9 gs c Toggleoccultmode')
+send_command('bind @f9 gs c ToggleAFBody')
 send_command('bind ^f9 gs c CycleWeaponSet')
-send_command('bind f10 gs c CycleRegenSet')
+send_command('bind f10 gs c PrimeStaff')
 send_command('bind f11 gs c CycleIdleSet')
 send_command('bind ^f11 gs c CycleEngagedSet')
 send_command('bind @f11 gs c EatTp')
@@ -42,11 +51,12 @@ function file_unload()
 end
 
 function help()
-    add_to_chat(122, 'Keyboard Bindings:')
-    add_to_chat(122, 'F9: Cycle Nuke Sets')
-    ---add_to_chat(122, 'Win + F9: Lock AF Body and Burst set for all nukes')
-    add_to_chat(122, 'Ctrl + F9: Cycle Weapon (Any > Tupsimati > Mpacas Staff > Marin Staff +1)')
-    add_to_chat(122, 'F10: Cycle Regen Sets (Duration > Potency)')
+	add_to_chat(122, 'Keyboard Bindings:')
+	add_to_chat(122, 'F9: Burst Mode Toggle - default on')
+	add_to_chat(122, 'Ctrl + F9: Cycle Weapon (Any > Mpacas Staff > Marin Staff +1)')
+	add_to_chat(122, 'Alt + F9: Occult Acumen Mode - Default on')
+	add_to_chat(122, 'Win + F9: Lock AF Body and Burst set for all nukes - default off')
+	add_to_chat(122, 'F10: Lock Prime Weapon - Wakey Wakey')
     add_to_chat(122, 'F11: Cycle Idle Sets (Refresh > DT )')
     add_to_chat(122, 'Ctrl + F11: Cycle Engaged Sets (Accuracy > Default)')
     add_to_chat(122, 'Win + F11: Eat TP Mode')
@@ -58,22 +68,22 @@ help()
 
 function self_command(command)
     -- print(command)
-    if command == 'CycleNukeSet' then
-        NukeTypeIndex = NukeTypeIndex % #NukeSet + 1
-
-        local nuke_set = NukeSet[NukeTypeIndex]
-        add_to_chat(122, 'Nuke Set: ' .. nuke_set)
-    elseif command == "CycleWeaponSet" then
-        WeaponSetIndex = WeaponSetIndex % #WeaponSet + 1
-
-        local weapon_set = WeaponSet[WeaponSetIndex]
-        if weapon_set == 'Any' then
-            enable('main', 'sub')
+	if command == 'CycleNukeSet' then
+		NukeTypeIndex = NukeTypeIndex % #NukeSet + 1
+		
+		local nuke_set = NukeSet[NukeTypeIndex]
+		add_to_chat(122, 'Nuke Set: ' .. nuke_set)
+	elseif command == "CycleWeaponSet" then
+		WeaponSetIndex = WeaponSetIndex % #WeaponSet + 1
+		
+		local weapon_set = WeaponSet[WeaponSetIndex]
+		if weapon_set == 'Any' then
+			enable('main', 'sub')
         else
-            enable('main', 'sub')
-            equip(sets.WeaponSet[weapon_set])
-            disable('main', 'sub')
-        end
+			enable('main', 'sub')
+			equip(sets.WeaponSet[weapon_set])
+			disable('main', 'sub')
+		end
 
         add_to_chat(122, 'Weapon Set: ' .. weapon_set)
     elseif command == 'CycleIdleSet' then
@@ -119,6 +129,39 @@ function self_command(command)
             send_command('@input /echo ----- Eat Tp Off -----')
         end
         equip_set(player.status)
+    elseif command == 'Toggleburstmode' then
+        burstmode = not burstmode
+        if burstmode then
+            send_command('@input /echo ----- Magic Burst Mode On -----')
+        else
+            send_command('@input /echo ----- Magic Burst Mode Off -----')
+        end
+        equip_set(player.status)
+    elseif command == 'ToggleMACCmode' then
+        MACCmode = not MACCmode
+        if MACCmode then
+            send_command('@input /echo ----- High MACC mode -----')
+        else
+            send_command('@input /echo ----- Normal MACC mode -----')
+        end
+        equip_set(player.status)
+    elseif command == 'PrimeStaff' then
+        PrimeStaff = not PrimeStaff
+        if PrimeStaff then
+            enable('main', 'sub')		
+            send_command('@input /echo ----- Prime Staff Equipped -----')
+        else
+			send_command('@input /echo ----- Prime Staff Unequipped -----')		
+		end
+        equip_set(player.status)
+    elseif command == 'Toggleoccultmode' then
+        occultmode = not occultmode
+        if occultmode then
+            send_command('@input /echo ----- Occult Acumen on (if not in burst mode) -----')
+        else
+            send_command('@input /echo ----- Occult Acumen Off -----')
+        end
+        equip_set(player.status)
     end
 end
 
@@ -159,41 +202,39 @@ function get_sets()
 
     sets.idle = {}
 	
-	sets.idle["DT"] = { 	
-		main="Malignance Pole", 
-		sub="Khonsu",
-		ammo="Staunch Tathlum +1",
-		head="Arbatel Bonnet +2",
-		neck="Loricate Torque +1",
+	sets.idle["DT"] = { --50% DT, 7 Refresh
+		main="Mpaca's Staff", --2 Refresh
+		sub="Khonsu", --6% DT
+		ammo="Homiliary", --1 Refresh
+		head="Arbatel Bonnet +2", --9% DT, 126 MEVA
+		neck="Sibyl Scarf", --1 Refresh
 		ear1="Etiolation earring",
 		ear2="Odnowa earring +1",
-		body="Shamash Robe",
-		hands="Nyame Gauntlets",
-		ring1="Shneddick ring",
-		ring2="Defending Ring",
+		body="Shamash Robe", --3 Refresh
+		hands="Nyame Gauntlets", --7% DT, 112 MEVA
+		ring1="Stikini Ring +1",
+		ring2="Defending Ring", --10% DT
 		back=idle_cape,
 		waist="Flume Belt",
-		legs="Nyame Flanchard",
-		feet="Nyame Sollerets"
+		legs="Arbatel Pants +2", --11%DT, 158 MEVA
+		feet="Nyame Sollerets" --7% DT 150 MEVA
     }
 	
-    sets.idle["Refresh"] = set_combine(sets.idle["DT"], {
-		main="Mpaca's Staff",
-		sub="Khonsu",
-		ammo="Homiliary",
-		head="Befouled Crown",
-		neck="Sibyl Scarf",
-		body="Shamash Robe",
-		hands="Volte Gloves",
-		ring1="Stikini Ring +1",
-		ring2="Stikini Ring +1",
-		waist="Fucho-no-obi",
-		legs=Mlegs.Refresh,
-		feet="Chironic Slippers"
+    sets.idle["Refresh"] = set_combine(sets.idle["DT"], { --14 Refresh
+		ammo="Homiliary", --1 Refresh
+		head="Befouled Crown", --1 Refresh
+		neck="Sibyl Scarf", --1 Refresh
+		body="Arbatel Gown +3", --4 Refresh
+		hands="Volte Gloves", --1 Refresh
+		ring1="Stikini Ring +1", --1 Refresh
+		ring2="Stikini Ring +1", --1 Refresh
+		waist="Fucho-no-obi", -- 1 Refresh (below 50%)
+		legs=Mlegs.Refresh, --2 Refresh
+		feet="Chironic Slippers" --2 Refresh
 	})
 	
-	sets.idle["Kiting"] = set_combine(sets.idle["Refresh"], {
-		ring1="Shneddick Ring"
+	sets.idle["Kiting"] = set_combine(idle_set, {
+		ring1="Shneddick Ring +1"
 	})
 
     sets.ja = {}
@@ -207,9 +248,9 @@ function get_sets()
     sets.engaged["Accuracy"] = {
         head="Jhakri coronal +2",
         neck="Sanctity necklace",
-        ear1="",
+        ear1="Crepuscular Earring",
         ear2="Dignitary's earring",
-        body="Jhakri robe +2",
+        body="Nyame Mail",
         hands="Gazu Bracelets +1",
         ring1="Chirich Ring +1",
         ring2="Chirich Ring +1",
@@ -224,17 +265,16 @@ function get_sets()
     -- Gear that needs to be worn to **actively** enhance a current player buff.
     -- Fill up following with your avaible pieces.
     sets.buff = {}
-    sets.buff['Rapture'] = {head="Arbatel bonnet +2"}
-    sets.buff['Perpetuance'] = {hands="Arbatel Bracers +2"}
-    sets.buff['Immanence'] = {hands="Arbatel Bracers +2"}
-    sets.buff['Penury'] = {legs="Arbatel Pants +1"}
-    sets.buff['Parsimony'] = {legs="Arbatel Pants +1"}
+    sets.buff['Rapture'] = {head="Arbatel bonnet +3"}
+    sets.buff['Perpetuance'] = {hands="Arbatel Bracers +3"}
+    sets.buff['Immanence'] = {hands="Arbatel Bracers +3"}
+    sets.buff['Penury'] = {legs="Arbatel Pants +3"}
+    sets.buff['Parsimony'] = {legs="Arbatel Pants +3"}
     sets.buff['Celerity'] = {feet="Pedagogy Loafers +1"}
     sets.buff['Alacrity'] = {feet="Pedagogy Loafers +1"}
     sets.buff['Klimaform'] = {feet="Arbatel Loafers +3"}	
     -- Ebulience set empy now as we get better damage out of a good Merlinic head
-    sets.buff['Ebullience'] = {head="Arbatel bonnet +2"} -- I left it there still if it becomes needed so the SCH.lua file won't need modification should you want to use this set
-
+    sets.buff['Ebullience'] = {head="Arbatel bonnet +3"} 
 
     -- When spell school is aligned with grimoire, swap relevent pieces -- Can also use Arbatel +1 set here if you value 1% quickcast procs per piece. (2+ pieces)  
     -- Dont set_combine here, as this is the last step of the precast, it will have sorted all the needed pieces already based on type of spell.
@@ -252,7 +292,7 @@ function get_sets()
 		neck="Voltsurge Torque", --fast cast 4%
 		ear1="Loquacious Earring", --fast cast 2%
 		ear2="Malignance earring", --fast cast 4%
-		body="Shango Robe", --fast cast 6%
+		body="Agwu's robe", --fast cast 8%
 		hands="Academic's bracers +3", --fast cast 9%
 		ring1="Kishar ring", --fast cast 4%
 		ring2="Prolix Ring", --fast cast 5%
@@ -304,7 +344,7 @@ function get_sets()
 		neck="Sanctity Necklace",
 		ear1="Barkarole earring",
 		ear2="Malignance earring",
-		body="Agwu's Robe",
+		body="Arbatel Gown +3",
 		hands="Agwu's Gages",
 		left_ring="Metamorph Ring +1",
 		right_ring="Freke Ring",
@@ -313,49 +353,56 @@ function get_sets()
 		legs="Amalric Slops +1",
 		feet="Amalric Nails +1",
     }
-	
+
+    sets.midcast.elemental["Occult Acumen"] = set_combine(sets.midcast.elemental["Magic Attack Bonus"], { --50 Tp/MP Base
+		ammo="Seraphic Ampulla", --7 Occult
+		head="Mallquis Chapeau +2", --11 Occult
+		neck="Combatant's torque",
+		ear1="Dedition earring",
+		ear2="Crepuscular earring", --5 Store TP
+		body="Spaekona's Coat +2",
+		hands=Mhands.occult, --10
+		ring1="Chirich Ring +1", --6 Store TP
+		ring2="Crepuscular Ring", --6 Store TP
+		back=magic_atk_cape,
+		waist="Oneiros rope",  --20 TP/MP
+		legs="Perdition slops", --30 Occult
+		feet=Mfeet.occult, --11 Occult -----139 TP/100 MP
+		})	
+		
     sets.midcast.elemental["Magic Burst"] = set_combine(sets.midcast.elemental["Magic Attack Bonus"], { --MBD 49, MBDII 11, MAB 287, MACC 190
-		main="Tupsimati", --MBD 10, MAB35, MACC 40 + Augs Int 15
-		sub="Khonsu",
-		head="Pedagogy Mortarboard +3", --MDBII 4, MAB 49, MACC 37, MB Acc +15 Int 39
-        neck="Argute Stole +1", --MBD 7 (upgrade) MACC 25
-		ear1="Barkarole earring",
+		main="Bunzi's Rod",
+		sub="Ammurapi Shield",
+		head="Agwu's Cap", --MDBII 4, MAB 49, MACC 37, MB Acc +15 Int 39
+        neck="Argute Stole +2",
+		ear1="Regal Earring",
 		ear2="Malignance earring",
-		body="Agwu's Robe", --MBD 10, MAB 35, MACC 40, Int 47 + Aug --priority 2
+		body="Arbatel Gown +3", --MBD 10, MAB 35, MACC 40, Int 47 + Aug --priority 2
 		hands="Agwu's Gages", --MBD 8, MAB43, MACC 40 Int 33, MABII 2-5 (Aug) --priority 1
-        left_ring="Mujin band", --MBDII 5
+        left_ring="Freke Ring",
         right_ring="Metamorph Ring +1", --16 Int, 11-16 MACC
 		back=nuke_cape,
         waist="Acuity Belt +1", --MACC 15, INT 16		
 		legs="Agwu's Slops", -- MBD 9, MAB 35, MACC 40, Int 49 + Aug
-        feet="Arbatel Loafers +3" -- MBDII 4, MAB 45, MACC 50, Int 29, Klimaform +20, Elemental Skill +28
+        feet="Arbatel Loafers +3" -- MBDII 5, MAB 50, MACC 60, Int 34, Klimaform +25, Elemental Skill +33
     })
 
-
-    sets.midcast.elemental["Occult Acumen"] = set_combine(sets.midcast.elemental["Magic Attack Bonus"], { --50 Tp/MP Base
-        ammo="Seraphic Ampulla", --7 Occult
-        head="Mallquis Chapeau +2", --11 Occult
-        neck="Combatant's torque",
-        ear1="Dedition earring",
-        ear2="Crepuscular earring", --5 Store TP
-        body="Spaekona's Coat +2",
-        hands=Mhands.occult, --10
-        ring1="Chirich Ring +1", --6 Store TP
-        ring2="Crepuscular Ring", --6 Store TP
-        back=magic_atk_cape,
-        waist="Oneiros rope",  --20 TP/MP
-        legs="Perdition slops", --30 Occult
-        feet=Mfeet.occult, --11 Occult -----139 TP/100 MP
+    sets.midcast.elemental["MACC Burst"] = set_combine(sets.midcast.elemental["Magic Burst"], { --42 MBD, 18 MBDII
     })
+	
+	sets.midcast.elemental.FreeBurst = set_combine(sets.midcast.elemental["Magic Burst"], {
+		body="Sedir Coteharde"
+	})
 	
     -- Make sure you have a non weather obi in this set. Helix get bonus naturally no need Obi.	
     sets.midcast.helix = set_combine(sets.midcast.elemental["Magic Burst"], {
 		main="Bunzi's Rod",
-		sub="Culminus",      
+		sub="Culminus",    
+        neck="Argute Stole +1",  
 		body="Agwu's Robe",	
 		ear1="Crematio Earring",
 		ear2="Malignance Earring",
-		legs="Agwu's Slops",
+		legs="Arbatel Pants +3",
 		feet="Arbatel Loafers +3"
     })	
 	
@@ -408,23 +455,25 @@ function get_sets()
 		ring2="Stikini Ring +1",
 		back=nuke_cape,
 		waist="Obstinate Sash",
-		legs=chir_macc,
+		legs="Arbatel Pants +3",
 		feet="Academic's Loafers +3"
     })
 
     sets.midcast.int_enfeebling = set_combine(sets.midcast.enfeebling, {
-        back=nuke_cape
+		back=nuke_cape
     })
 
     sets.midcast.mnd_enfeebling = set_combine(sets.midcast.enfeebling, {
-        back=idle_cape
+		back=idle_cape
     })
 	
     sets.midcast['Impact'] = set_combine(sets.midcast.enfeebling, {
-        head=empty,
-        body='Twilight cloak',
-        ring1="Archon ring"
-    })
+		head=empty,
+		body="Twilight cloak",
+		hands="Academic's Bracers +3",
+		ring1="Stikini Ring +1",
+		feet="Arbatel Loafers +3"
+	})
 	
     -- Make sure you have a non weather obi in this set. Helix get bonus naturally no need Obi.	
     sets.midcast.dark_helix = set_combine(sets.midcast.helix, {
@@ -438,7 +487,7 @@ function get_sets()
 		ammo="Pemphredo Tathlum", -- 4 Con MP
 		head="Vanya Hood", --10 Cure Pot, 6 Con MP
 		neck="Nodens Gorget", --5% Cure Pot
-		body="Arbatel Gown +2",
+		body="Arbatel Gown +3",
 		ear1="Mendi. earring", 	--5% Cure Pot, 2 Con MP, 2% Cure Casting
 		ear2="Calamitous Earring",
 		hands="Kaykaus Cuffs +1", --11%, 7 Con MP
@@ -480,7 +529,7 @@ function get_sets()
 
     sets.midcast.regen = {}
     sets.midcast.regen["Potency"] = set_combine(sets.midcast.enhancement_duration, {
-		head="Arbatel Bonnet +2",
+		head="Arbatel Bonnet +3",
 		body="Telchine Chas.",
 		back=idle_cape
     })
@@ -502,17 +551,9 @@ function get_sets()
     sets.midcast.healing = set_combine(sets.precast.fc, {
     })
 
-	sets.midcast.cursna = set_combine(sets.midcast.cure, {
-		body="Peda. Gown +3",
-		neck="Malison Medallion",
-		ring1="Menelaus's Ring",
-		ring2="Haoma's Ring",
-		feet="Vanya Clogs"
-	})
-
     sets.midcast.enhancing = set_combine(sets.midcast.enhancement_duration, {
-        ring1="Stikini Ring +1",
-        ring2="Stikini Ring +1"
+		ring1="Stikini Ring +1",
+		ring2="Stikini Ring +1"
     })
 
     sets.midcast.storm = set_combine(sets.midcast.enhancement_duration,{
@@ -551,8 +592,8 @@ function get_sets()
         ammo="Hydrocera",
         head="Amalric Coif +1",
         neck="Sanctity necklace",
-        ear1="Loquacious earring",
-        ear2="Etiolation earring",
+        ear1="Etiolation earring",
+        ear2="Moonlight earring",
 		body="Acad. Gown +3",
         hands="Kaykaus cuffs",
         ring1="Prolix ring",
@@ -570,10 +611,10 @@ function get_sets()
         ear2="Malignance earring",
 		body="Nyame Mail",
         hands="Nyame Gauntlets",
-        ring1="Prolix ring",
-        ring2="Freke Ring",
+        ring1="Archon ring",
+        ring2="Epaminondas's Ring",
 		back=nuke_cape,
-        waist="Luminary sash",
+        waist="Hachirin-no-Obi",
         legs="Nyame Flanchard",
         feet="Nyame Sollerets"
     }
@@ -632,11 +673,11 @@ function precast(spell)
         end
 
         -- extends Fast cast set with Grimoire recast aligned 
-        if buffactive['addendum: black'] or buffactive['dark arts'] then
+        if buffactive['addendum: black'] or buffactive['Dark Arts'] then
             if spell.type == 'BlackMagic' then
                 equip(sets.buff.grimoire)
             end
-        elseif buffactive['addendum: white'] or buffactive['light arts'] then
+        elseif buffactive['addendum: white'] or buffactive['Light Arts'] then
             if spell.type == 'WhiteMagic' then
                 equip(sets.buff.grimoire)
             end
@@ -665,21 +706,21 @@ function midcast(spell)
         -- Healing Magic --
         if spell.skill == 'Healing Magic' then 
 			if spellType == "Cure" or spellType == "Curaga" then
-            if (world.day_element == spell.element or world.weather_element == spell.element) or buffactive["Aurorastorm II"] then
-                equip( equip(sets.midcast.cure), {waist = "Hachirin-no-Obi"})
-			else 
-				equip(sets.midcast.cure)
+				if (world.day_element == spell.element or world.weather_element == spell.element) or buffactive["Aurorastorm II"] then
+					equip( equip(sets.midcast.cure), {waist = "Hachirin-no-Obi"})
+				else 
+					equip(sets.midcast.cure)
+				end
+			elseif spell.skill == 'Healing Magic' and spell.name == "Cursna" then
+				equip(sets.midcast.cursna)
 			end
-		elseif spell.skill == 'Healing Magic' and spell.name == "Cursna" then
-			equip(sets.midcast.cursna)            
-            end
         -- Enhancing Magic --
-        elseif spell.skill == 'Enhancing Magic' then
-            if spellType == "Regen" then
-                local regenMode = RegenSet[RegenSetIndex]
-                equip(sets.midcast.regen[regenMode])
-            elseif spellType == "Storm" then
-                equip(sets.midcast.storm)
+		elseif spell.skill == 'Enhancing Magic' then
+			if spellType == "Regen" then
+				local regenMode = RegenSet[RegenSetIndex]
+				equip(sets.midcast.regen[regenMode])
+			elseif spellType == "Storm" then
+				equip(sets.midcast.storm)
 			elseif sets.midcast[spell.english] then
 				equip(sets.midcast[spell.english])			
 			elseif spellType == "Refresh" then
@@ -691,32 +732,48 @@ function midcast(spell)
 			elseif spell.name == "Phalanx" then
 				equip(sets.midcast.phalanx)
 			else
-                equip(sets.midcast.enhancing)   
-            end    
+				equip(sets.midcast.enhancing)   
+			end    
         -- Enfeebling Magic --         
         elseif spell.skill == 'Enfeebling Magic' and spell.type == 'BlackMagic' then -- to do: better rule for this.
             equip(sets.midcast.IntEnfeebling)
         elseif spell.skill == 'Enfeebling Magic' and spell.type == 'WhiteMagic' then -- to do: better rule for this.
             equip(sets.midcast.MndEnfeebling)
-        elseif string.find(spell.english, 'Aspir') or string.find(spell.english, 'Drain') then
+		elseif string.find(spell.english, 'Aspir') or string.find(spell.english, 'Drain') then
             equip(sets.midcast.drain_aspir)
-        -- Elemental Magic --      
+        -- Elemental Magic --      	
         elseif spell.skill == 'Elemental Magic' then
-            if spellType == 'DarkHelix' then
-                equip(sets.midcast.dark_helix)
-            elseif spellType == 'Helix' then
-                equip(sets.midcast.helix)
-			elseif spell.english == 'Impact' then	
-				equip(sets.midcast['Impact'])
-            else
-                local nuke_set = NukeSet[NukeTypeIndex]
-                if (world.day_element == spell.element or world.weather_element == spell.element) and spellType ~= "Helix" then
-                    equip( set_combine(sets.midcast.elemental[nuke_set], {waist = "Hachirin-no-Obi"}))
-                else
-                    equip(sets.midcast.elemental[nuke_set])
-                end
-            end
-        elseif sets.midcast[spell.name] then
+			if burstmode then
+				if MACCmode then 
+					equip(sets.midcast.elemental["MACC Burst"])
+					else 
+					equip(sets.midcast.elemental["Magic Burst"])
+					end
+				elseif not burstmode then
+					if occultmode then
+					equip(sets.midcast.elemental["Occult Acumen"])
+					else
+					 equip(sets.midcast.elemental["Magic Attack Bonus"])
+					end	
+			elseif spellType == 'Helix' then
+				if spell.english == 'Dark Helix' then
+					equip(sets.midcast.dark_helix)
+					else
+					equip(sets.midcast.helix)
+					end
+				elseif spell.english == 'Impact' then	
+					equip(sets.midcast['Impact'])
+					end
+				end
+
+			if (world.day_element == spell.element or world.weather_element == spell.element) and ObiOn then
+					equip({waist = "Hachirin-no-Obi"})
+				end
+			if AFBodyOn then
+				equip(sets.midcast.elemental.FreeBurst)
+				end
+			
+		if sets.midcast[spell.name] then
             equip(sets.midcast[spell.name])
         end
         if buffactive['Perpetuance'] and (spell.type =='WhiteMagic' and spell.skill == 'Enhancing Magic') then
@@ -736,6 +793,7 @@ function midcast(spell)
                 equip(sets.buff['Klimaform'])
             end
         end
+		
         if buffactive['Penury'] and spell.type == 'WhiteMagic' then
             equip(sets.buff['Penury']) 
         end
@@ -774,6 +832,10 @@ function equip_set(status)
     if EatTp then
         equip({neck='Chrysopoeia torque'})
     end
+	
+	if PrimeStaff then	
+		equip({main='Opashoro'})
+	end
 end
 
 function aftercast(spell)

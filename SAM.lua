@@ -15,6 +15,7 @@ send_command('bind ^f10 gs c set meleeMEva')
 send_command('bind f11 gs c set meleeDT')
 send_command('bind ^f11 gs c set meleeSB')
 send_command('bind @f12 gs c reset gear')
+send_command('bind !h input /item "Holy Water" <me>')
 
 function get_sets()
 
@@ -187,6 +188,28 @@ Cape = {}
 	
 	sets.ja['Meditate'] = {head="", hands="Sakonji Kote +3"}
 end
+
+
+	sets.utility = {}
+	sets.utility.doom = {
+		neck="Nicander's Necklace",
+		ring1="Purity Ring",
+		waist="Gishbubar Sash"
+	}
+
+---- .::Precast Functions::. ---->
+	--function buff_change
+		--if buff.name == "doom" then
+			--	if gain then
+				--	ChangeGear(sets.utility.doom)
+				--	send_command('@input /p Doomed - Curse removal set equipped!!!!!')
+				--	disable('neck','ring1','ring2','waist')
+				--else
+					--if player.status == 'Engaged' then
+						--	send_command('@input /p Doom is off {^_^}')
+							--enable('neck','ring1','ring2','waist')
+				--end
+	--end
 		
 function precast(spell)
     -- print_set(spell)
