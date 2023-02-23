@@ -40,8 +40,9 @@ Cape= {}
 	Mbody = {}	
 		Mbody.Phalanx = { name="Merlinic Jubbah", augments={'VIT+8','Accuracy+15','Phalanx +5','Accuracy+13 Attack+13','Mag. Acc.+8 "Mag.Atk.Bns."+8',}}
 	Mhands = {}
-		Mhands.Phalanx = { name="Merlinic Dastanas", augments={'Attack+21','MND+6','Phalanx +3','Mag. Acc.+4 "Mag.Atk.Bns."+4',}}
+		Mhands.Phalanx = { name="Merlinic Dastanas", augments={'Pet: Attack+14 Pet: Rng.Atk.+14','Enmity-4','Phalanx +4','Mag. Acc.+8 "Mag.Atk.Bns."+8',}}
 		Mhands.Occult = { name="Merlinic Dastanas", augments={'Mag. Acc.+26','"Occult Acumen"+10','CHR+5',}}
+		Mhands.Refresh = { name="Merlinic Dastanas", augments={'Accuracy+20','Potency of "Cure" effect received+5%','"Refresh"+2','Accuracy+2 Attack+2',}}	
 	Mlegs = {}	
 		Mlegs.Refresh = { name="Merlinic Shalwar", augments={'"Fast Cast"+2','Pet: "Dbl. Atk."+1','"Refresh"+2','Accuracy+15 Attack+15','Mag. Acc.+19 "Mag.Atk.Bns."+19',}}
 		Mlegs.Phalanx = { name="Merlinic Shalwar", augments={'CHR+9','Phys. dmg. taken -1%','Phalanx +2','Mag. Acc.+20 "Mag.Atk.Bns."+20',}}
@@ -59,8 +60,8 @@ Cape= {}
         ear1="Etiolation earring",
         ear2="Hearty earring",
         body="Jhakri Robe +2",
-        hands="Volte Gloves",
-        ring1="Shneddick ring",
+        hands=Mhands.Refresh,
+        ring1="Shneddick ring +1",
         ring2="Stikini ring +1",
         back=Cape_Idle,
         waist="Fucho-no-obi",
@@ -83,8 +84,7 @@ Cape= {}
 	sets.engaged = {}
 	
 	sets.engaged['tp'] = {
-		main="Idris",
-		sub="Genmei Shield",
+		main="Maxentius",
 		head="Nyame Helm",
 		neck="Sanctity Necklace",
 		ear1="Cessance Earring",
@@ -175,7 +175,7 @@ Cape= {}
 		ring2="Stikini Ring +1",
         back="Lifestream Cape",
         legs="Bagua Pants +1",
-        feet="Azimuth gaiters +1"
+        feet="Azimuth gaiters +3"
     })
 
     sets.midcast.cure = {
@@ -223,10 +223,10 @@ Cape= {}
         hands="Geomancy mitaines +3",
         ring1="Stikini ring +1",
         ring2="Stikini ring +1",
+        back=Cape_Nuke, 
         waist="Luminary sash",
         legs="Geomancy pants +2",
-        feet="Geomancy sandals +3",
-        back=Cape_Nuke, 
+        feet="Geomancy sandals +3"
 		}
 
     sets.midcast["Stun"] = sets.midcast.elemental["magic-accuracy"]
@@ -242,10 +242,10 @@ Cape= {}
         hands="Agwu's Gages",
         ring1="Freke ring",
         ring2="Shiva ring +1",
+        back=Cape_Nuke,
         waist="Eschan stone",
         legs="Agwu's Slops",
-        feet="Agwu's Pigaches",
-        back=Cape_Nuke,
+        feet="Agwu's Pigaches"
 		}
 
     sets.midcast.elemental["magic-burst"] = set_combine(sets.midcast.elemental["magic-atk-bonus"], { --MB47 MBII 27

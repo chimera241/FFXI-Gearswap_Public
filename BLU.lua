@@ -44,7 +44,7 @@ function get_sets()
 
 		-- Weapon Sets --
 	
-	Weapon_Sets = {"Tizona", "Tizona/Sakpata", "Nuking", "Maxentius/Thibron"} ----"Savage", , "Nuking""Naegling/Sakpata",  , "OmenDef"
+	Weapon_Sets = {"Tizona", "Tizona/Sakpata", "Nuking", } ----"Savage", "Maxentius/Thibron","Naegling/Sakpata",  , "OmenDef"
 	WeaponSetsIndex = 1	
 
 	sets.weapons = {}
@@ -66,9 +66,9 @@ function get_sets()
 			ammo="Homilary", --1 Refresh
 			head="Herculean Helm", --1 Refresh
 			neck="Sibyl Scarf", --1 Refresh
-			ear1="Ethereal earring", 
+			ear1="Odnowa earring +1", 
 			ear2="Malignance Earring",
-			body="Jhakri Robe +2", --4 Refresh
+			body="Shamash Robe", --4 Refresh
 			hands="Malignance Gloves", --5% DT, 80 Eva, 112 MEva
 			ring1="Stikini Ring +1", --1 Refresh
 			ring2="Stikini Ring +1", --1 Refresh
@@ -85,7 +85,7 @@ function get_sets()
 			ear2="Hearty Earring",
 			body="Shamash Robe",--9% DT, 102 Eva, 139 MEva
 			ring1="Defending Ring",
-			ring2="Shneddick Ring +1 +1", --10% DT
+			ring2="Shneddick Ring +1", --10% DT
 			waist="Flume Belt", --3% PDT
 			legs="Hashishin Tayt +2", --18% move sp
 			feet="Hashishin Basmak +2" --8% DT, 150 MEva
@@ -117,7 +117,7 @@ function get_sets()
 			ammo="Coiste Bodhar",
 			head="Hashishin Kavuk +3", --6% DT, 123 MEva
 			neck="Mirage Stole +2", 
-			ear1="Suppanomimi", 
+			ear1="Dedition Earring", 
 			ear2="Telos Earring",
 			body="Malignance Tabard", --9% DT 139 MEva
 			hands="Adhemar Wristbands +1",
@@ -134,6 +134,7 @@ function get_sets()
 			head="Malignance Chapeau", --6% DT, 123 MEva
 			body="Malignance Tabard", --9% DT 139 MEva
 			ring2="Defending Ring", --10% DT
+			legs="Gleti's Breeches",
 			feet="Malignance Boots" --4% DT 150 MEva
 		})
 
@@ -181,7 +182,7 @@ function get_sets()
 			body="Nyame Mail",
 			hands="Nyame Gauntlets",
 			ring1="Epona's ring",
-			ring2="Epaminondas's Ring",
+			ring2="Sroda Ring",
 			back=cape_wsd, 
 			waist="Sailfi Belt +1", 
 			legs="Nyame Flanchard",
@@ -247,7 +248,7 @@ function get_sets()
 			ring2="Metamorph Ring +1",
 			back=cape_DD, 
 			waist="Fotia Belt", 
-			legs="Amalric Slops",
+			legs="Amalric Slops +1",
 			feet="Jhakri Pigaches +2"
 		}
 		
@@ -316,7 +317,7 @@ function get_sets()
 			ring1="Metamorph Ring +1", 
 			ring2="Shiva Ring +1",  
 			back=cape_nuke,
-			waist="Acuity Belt +1",
+			waist="Orpheus's Sash",
 			legs="Luhlaza Shalwar +3",
 			feet="Hashishin Basmak +2",
 		}
@@ -326,7 +327,7 @@ function get_sets()
 		})		
         sets.BlueMagic.MACC = {
 			ammo="Pemphredo Tathlum",
-			head="Assimilator's Keffiyeh +3", --56 MACC
+			head="Assim. Keffiyeh +3", --56 MACC
 			neck="Mirage Stole +2", --25 MACC
 			ear1="Regal Earring", --15 MACC Set Bonus
 			ear2="Dignitary's Earring",
@@ -425,12 +426,12 @@ function get_sets()
 			
         sets.BlueMagic['Off'] = {
 			ammo="Pemphredo Tathlum",
-			head="Assimilator's Keffieh +3", --46 MACC
+			head="Assim. Keffieh +3", --46 MACC
 			neck="Mirage Stole +2", --25 MACC
 			ear1="Regal Earring", --15 MACC Set Bonus
 			ear2="Dignitary's Earring",
 			body="Malignance Tabard", --50 MACC
-			hands="Malignance Cuffs", --50 MACC
+			hands="Malignance Gloves", --50 MACC
 			ring1="Stikini Ring +1", --11 MACC
 			ring2="Metamorph Ring +1", --11-16 MACC
 			back=cape_nuke,

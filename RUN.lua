@@ -41,7 +41,7 @@ function get_sets()
 		ear2="Odnowa Earring +1", --3 DT 
 		body="Nyame Mail", --9 DT, 139 MEva
 		hands="Nyame Gauntlets", --3 DT, 37 MEva
-		ring1="Shneddick Ring", 
+		ring1="Shneddick Ring +1", 
 		ring2="Defending Ring", --10 DT
 		back=Ogma.Tanking, 
 		waist="Flume Belt", --4 PDT
@@ -108,7 +108,7 @@ function get_sets()
 		ear1="Hearty Earring",
 		ear2="Odnowa Earring +1", --3%
 		body="Nyame Mail",
-		hands="Turms Mittens +1",
+		hands="Nyame Gauntlets",
 		ring1="Moonlight Ring", --5%
 		ring2="Defending Ring", --10%
 		back=Ogma.Tanking, 
@@ -126,7 +126,7 @@ function get_sets()
 		ear2="Ethereal Earring",
 		body="Nyame Mail",
 		hands="Turms Mittens +1",
-		ring1="Moonlight Ring",
+		ring1="Gelat Ring",
 		ring2="Defending Ring",
 		back=Ogma.Tanking, 
 		waist="Flume Belt",
@@ -458,7 +458,7 @@ function set_gear(status)
 end 
 
 function lockstyle()
-	if player.main_job == 'RUN' then send_command('@input /lockstyleset 23')
+	if player.main_job == 'RUN' then send_command('@input /lockstyleset 27')
 	end
 end
 

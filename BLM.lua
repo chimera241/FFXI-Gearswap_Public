@@ -151,8 +151,9 @@ function get_sets()
 	Mbody = {}	
 		Mbody.Phalanx = { name="Merlinic Jubbah", augments={'VIT+8','Accuracy+15','Phalanx +5','Accuracy+13 Attack+13','Mag. Acc.+8 "Mag.Atk.Bns."+8',}}
 	Mhands = {}
-		Mhands.Phalanx = { name="Merlinic Dastanas", augments={'Attack+21','MND+6','Phalanx +3','Mag. Acc.+4 "Mag.Atk.Bns."+4',}}
+		Mhands.Phalanx = { name="Merlinic Dastanas", augments={'Pet: Attack+14 Pet: Rng.Atk.+14','Enmity-4','Phalanx +4','Mag. Acc.+8 "Mag.Atk.Bns."+8',}}
 		Mhands.Occult = { name="Merlinic Dastanas", augments={'Mag. Acc.+26','"Occult Acumen"+10','CHR+5',}}
+		Mhands.Refresh = { name="Merlinic Dastanas", augments={'Accuracy+20','Potency of "Cure" effect received+5%','"Refresh"+2','Accuracy+2 Attack+2',}}		
 	Mlegs = {}	
 		Mlegs.Refresh = { name="Merlinic Shalwar", augments={'"Fast Cast"+2','Pet: "Dbl. Atk."+1','"Refresh"+2','Accuracy+15 Attack+15','Mag. Acc.+19 "Mag.Atk.Bns."+19',}}
 		Mlegs.Phalanx = { name="Merlinic Shalwar", augments={'CHR+9','Phys. dmg. taken -1%','Phalanx +2','Mag. Acc.+20 "Mag.Atk.Bns."+20',}}
@@ -187,7 +188,7 @@ function get_sets()
     sets.idle["Refresh"] = set_combine(sets.idle["DT"], {
         ammo="Staunch tathlum +1",
         head="Befouled crown",
-		hands="Volte Gloves",
+		hands=Mhands.Refresh,
         ring1="Stikini Ring +1",
         ring2="Stikini Ring +1",
 		legs=Mlegs.Refresh
@@ -349,7 +350,7 @@ function get_sets()
     })
 
     sets.midcast.elemental["MACC Burst"] = set_combine(sets.midcast.elemental["Magic Burst"], { --42 MBD, 18 MBDII
-		head="Wicce Petasos +2"
+		head="Wicce Petasos +3"
     })
 	
 	sets.midcast.elemental.FreeBurst = set_combine(sets.midcast.elemental["MACC Burst"], {

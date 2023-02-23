@@ -1,6 +1,6 @@
 res = require('resources')
 
-Weapon_Sets = {"Empty","Savage Blade", "Crocea/Daybreak", "Crocea/Gleti's"} --, ,"Aeolian Edge", "Maxentius",
+Weapon_Sets = {"Empty", "Savage Blade", "Crocea/Gleti's"} --, ,"Aeolian Edge", "Maxentius"}, "Crocea/Daybreak",  "Maxentius",
 WeaponSetsIndex = 1
 
 NukeSet = {"Low Acc", "High Acc", "Magic Burst"}
@@ -85,14 +85,15 @@ Mhead = {}
 	Mbody = {}	
 		Mbody.Phalanx = { name="Merlinic Jubbah", augments={'VIT+8','Accuracy+15','Phalanx +5','Accuracy+13 Attack+13','Mag. Acc.+8 "Mag.Atk.Bns."+8',}}
 	Mhands = {}
-		Mhands.Phalanx = { name="Merlinic Dastanas", augments={'Attack+21','MND+6','Phalanx +3','Mag. Acc.+4 "Mag.Atk.Bns."+4',}}
+		Mhands.Phalanx = { name="Merlinic Dastanas", augments={'Pet: Attack+14 Pet: Rng.Atk.+14','Enmity-4','Phalanx +4','Mag. Acc.+8 "Mag.Atk.Bns."+8',}}
 		Mhands.Occult = { name="Merlinic Dastanas", augments={'Mag. Acc.+26','"Occult Acumen"+10','CHR+5',}}
+		Mhands.Refresh = { name="Merlinic Dastanas", augments={'Accuracy+20','Potency of "Cure" effect received+5%','"Refresh"+2','Accuracy+2 Attack+2',}}	
 	Mlegs = {}	
 		Mlegs.Refresh = { name="Merlinic Shalwar", augments={'"Fast Cast"+2','Pet: "Dbl. Atk."+1','"Refresh"+2','Accuracy+15 Attack+15','Mag. Acc.+19 "Mag.Atk.Bns."+19',}}
 	Mfeet= {}
 		Mfeet.FC = { name="Merlinic Crackows", augments={'Mag. Acc.+14 "Mag.Atk.Bns."+14','"Fast Cast"+7','Mag. Acc.+6','"Mag.Atk.Bns."+8',}}
 		Mfeet.Occult = { name="Merlinic Crackows", augments={'Mag. Acc.+17','"Occult Acumen"+11',}}
-		Mfeet.Phalanx = { name="Merlinic Crackows", augments={'"Dbl.Atk."+3','INT+8','Phalanx +2',}}
+		Mfeet.Phalanx = { name="Merlinic Crackows", augments={'"Fast Cast"+2','Phalanx +4','Accuracy+10 Attack+10','Mag. Acc.+18 "Mag.Atk.Bns."+18',}}
 
 
     sets.idle = {}
@@ -105,7 +106,7 @@ Mhead = {}
 		neck="Loricate torque +1",
 		ear1="Etiolation earring",
 		ear2="Sanare earring",
-		body="Lethargy Sayon +2",
+		body="Shamash Robe",
 		hands="Malignance Gloves",
 		ring1="Shneddick Ring +1",
 		ring2="Defending ring",
@@ -121,8 +122,8 @@ Mhead = {}
 		ammo="Homiliary",
 		neck="Sibyl Scarf",
 		head="Vitiation chapeau +3",
-		body="Jhakri Robe +2",
-		hands="Volte Gloves",
+		body="Lethargy Sayon +3",
+		hands=Mhands.Refresh,
 		ring1="Stikini ring +1",
 		ring2="Stikini ring +1",		
 		waist="Fucho-no-Obi",
@@ -136,7 +137,7 @@ Mhead = {}
 
     sets.ja = {}
 	sets.ja["Convert"] = {}
-	sets.ja["Saboteur"] = {hands="Lethargy gantherots +2"}
+	sets.ja["Saboteur"] = {hands="Lethargy gantherots +3"}
 	sets.ja["Chainspell"] = {body="Vitiation tabard +3"}
 	sets.ja["Valiance"] = {
 		--ammo="Staunch Tathlum +1",
@@ -187,15 +188,15 @@ Mhead = {}
 		head="Bunzi's Hat",
 		neck="Anu Torque",
 		ear1="Telos Earring",
-		ear2="Odnowa Earring +1",
-		ring1="Chirich Ring +1",
-		ring2="Chirich Ring +1",
+		ear2="Dedition Earring",
 		body="Malignance Tabard",
 		hands="Malignance Gloves",
+		ring1="Chirich Ring +1",
+		ring2="Ilabrat Ring",
+		back=Cape_TP,
 		waist="Sailfi Belt +1",
-		legs="Carmine Cuisses +1",
-		feet="Malignance Boots",
-		back=Cape_TP
+		legs="Nyame Flanchard",
+		feet="Malignance Boots"
     }
 	
 	sets.engaged.th = {
@@ -213,11 +214,11 @@ Mhead = {}
 		feet="Volte Boots"
 	})
 
-    sets.engaged.enspell ={       
+    sets.engaged.enspell =  set_combine( sets.engaged, {    
 		neck="Duelist's Torque +2",
 		hands="Aya. Manopolas +2",
 		waist="Orpheus's Sash"
-	}
+	})
 
     sets.engaged.dw = {}
     sets.engaged.dw["Low Acc"] = sets.engaged["Low Acc"], {
@@ -300,7 +301,7 @@ Mhead = {}
 		ring2="Stikini ring +1",
 		back="Ghostfyre Cape",
 		waist="Embla Sash",
-		legs="Lethargy Fuseau +2",
+		legs="Lethargy Fuseau +3",
 		feet="Leth. Houseaux +3"
         }
 
@@ -323,14 +324,14 @@ Mhead = {}
         }
     
     sets.midcast.enhancing["Duration"] = set_combine(sets.midcast.enhancing["Skill"], {
-		head="Telchine Cap",
+		head="Lethargy Chappel +1",
 		body="Lethargy Sayon +2",
 		ear1="Lethargy Earring +1",
 		hands="Atrophy Gloves +3",
+		back="Ghostfyre Cape",
 		waist="Embla Sash",
-		legs="Lethargy Fuseau +2",
-		feet="Lethargy Houseaux +3",
-		back="Ghostfyre Cape"
+		legs="Lethargy Fuseau +3",
+		feet="Lethargy Houseaux +3"
     })
 
     sets.midcast.enhancing.spikes = set_combine(sets.midcast.enhancing["Skill"], {
@@ -343,7 +344,7 @@ Mhead = {}
 
     sets.midcast.enhancing.refresh = set_combine(sets.midcast.enhancing["Duration"], {
 		head="Amalric Coif +1",
-		legs="Lethargy Fuseau +2",
+		legs="Lethargy Fuseau +3",
 		left_ring="Defending Ring"
     })
 	
@@ -354,8 +355,8 @@ Mhead = {}
 		left_ring="Defending Ring",
 		back="Ghostfyre Cape",
 		waist="Embla Sash",
-		legs="Lethargy Fuseau +2",
-		feet="Lethargy Houseaux +2"
+		legs="Lethargy Fuseau +3",
+		feet="Lethargy Houseaux +3"
 	})
 
     sets.midcast.enhancing.stoneskin = set_combine(sets.midcast.enhancing, {
@@ -429,7 +430,7 @@ Mhead = {}
 		neck="Duelist's Torque +2", --30 MACC, Potency 10, Duration 25--
 		ear1="Snotra Earring", --10 MACC--
 		ear2="Regal Earring", --15 MACC Set Bonus--
-		body="Lethargy Sayon +2", --54 MACC, 16 Potency---
+		body="Lethargy Sayon +3", --54 MACC, 16 Potency---
 		hands="Regal Cuffs", --45 MACC, 20% Duration---
 		ring1="Kishar ring", --8 MACC--
 		ring2="Stikini ring +1", --8 MACC--
@@ -447,7 +448,7 @@ Mhead = {}
 		neck="Duelist's Torque +2", --30 MACC, Potency 10, Duration 25--
 		ear1="Snotra Earring", --10 MACC--
 		ear2="Regal Earring", --15 MACC Set Bonus--
-		body="Lethargy Sayon +2", --54 MACC, 16 Potency---
+		body="Lethargy Sayon +3", --54 MACC, 16 Potency---
 		hands="Kaykaus Cuffs +1", 
 		ring1="Kishar Ring", --8 MACC--
 		ring2="Stikini ring +1", --8 MACC--
@@ -464,7 +465,7 @@ Mhead = {}
 		neck="Duelist's Torque +2", --30 MACC, Potency 10, 25% Duration--
 		ear1="Snotra Earring", --10 MACC--
 		ear2="Regal Earring", --15 MACC Set Bonus--
-		body="Lethargy Sayon +2", --54 MACC, 16 Potency---
+		body="Lethargy Sayon +3", --54 MACC, 16 Potency---
 		hands="Regal Cuffs", --45 MACC, 20% Duration---
 		ring1="Metamorph ring +1", --8 MACC--
 		ring2="Stikini ring +1", --8 MACC--
@@ -567,7 +568,7 @@ Mhead = {}
 		left_ring="Freke Ring",
 		right_ring="Shiva Ring +1",
 		back=Cape_Int,
-		waist="Eschan stone",
+		waist="Orpheus's Sash",
 		legs="Amalric Slops +1",
 		feet="Amalric Nails +1"
 		}
@@ -633,7 +634,7 @@ Mhead = {}
 		body="Nyame Mail",
 		hands="Jhakri Cuffs +2",
 		ring1="Freke Ring",
-		ring2="Epaminondas's Ring",
+		ring2="Sroda Ring",
 		back=Cape_WSD,
 		waist="Orpheus's Sash",
 		legs="Amalric Slops +1",
@@ -735,7 +736,7 @@ Mhead = {}
  sets.midcast["Sleep"] = sets.midcast.enfeebling.DurMACC
  sets.midcast["Sleepga"] = sets.midcast.enfeebling.DurMACC
  sets.midcast["Sleep II"] = sets.midcast.enfeebling.DurMACC 
- sets.midcast["Bind"] = sets.midcast.enfeebling.MACC
+ sets.midcast["Bind"] = sets.midcast.enfeebling.DurMACC
  sets.midcast["Break"] = sets.midcast.enfeebling.MACC
  -----Dur + MACC-----
  sets.midcast["Gravity"] = sets.midcast.enfeebling.PotMACC

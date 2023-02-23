@@ -1,7 +1,7 @@
 -- Get Sets: Everything in this section is run as soon as you change jobs.
 Engaged_Modes = {"TP", "More ACC", "Hybrid", "MEva", "DT", "Subtle Blow", "TH"}
 Engaged_Modes_Index = 1
-Weapon_Sets = {"Masamune", "Dojikiri", "Shining One"} --"Soboro"
+Weapon_Sets = {"Naegling", "Loxotic", "Shining One"} --"Soboro"
 WeaponSetsIndex = 1	
 
 
@@ -28,23 +28,21 @@ Cape = {}
 	petcast = false
 	-- Regular Sets --
 	sets.Idle = { 
-		sub="Utu Grip",
-		ammo="Staunch Tathlum +1",
+		ammo="Coiste Bodhar",
 		--ammo="Horn Arrow",
-		head="Kasuga Kabuto +3",
-		neck="Loricate Torque +1",
-		body="Kasuga Domaru +2",
-		hands="Nyame Gauntlets",
+		head="Nyame Helm", --
+		neck="Warrior Beads +2",
+		ear1="Schere Earring",		
+		ear2="Boii Earring +2",		
+		body="Nyame Mail",
+		hands="Sakpata's Gauntlets",
 		ring1="Shneddick Ring +1",
-		ring2="Defending Ring",
-		legs="Kasuga Haidate +2",
-		feet="Nyame Sollerets",
-		waist="Flume Belt",
-		ear1="Cessance Earring",
-		ear2="Odnowa Earring +1",
-		back=Cape_TP
+		ring2="Petrov Ring",
+		back=Cape_TP,
+		waist="Sailfi Belt +1",
+		legs="Nyame Flanchard",
+		feet="Flamma Gamberas +2",
 		}
-
 
 	sets.Precast = {}
 	sets.Precast['Ranged Attack'] = { 
@@ -54,47 +52,31 @@ Cape = {}
 	--Weapons
 
 	sets.weapons = {}
-	sets.weapons["Masamune"] = {main = "Masamune"}
+	sets.weapons["Naegling"] = {main = "Naegling", sub="Blurred Shield +1"}
 	sets.weapons["Shining One"]  = {main = "Shining One"}
-	sets.weapons["Dojikiri"]  = {main = "Dojikiri Yasutsuna"}
+	sets.weapons["Loxotic"]  = {main = "Loxotic Mace +1", sub="Blurred Shield +1"}
 	sets.weapons["Soboro"]  = {main = "Soboro Sukehiro"}	
 	
 	--TP Sets
 	
 	sets.tp = {}		  
 			  
-	sets.tp["TP"] = {    
-		sub="Utu Grip",
+	sets.tp["TP"] = {   
 		ammo="Coiste Bodhar",
 		--ammo="Horn Arrow",
-		head="Flam. Zucchetto +2", --
-		neck="Sam. Nodowa +2",		
-		ear1="Dedition Earring",
-		ear2="Schere Earring",		
-		body="Kasuga Domaru +3",
-		hands="Tatena. Gote +1",
+		head="Flam. Zucchetto", --"Boii Mask +2"
+		neck="War. Beads +2",	
+		ear1="Schere Earring",	
+		ear2="Boii Earring +2",		
+		body="Nyame Mail",
+		hands="Sakpata's Gauntlets",
 		ring1="Niqmaddu Ring",
-		ring2="Petrov Ring",
-		back=Cape_TP,
+		ring2="Defending Ring",
+		back="Mecisto. Mantle",
 		waist="Sailfi Belt +1",
-		legs="Tatena. Haidate +1",
-		feet="Ryuo Sune-Ate +1",
+		legs="Boii Cuisses +3",
+		feet="Flamma Gambieras +2",
 		}
-	
-	sets.tp["More Acc"] = set_combine(sets.tp["TP"], { --% PDT, % MDT--	
-		head="Ken. Samue +1",
-		hands="Tatena. Gate +1",
-		ring2="Chirich Ring +1",
-		legs="Tatena Haidate +1",
-		feet="Tatena. Sune. +1"
-		})	
-	
-	sets.tp["Hybrid"] = set_combine(sets.tp["TP"], { --23% DT, 10 SBII, 
-		head="Kasuga Kabuto +3",
-		body="Kasuga Domaru +3", --13% DT
-		ring2="Chirich Ring +1",
-		legs="Kasuga Haidate +3", --10% DT
-		})
 	
 	sets.tp["TH"] = set_combine(sets.tp["Hybrid"], { --23% DT, 10 SBII, 
 		ammo="Per. Lucky Egg", --13% DT
@@ -130,17 +112,17 @@ Cape = {}
 		
 	sets.ws["wsd"] = {
 		ammo="Knobkierrie",
-		head="Mpaca's Cap",
-		neck="Samurai Nodowa +2", 
+		head="Agoge Mask +3",
+		neck="Warrior Beads +2", 
 		ear1="Thrud Earring", 
 		ear2={ name="Moonshade Earring", augments={'Accuracy+4','TP Bonus +250',}},  
 		body="Nyame Mail",
-		hands="Kasuga Kote +3",
+		hands="Nyame Gauntlets",
 		ring1="Sroda Ring",
 		ring2="Regal Ring",
 		back=Cape_ws,
 		waist="Sailfi Belt +1",
-		legs="Nyame Flanchard",
+		legs="Boii Cuisses +3",
 		feet="Nyame Sollerets"
 		}
 
@@ -150,44 +132,21 @@ Cape = {}
 		back=Cape_Magicws,
 		waist="Orpheus's Sash"
 		})	
-			
-	sets.ws["Ageha"] = set_combine(sets.ws["wsd"], {
-		ear1="Sanctity Earring",
-		ear2={ name="Moonshade Earring", augments={'Accuracy+4','TP Bonus +250',}},
-		ring1="Stikini Ring +1",
-		ring2="Metamor. Ring +1",
-		waist="Eschan Stone",
-		legs="Nyame Flanchard"
-		})
 		
-	sets.ws["Stardiver"] = set_combine(sets.ws["wsd"], {
-		hands="Ryuo Tekko +1",
-		back=Cape_TP,	
-		waist="Fotia Belt",
-		feet="Valorous Greaves"
+	sets.ws["Impulse Drive"] = set_combine(sets.ws["wsd"], {
 		})
 
-    sets.ws["Tachi: Fudo"] = sets.ws["wsd"]
-	sets.ws["Tachi: Shoha"] = sets.ws["wsd"]
-	sets.ws["Tachi: Kasha"] = sets.ws["wsd"]	
-	sets.ws["Tachi: Gekko"] = sets.ws["wsd"]
-	sets.ws["Tachi: Rana"] = sets.ws["wsd"]
-	
-    sets.ws["Tachi: Jinpu"] = sets.ws["Magic"]	
-    sets.ws["Tachi: Kagero"] = sets.ws["Magic"]	
-    sets.ws["Tachi: Koki"] = sets.ws["Magic"]	
-    sets.ws["Tachi: Goten"] = sets.ws["Magic"]
-	
-	sets.ws["Impulse Drive"] = set_combine(sets.ws["wsd"], {head="Nyame Helm"})
-	sets.ws["Stardiver"] = sets.ws["Stardiver"]
-	sets.ws["Leg Sweep"] = sets.ws["Ageha"]
+    sets.ws["Savage Blade"] = sets.ws["wsd"]
+	sets.ws["Judgement"] = sets.ws["wsd"]
 
     wsd = set_combine(sets.ws)
 
     -- Job Ability Sets --
 	sets.ja = {}
 	
-	sets.ja['Meditate'] = {head="", hands="Sakonji Kote +3"}
+	sets.ja['Warcry'] = {head="Agoge Mask +3"}	
+	sets.ja['Aggressor'] = {head="Agoge Lorica +2"}
+	sets.ja['Blood Rage'] = {head="Boii Lorica +2"}
 end
 
 
