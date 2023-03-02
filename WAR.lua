@@ -1,7 +1,7 @@
 -- Get Sets: Everything in this section is run as soon as you change jobs.
 Engaged_Modes = {"TP", "More ACC", "Hybrid", "MEva", "DT", "Subtle Blow", "TH"}
 Engaged_Modes_Index = 1
-Weapon_Sets = {"Naegling", "Loxotic", "Shining One"} --"Soboro"
+Weapon_Sets = {"Naegling", "Loxotic", "Shining One"} --, "Great Axe"
 WeaponSetsIndex = 1	
 
 
@@ -20,7 +20,7 @@ send_command('bind !h input /item "Holy Water" <me>')
 function get_sets()
 
 Cape = {}
-	Cape_TP = { name="Smertrios's Mantle", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','"Dbl.Atk."+10','Phys. dmg. taken-10%',}}
+	Cape_TP = { name="Cichol's Mantle", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','"Dbl.Atk."+10',}}
 	Cape_ws = { name="Smertrios's Mantle", augments={'STR+20','Accuracy+20 Attack+20','STR+10','Weapon skill damage +10%',}}
 	Cape_Magicws = { name="Smertrios's Mantle", augments={'STR+20','Mag. Acc+20 /Mag. Dmg.+20','Magic Damage +10','Weapon skill damage +10%',}}
 
@@ -28,6 +28,7 @@ Cape = {}
 	petcast = false
 	-- Regular Sets --
 	sets.Idle = { 
+		--range="Lamiabane",
 		ammo="Coiste Bodhar",
 		--ammo="Horn Arrow",
 		head="Nyame Helm", --
@@ -53,9 +54,9 @@ Cape = {}
 
 	sets.weapons = {}
 	sets.weapons["Naegling"] = {main = "Naegling", sub="Blurred Shield +1"}
-	sets.weapons["Shining One"]  = {main = "Shining One"}
+	sets.weapons["Shining One"]  = {main = "Shining One", sub="Utu Grip"}
 	sets.weapons["Loxotic"]  = {main = "Loxotic Mace +1", sub="Blurred Shield +1"}
-	sets.weapons["Soboro"]  = {main = "Soboro Sukehiro"}	
+	sets.weapons["Great Axe"]  = {main = "Kaja Chopper", sub="Khonsu"}
 	
 	--TP Sets
 	
@@ -71,13 +72,21 @@ Cape = {}
 		body="Nyame Mail",
 		hands="Sakpata's Gauntlets",
 		ring1="Niqmaddu Ring",
-		ring2="Defending Ring",
-		back="Mecisto. Mantle",
+		ring2="Petrov Ring",
+		back=Cape_TP,
 		waist="Sailfi Belt +1",
 		legs="Boii Cuisses +3",
 		feet="Flamma Gambieras +2",
 		}
 	
+	sets.tp["Hybrid"] = set_combine(sets.tp["Hybrid"], { --23% DT, 10 SBII, 
+		head="Nyame Helm", --"Boii Mask +2"
+		body="Sakpata's Plate",
+		ring2="Chirich Ring +1",
+		legs="Boii Cuisses +3",
+		feet="Nyame Sollerets",
+		})			
+		
 	sets.tp["TH"] = set_combine(sets.tp["Hybrid"], { --23% DT, 10 SBII, 
 		ammo="Per. Lucky Egg", --13% DT
 		waist="Chaac Belt", --10% DT
@@ -146,7 +155,7 @@ Cape = {}
 	
 	sets.ja['Warcry'] = {head="Agoge Mask +3"}	
 	sets.ja['Aggressor'] = {head="Agoge Lorica +2"}
-	sets.ja['Blood Rage'] = {head="Boii Lorica +2"}
+	sets.ja['Blood Rage'] = {head="Boii Lorica"}
 end
 
 
@@ -253,6 +262,6 @@ function self_command(command)
 end
 
 function lockstyle()
-	if player.main_job == 'SAM' then send_command('@input /lockstyleset 22')
+	if player.main_job == 'WAR' then send_command('@input /lockstyleset 28')
 	end
 end
