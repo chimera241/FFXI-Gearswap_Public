@@ -86,7 +86,7 @@ function get_sets()
    
     sets.melee["Hybrid"] = { --29% DT, 46 PDT, 71% PDT inc Epeo--
 		sub="Utu Grip", 
-		ammo="Ginsen",
+		ammo="Coiste Bodhar",
 		head="Nyame Helm",  --7--
 		neck="Futhark Torque +2", --7--
 		ear1="Telos Earring",

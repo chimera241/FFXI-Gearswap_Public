@@ -1,7 +1,7 @@
 -- Get Sets: Everything in this section is run as soon as you change jobs.
 Engaged_Modes = {"TP", "More ACC", "Hybrid", "MEva", "DT", "Subtle Blow", "TH"}
 Engaged_Modes_Index = 1
-Weapon_Sets = {"Naegling", "Loxotic", "Shining One"} --, "Great Axe"
+Weapon_Sets = {"Naegling", "Loxotic"} --, "Great Axe", "Shining One"
 WeaponSetsIndex = 1	
 
 
@@ -20,8 +20,8 @@ send_command('bind !h input /item "Holy Water" <me>')
 function get_sets()
 
 Cape = {}
-	Cape_TP = { name="Cichol's Mantle", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','"Dbl.Atk."+10',}}
-	Cape_ws = { name="Smertrios's Mantle", augments={'STR+20','Accuracy+20 Attack+20','STR+10','Weapon skill damage +10%',}}
+	Cape_TP = { name="Cichol's Mantle", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','"Dbl.Atk."+10','Damage taken-5%',}}
+	Cape_WS = { name="Cichol's Mantle", augments={'STR+20','Accuracy+20 Attack+20','STR+10','Weapon skill damage +10%',}}
 	Cape_Magicws = { name="Smertrios's Mantle", augments={'STR+20','Mag. Acc+20 /Mag. Dmg.+20','Magic Damage +10','Weapon skill damage +10%',}}
 
 	sets = {}
@@ -62,15 +62,15 @@ Cape = {}
 	
 	sets.tp = {}		  
 			  
-	sets.tp["TP"] = {   
+	sets.tp["TP"] = {   --32%DT
 		ammo="Coiste Bodhar",
 		--ammo="Horn Arrow",
-		head="Flam. Zucchetto", --"Boii Mask +2"
-		neck="War. Beads +2",	
+		head="Boii Mask +3", --11%DT
+		neck="War. Beads +2", 
 		ear1="Schere Earring",	
 		ear2="Boii Earring +2",		
-		body="Nyame Mail",
-		hands="Sakpata's Gauntlets",
+		body="Boii Lorica +2", --13% DT
+		hands="Sakpata's Gauntlets", --DT8
 		ring1="Niqmaddu Ring",
 		ring2="Petrov Ring",
 		back=Cape_TP,
@@ -79,12 +79,9 @@ Cape = {}
 		feet="Flamma Gambieras +2",
 		}
 	
-	sets.tp["Hybrid"] = set_combine(sets.tp["Hybrid"], { --23% DT, 10 SBII, 
-		head="Nyame Helm", --"Boii Mask +2"
-		body="Sakpata's Plate",
-		ring2="Chirich Ring +1",
-		legs="Boii Cuisses +3",
-		feet="Nyame Sollerets",
+	sets.tp["Hybrid"] = set_combine(sets.tp["TP"], { --47% DT 
+		legs="Nyame Flanchard", --DT8
+		feet="Nyame Sollerets", --DT7
 		})			
 		
 	sets.tp["TH"] = set_combine(sets.tp["Hybrid"], { --23% DT, 10 SBII, 
@@ -129,7 +126,7 @@ Cape = {}
 		hands="Nyame Gauntlets",
 		ring1="Sroda Ring",
 		ring2="Regal Ring",
-		back=Cape_ws,
+		back=Cape_WS,
 		waist="Sailfi Belt +1",
 		legs="Boii Cuisses +3",
 		feet="Nyame Sollerets"
@@ -146,7 +143,7 @@ Cape = {}
 		})
 
     sets.ws["Savage Blade"] = sets.ws["wsd"]
-	sets.ws["Judgement"] = sets.ws["wsd"]
+	sets.ws["Judgment"] = sets.ws["wsd"]
 
     wsd = set_combine(sets.ws)
 

@@ -44,7 +44,7 @@ function get_sets()
 
 		-- Weapon Sets --
 	
-	Weapon_Sets = {"Tizona", "Tizona/Sakpata", "Nuking", } ----"Savage", "Maxentius/Thibron","Naegling/Sakpata",  , "OmenDef"
+	Weapon_Sets = {"Tizona", "Tizona/Sakpata", "Nuking", "Maxentius/Thibron" } ----"Savage","Naegling/Sakpata",  , "OmenDef"
 	WeaponSetsIndex = 1	
 
 	sets.weapons = {}
