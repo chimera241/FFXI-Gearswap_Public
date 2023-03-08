@@ -123,7 +123,7 @@ Cape = {}
 		ear1="Thrud Earring", 
 		ear2={ name="Moonshade Earring", augments={'Accuracy+4','TP Bonus +250',}},  
 		body="Nyame Mail",
-		hands="Nyame Gauntlets",
+		hands="Boii Mufflers +3",
 		ring1="Sroda Ring",
 		ring2="Regal Ring",
 		back=Cape_WS,
